@@ -17,7 +17,7 @@ const Footer = () => {
       </div>
       <div className='developed' >
         <div className='developed02'>
-        <a href="" >  Desenvolvido por <b> Merces-Dev</b> </a>
+        <a href="https://www.linkedin.com/in/giovani-merces-da-silva-b1a592191/" target="_blank">  Desenvolvido por <b> Merces-Dev</b> </a>
         </div>
       </div>
     </div>
