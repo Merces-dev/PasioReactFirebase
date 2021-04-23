@@ -1,11 +1,15 @@
 import React from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
+import { Form, Button } from 'react-bootstrap';
+
 import './index.css'
 import Interview from '../../utils/img/Interview.svg'
 import Icon01 from '../../utils/img/approved.svg'
 import Icon02 from '../../utils/img/job.svg'
 import Icon03 from '../../utils/img/together.svg'
+import Icon04 from '../../utils/img/consultation.svg'
+import Icon05 from '../../utils/img/information.svg'
 
 
 const Home = () => {
@@ -22,8 +26,8 @@ const Home = () => {
                 </h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officiis ipsum rem repudiandae itaque dolorem ducimus nesciunt architecto quam commodi consequatur animi incidunt saepe eos nemo amet odit, assumenda alias.</p>
 
-              <a href=""  className='buttonPrincipal' >
-               Cadastre-se aqui !
+              <a href="" className='buttonPrincipal' >
+                Cadastre-se aqui !
         </a>
             </div>
             <div className="divImgInterview">
@@ -31,50 +35,84 @@ const Home = () => {
             </div>
 
           </div>
-          <div id='secondary'>
-            <div className='cards'>
-              <a href="">
-                <div className="card">
-                  <img src={Icon01} alt="" />
-                  <h4>Cadastre-se</h4>
-                </div>
-              </a>
-              <a href="">
-                <div className="card">
-                  <img src={Icon02} alt="" />
-                  <h4>Oportunidades</h4>
+          <div className='cardsContact' >
 
-                </div>
-              </a>
+            <div id='secondary'>
+
+              <div className='cards'>
+                <a href="">
+                  <div className="card">
+                    <img src={Icon01} alt="" />
+                    <h4>Cadastre-se</h4>
+                  </div>
+                </a>
+                <a href="">
+                  <div className="card">
+                    <img src={Icon02} alt="" />
+                    <h4>Oportunidades</h4>
+
+                  </div>
+                </a>
+              </div>
+              <div className='cards'>
+                <a href="">
+                  <div className="card">
+                    <img src={Icon04} alt="" />
+                    <h4>Serviços</h4>
+
+                  </div>
+
+                </a>
+                <a href="">
+                  <div className="card">
+                    <img src={Icon03} alt="" />
+                    <h4>Trabalhe Conosco</h4>
+
+                  </div>
+                </a>
+              </div>
+              <div className='cards'>
+
+                <a href="">
+                  <div className="card">
+                    <img src={Icon05} alt="" />
+                    <h4>Quem Somos</h4>
+
+                  </div>
+                </a>
+              </div>
+              <div>
+
+              </div>
+
             </div>
-            <div className='cards'>
-              <a href="">
-                <div className="card">
-                  <img src={Icon01} alt="" />
-                  <h4>Serviços</h4>
+            <div id="form">
+              <Form style={{ margin: '20px' }}>
+                <p ><b>Entrar em Contato</b></p>
 
-                </div>
+                <Form.Group controlId="formBasicName" >
+                  <Form.Label >Nome : </Form.Label>
+                  <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" required />
+                </Form.Group>
 
-              </a>
-              <a href="">
-                <div className="card">
-                  <img src={Icon03} alt="" />
-                  <h4>Trabalhe Conosco</h4>
+                <Form.Group controlId='formBasicEmail' >
+                  <Form.Label >Email :</Form.Label>
+                  <Form.Control className='borda' type='email' placeholder="Insira um email válido" required />
+                </Form.Group>
 
-                </div>
-              </a>
+                <Form.Group controlId='formBasicMessage'>
+                  <Form.Label>Mensagem :</Form.Label>
+                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" rows={3} />
+                </Form.Group>
+
+                <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
+                  <a href="" className='buttonPrincipal' >
+                    Enviar
+                  </a>
+                </Button>
+              </Form>
             </div>
-            <div className='cards'>
 
-              <a href="">
-                <div className="card">
-                  <img src={Icon02} alt="" />
-                  <h4>Quem Somos</h4>
-
-                </div>
-              </a>
-            </div>
-            
           </div>
           <div id='tertiary'>
 

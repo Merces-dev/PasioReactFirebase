@@ -4,13 +4,15 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 :root {
-    --principal:#99313D;
-    --grey:  #858786ff;
-    --gray:#2a2d34ff ;
-    --white : #fcfff7ff;
-    --black:  #000000ff;
-  }
+    --principal: #99313D;
+    --grey: #858786ff;
+    --gray: #2a2d34ff;
+    --white: #fcfff7ff;
+    --black: #000000ff;
+}
+
 .centerHome {
     display: flex;
     justify-content: center;
@@ -98,10 +100,11 @@ hr {
     justify-content: center;
     align-items: center;
     border: 1px solid #99313D;
-    padding: 10px;
     border-radius: 20px;
     margin: 20px;
     width: 170px;
+    height: 85%;
+    text-align: center;
 
 }
 
@@ -116,12 +119,14 @@ hr {
     font-size: 17px;
     padding-bottom: 10px;
 }
-.card:hover{
+
+.card:hover {
     border: 0px;
     opacity: 60%;
     transition: border-width 0.44s, opacity 0.4s, stroke-dasharray 1s;
 
 }
+
 .buttonPrincipal {
     color: var(--white);
     font-weight: 500;
@@ -136,6 +141,7 @@ hr {
     margin-bottom: 20px;
 
 }
+
 .buttonPrincipal:hover {
     color: var(--gray);
 
@@ -143,16 +149,70 @@ hr {
 
 .buttonPrincipal:hover {
     border-bottom-width: 0px;
-  
+
     border-width: 3px;
     border-color: var(--principal);
-    border-style: solid;     
-    transition:border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
+    border-style: solid;
+    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
-  }
-@media (max-width: 800px){
+}
+
+
+/* FORM HOME */
+
+#form {
+    padding: 20px;
+    border: 1px solid var(--principal);
+    border-radius: 20px;
+}
+
+#form {
+    min-width: 250px;
+    max-width: 600px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#form Form Form.group {
+    border: 1px solid var(--principal);
+}
+Form{
+    padding: 15px;
+    
+}
+Form p {
+    color: var(--principal);
+    font-size: 17px;
+}
+.borda {
+    border: 1px solid var(--principal);
+}
+
+.buttonColor {
+    background-color: var(--principal);
+    border: 1px solid var(--principal);
+
+}
+.rowHome{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cardsContact{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@media (max-width: 800px) {
     #principal {
         flex-direction: column;
 
@@ -160,40 +220,63 @@ a:hover{
         padding-right: 0;
         margin-top: 30px;
     }
+    .cardsContact{
 
+        flex-direction: column-reverse;
+
+    }
+    #form{
+        margin-top: 40px;
+
+        margin-bottom: 40px;
+    }
     .cards {
         justify-content: center;
-    
+
     }
+
+    
+    .card img {
+        width: 65%;
+        padding: 10px;
+    }
+    
+    .card h4 {
+        font-size: 17px;
+        padding-bottom: 10px;
+    }
+    
     #principal h4 {
         font-size: 2.4em;
         font-weight: bolder;
         padding-bottom: 20px;
-    
+
     }
-    
+
     #principal p {
         font-size: 1.4em;
         font-weight: lighter;
         padding-right: 0;
         padding-bottom: 20px;
-    
+
     }
-    
+
     .divImgInterview img {
         padding-left: 0;
         width: 500px;
     }
+
     #secondary {
 
         justify-content: center;
         align-items: center;
-    
+
     }
-    
+
 
 }
-@media (max-width: 540px){
+
+@media (max-width: 540px) {
     #principal {
         flex-direction: column;
 
@@ -202,26 +285,64 @@ a:hover{
         margin-top: 30px;
     }
 
+    .card {
+        width: 130px;   
+                height: 75%;
+ 
+    }
+    
+    .card img {
+        width: 80%;
+        padding: 10px;
+    }
+    
+    .card h4 {
+        font-size: 17px;
+        padding-bottom: 10px;
+    }
+    
+
     
     #principal h4 {
         font-size: 2.4em;
-        font-weight: bolder;
         padding-bottom: 20px;
-    
+
     }
-    
+
     #principal p {
         font-size: 1.4em;
         font-weight: lighter;
         padding-right: 0;
         padding-bottom: 20px;
-    
+
     }
-    
+
     .divImgInterview img {
         padding-left: 0;
         width: 280px;
     }
+
+
+}
+
+@media (max-width: 400px) {
+
+    .card {
+        width: 110px;    
+        height: 75%;
+
+    }
     
+    .card img {
+        width: 80%;
+        padding: 10px;
+    }
+    
+    .card h4 {
+        font-size: 15px;
+        padding-bottom: 10px;
+    }
+    
+
 
 }

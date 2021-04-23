@@ -29,7 +29,7 @@ const Header = () => {
             <div className='container1'>
                 <div className='containerPos'>
                     <div>
-                        <a href="/"><img src="https://www.amug.com/wp-content/uploads/2016/09/you-logo-here.png" alt="logo" /></a>
+                        <a href="/"><img src="https://consultoriagv.com.br/imagens/logotipo_gv_consultoria.png" alt="logo" /></a>
 
                     </div>
                     <div id="openMenu">
