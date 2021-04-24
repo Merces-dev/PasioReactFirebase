@@ -6,10 +6,18 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './pages/home'
+import QuemSomos from './pages/quemsomos'
+import Oportunidades from './pages/oportunidades';
+import Cadastro from './pages/cadastro';
+import Servicos from './pages/servicos';
 const routing = (
   <Router>
     <Switch>
       <Route exact path='/' component={Home} />
+      <Route path='/oportunidades' component={Oportunidades} />
+      <Route path='/cadastro' component={Cadastro} />
+      <Route path='/servicos' component={Servicos} />
+      <Route path='/quemsomos' component={QuemSomos} />
     </Switch>
   </Router>
 )

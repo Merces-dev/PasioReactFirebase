@@ -64,7 +64,7 @@
       align-items: center;
   }
   .containerPos div img{
-    width: 150px;
+    width: 12em;
 
   }
   .botaoStyle{
@@ -195,7 +195,7 @@
       }
 
       .containerPos div img{
-        width: 8em;
+        width: 12.5em;
       
       }
       #idFilters,#idNavDropDown{

@@ -8,13 +8,13 @@ import Interview from '../../utils/img/Interview.svg'
 import Icon05 from '../../utils/img/information.svg'
 
 
-const Cadastro = () => {
+const Oportunidades = () => {
 
   return (
     <div >
       <Header />
       <main>
-        <div className="groupCadastro columnCadastro width85">
+        <div className="groupOportunidades columnOportunidades width85">
             amai
         </div>
 
@@ -25,4 +25,4 @@ const Cadastro = () => {
   );
 }
 
-export default Cadastro;
+export default Oportunidades;

@@ -35,6 +35,12 @@ const Home = () => {
             </div>
 
           </div>
+
+          <div id='tertiary'>
+
+          </div>
+
+
           <div className='cardsContact' >
 
             <div id='secondary'>
@@ -114,9 +120,7 @@ const Home = () => {
             </div>
 
           </div>
-          <div id='tertiary'>
 
-          </div>
         </div>
 
       </main>
