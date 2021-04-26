@@ -1,0 +1,12 @@
+.width85 {
+    width: 85%;
+}
+.groupCadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.columnCadastro {
+    flex-direction: column;
+}

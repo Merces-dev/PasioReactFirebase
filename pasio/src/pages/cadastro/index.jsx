@@ -15,9 +15,11 @@ const Cadastro = () => {
       <Header />
       <main>
         <div className="groupCadastro columnCadastro width85">
-            amai
-        </div>
+            
 
+
+
+        </div>
       </main>
 
       <Footer />

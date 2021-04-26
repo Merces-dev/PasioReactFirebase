@@ -15,11 +15,11 @@ const Oportunidades = () => {
       <Header />
       <main>
         <div className="groupOportunidades columnOportunidades width85">
-            amai
+            <div>
+                
+            </div>
         </div>
-
       </main>
-
       <Footer />
     </div>
   );

@@ -89,6 +89,10 @@
   width: 40px;
   margin: 10px;
 }
+.cardFooterSocial img:hover {
+  opacity: 60%;
+
+}
 
 .cardFooter img {
   width: 17em;

@@ -1,0 +1,233 @@
+:root {
+    --principal: #99313D;
+    --grey: #858786ff;
+    --gray: #2a2d34ff;
+    --white: #fcfff7ff;
+    --black: #000000ff;
+}
+
+.width85 {
+    width: 85%;
+}
+
+.groupQuemSomos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.columnQuemSomos {
+    flex-direction: column;
+}
+
+.imagemFundo {
+    fill: var(--principal);
+    background-image: url(../../utils/img/bg-15.svg);
+}
+
+.rowQuemSomos {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.txtQuemSomos {
+    width: 40%;
+}
+
+.txtQuemSomos h4 {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+.imageQuemSomos img {
+    margin-top: 40px;
+    width: 500px;
+}
+
+.buttonPrincipal {
+    color: var(--white);
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--principal);
+    border-bottom-style: solid;
+    font-size: 1em;
+    color: #000;
+    margin-bottom: 20px;
+
+}
+
+.buttonPrincipal:hover {
+    color: var(--gray);
+
+}
+
+.buttonPrincipal:hover {
+    border-bottom-width: 0px;
+
+    border-width: 3px;
+    border-color: var(--principal);
+    border-style: solid;
+    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+
+.cardEquipe {
+    position: relative;
+    width: 200px;
+
+    height: 266px;
+}
+
+.equipeTotal {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipeTotal h5 {
+    font-size: 2em;
+    font-weight: 600;
+    color: var(--principal);
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cardEquipe img {
+    width: 100%;
+    height: 266px;
+    width: 200px;
+
+}
+
+.equipe {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.centerTxt {
+    position: absolute;
+    bottom: 0.1%;
+    width: 100%;
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+.nomeCargo {
+    color: var(--white);
+}
+
+.nomeEquipe {
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: 600;
+
+}
+
+@media (max-width: 800px) {
+    .rowQuemSomos {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .imageQuemSomos {
+        margin-top: 40px;
+    }
+
+    .txtQuemSomos {
+        width: 95%;
+    }
+
+    .txtQuemSomos h4 {
+        font-size: 2.4em;
+    }
+
+    .imageQuemSomos img {
+        margin-top: 0;
+
+        padding: 20px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 500px) {
+    .rowQuemSomos {
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtQuemSomos {
+        width: 90%;
+    }
+
+    .imageQuemSomos img {
+        width: 370px;
+    }
+}
+
+@media (max-width: 390px) {
+    .rowQuemSomos {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtQuemSomos {
+        width: 90%;
+    }
+
+    .imageQuemSomos img {
+        padding: 0;
+
+        width: 330px;
+    }
+}
+
+@media (max-width: 350px) {
+    .rowQuemSomos {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtQuemSomos {
+        width: 95%;
+    }
+
+    .imageQuemSomos img {
+        padding: 0;
+
+        width: 230px;
+    }
+}

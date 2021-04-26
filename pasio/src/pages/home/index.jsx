@@ -26,12 +26,16 @@ const Home = () => {
                 </h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officiis ipsum rem repudiandae itaque dolorem ducimus nesciunt architecto quam commodi consequatur animi incidunt saepe eos nemo amet odit, assumenda alias.</p>
 
-              <a href="" className='buttonPrincipal' >
+              <a href="/cadastro"  id='buttonWeb'  className='buttonPrincipal' >
                 Cadastre-se aqui !
-        </a>
+              </a>
             </div>
             <div className="divImgInterview">
+            <a href="/cadastro" id='buttonMobile' className='buttonPrincipal' >
+                Cadastre-se aqui !
+              </a>
               <img src={Interview} alt="" />
+              
             </div>
 
           </div>
@@ -46,13 +50,13 @@ const Home = () => {
             <div id='secondary'>
 
               <div className='cards'>
-                <a href="">
+                <a href="/cadastro">
                   <div className="card">
                     <img src={Icon01} alt="" />
                     <h4>Cadastre-se</h4>
                   </div>
                 </a>
-                <a href="">
+                <a href="/oportunidades">
                   <div className="card">
                     <img src={Icon02} alt="" />
                     <h4>Oportunidades</h4>
@@ -61,15 +65,16 @@ const Home = () => {
                 </a>
               </div>
               <div className='cards'>
-                <a href="">
+                <a href="/servicos">
                   <div className="card">
                     <img src={Icon04} alt="" />
                     <h4>Serviços</h4>
 
                   </div>
 
-                </a>
-                <a href="">
+                </a>                        
+
+                <a href="/quemsomos#trabalheconosco">
                   <div className="card">
                     <img src={Icon03} alt="" />
                     <h4>Trabalhe Conosco</h4>
@@ -79,7 +84,7 @@ const Home = () => {
               </div>
               <div className='cards'>
 
-                <a href="">
+                <a href="/quemsomos">
                   <div className="card">
                     <img src={Icon05} alt="" />
                     <h4>Quem Somos</h4>
