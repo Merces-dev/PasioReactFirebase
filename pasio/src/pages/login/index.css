@@ -24,7 +24,7 @@
 .logoPasio{
     margin-right: 50px;
 }
-.buttonPrincipal {
+.buttonPrincipalLogin {
     color: #E6E6E6;
     font-weight: 500;
     padding-left: 40px;
@@ -42,12 +42,12 @@
 .fundo{
     background-color: var(--principal);
 }
-.buttonPrincipal:hover {
+.buttonPrincipalLogin:hover {
     color: var(--gray);
 
 }
 
-.buttonPrincipal:hover {
+.buttonPrincipalLogin:hover {
     border-bottom-width: 0px;
 
     border-width: 3px;
@@ -88,12 +88,7 @@
   .btn, .btn-primary{
     padding: 0
   }
-.buttonFunctions{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
+
 .marginTopLogin{
     margin-top: 10px;
 }

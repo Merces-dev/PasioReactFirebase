@@ -29,7 +29,7 @@ const Login = () => {
                                 <input class="mainLoginInput" type="text" placeholder="&#61475;    Senha" /> <br />
                             </Form.Group>
                             <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                                <a href="" className='buttonPrincipal' >
+                                <a href="" className='buttonPrincipalLogin' >
                                     Enviar
                                 </a>
                             </Button>
