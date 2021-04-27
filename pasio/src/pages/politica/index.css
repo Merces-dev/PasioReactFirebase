@@ -1,0 +1,19 @@
+:root {
+    --principal: #99313D;
+    --grey: #858786ff;
+    --gray: #2a2d34ff;
+    --white: #fcfff7ff;
+    --black: #000000ff;
+  }
+.width85 {
+    width: 85%;
+}
+.groupPolitica {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.columnPolitica {
+    flex-direction: column;
+}

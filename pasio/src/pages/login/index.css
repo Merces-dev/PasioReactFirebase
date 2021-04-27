@@ -1,0 +1,118 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+:root {
+    --principal: #99313D;
+    --grey: #858786ff;
+    --gray: #2a2d34ff;
+    --white: #fcfff7ff;
+    --black: #000000ff;
+}
+.loginContainer{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: var(--white);
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.loginContainer img{
+    width: 260px;
+}
+
+
+.logoPasio{
+    margin-right: 50px;
+}
+.buttonPrincipal {
+    color: #E6E6E6;
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--principal);
+    border-bottom-style: solid;
+    font-size: 1em;
+    color: var(--black);
+    background-color: #E6E6E6;
+    margin-bottom: 20px;
+
+}
+.fundo{
+    background-color: var(--principal);
+}
+.buttonPrincipal:hover {
+    color: var(--gray);
+
+}
+
+.buttonPrincipal:hover {
+    border-bottom-width: 0px;
+
+    border-width: 3px;
+    border-color: var(--principal);
+    border-style: solid;
+    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+.formPasioLogin{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.form h3{
+    margin-bottom: 20px;
+}
+
+.mainLoginInput{
+    height: 30px;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    margin: 5px 0;
+    background-color: #E6E6E6;
+  }
+  
+  .mainLoginInput::-webkit-input-placeholder { 
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+  color: #8a8a8a;
+  }
+  .btn, .btn-primary{
+    padding: 0
+  }
+.buttonFunctions{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.marginTopLogin{
+    margin-top: 10px;
+}
+p a{
+    margin-top: 10px;
+    color: var(--gray);
+    font-size: 13px;
+}
+p a:hover{
+    color: var(--principal);
+}
+@media (max-width: 500px) {
+    .loginContainer{
+        padding: 40px;
+        flex-direction: column;
+    }
+    .loginContainer img{
+        width: 170px;
+    }
+
+
+}
