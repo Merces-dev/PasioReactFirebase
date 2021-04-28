@@ -7,22 +7,57 @@
     --white: #fcfff7ff;
     --black: #000000ff;
 }
+.loginContainerContent{
+    display: flex;
+    margin-top: 70px;
+    padding: 0 70px 70px 70px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 .loginContainer{
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: var(--white);
-    padding: 80px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    flex-direction: column;
+
 }
 .loginContainer img{
     width: 260px;
 }
+.txtLogin{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: var(--principal);
+}
+.h3Login {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.h3Login h3{
+    color: var(--white);
+    font-size: 1.9em;
+
+}
 
 .logoPasio{
     margin-right: 50px;
+}
+.botaoEntireLogin{
+    margin-bottom: 20px;
+    width: 100%;
 }
 .buttonPrincipalLogin {
     color: #E6E6E6;
@@ -33,10 +68,11 @@
     border-bottom-width: 3px;
     border-bottom-color: var(--principal);
     border-bottom-style: solid;
-    font-size: 1em;
+    font-size: 1.2em;
+    width: 100%;
+
     color: var(--black);
     background-color: #E6E6E6;
-    margin-bottom: 20px;
 
 }
 .fundo{
@@ -70,7 +106,7 @@
     height: 30px;
     border: none;
     padding: 10px;
-    font-size: 15px;
+    font-size: 19px;
     margin: 5px 0;
     background-color: #E6E6E6;
   }
@@ -95,7 +131,7 @@
 p a{
     margin-top: 10px;
     color: var(--gray);
-    font-size: 13px;
+    font-size: 17px;
 }
 p a:hover{
     color: var(--principal);
