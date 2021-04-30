@@ -93,7 +93,7 @@
     justify-content: center;
 }
 
-.equipeTotal h5 {
+ h5 {
     font-size: 2em;
     font-weight: 600;
     color: var(--principal);
@@ -131,6 +131,47 @@ p {
     padding-top: 10px;
     font-size: 18px;
     background: rgba(0, 0, 0, 0.5);
+
+}
+#form {
+    padding: 20px;
+    border: 1px solid var(--principal);
+    border-radius: 20px;
+}
+h5{
+ text-align: center;
+}
+#form {
+    min-width: 550px;
+    max-width: 600px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#form Form Form.group {
+    border: 1px solid var(--principal);
+}
+
+Form {
+    padding: 15px;
+
+}
+
+Form p {
+    color: var(--principal);
+    font-size: 17px;
+}
+
+.borda {
+    border: 1px solid var(--principal);
+}
+
+.buttonColor {
+    background-color: var(--principal);
+    border: 1px solid var(--principal);
 
 }
 
@@ -173,7 +214,17 @@ p {
         width: 500px;
     }
 }
-
+@media (max-width: 600px) {
+    #form {
+        min-width: 500px;
+        max-width: 560px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+}
 @media (max-width: 500px) {
     .rowQuemSomos {
         padding: 50px;
@@ -189,6 +240,15 @@ p {
 
     .imageQuemSomos img {
         width: 370px;
+    }
+    #form {
+        min-width: 350px;
+        max-width: 430px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 20px;
     }
 }
 
@@ -230,4 +290,14 @@ p {
 
         width: 230px;
     }
+    #form {
+        min-width: 250px;
+        max-width: 330px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    
+}
 }

@@ -4,16 +4,230 @@
     --gray: #2a2d34ff;
     --white: #fcfff7ff;
     --black: #000000ff;
-  }
+}
+
 .width85 {
     width: 85%;
 }
+
 .groupOportunidades {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
 .columnOportunidades {
     flex-direction: column;
+}
+
+select {
+    border: 1px solid var(--principal);
+    height: 40px;
+
+}
+
+option {
+    padding: 10px;
+
+}
+
+select::selection {
+    border: 1px solid var(--principal)
+}
+
+.buttonPrincipal {
+    color: var(--white);
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--principal);
+    border-bottom-style: solid;
+    font-size: 1em;
+    color: #000;
+    margin-bottom: 20px;
+
+}
+
+.buttonPrincipal:hover {
+    color: var(--gray);
+
+}
+
+.buttonPrincipal:hover {
+    border-bottom-width: 0px;
+
+    border-width: 3px;
+    border-color: var(--principal);
+    border-style: solid;
+    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+
+.filtrar {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+
+
+}
+
+.filtrarSelectButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.headerOportunidade {
+
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rowOportunidades {
+    padding-top: 50px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    padding-bottom: 30px;
+}
+
+.txtOportunidades {
+    width: 60%;
+}
+
+.txtOportunidades h4 {
+    font-size: 3em;
+    font-weight: 700;
+}
+.txtOportunidades p {
+
+    margin-bottom: 20px;
+}
+.imageOportunidades img {
+    margin-left: 80px;
+    width: 400px;
+}
+
+@media (max-width: 540px) {
+
+    .buttonPrincipal {
+
+        padding-left: 0;
+        padding-bottom: 5px;
+        padding-right: 0;
+        border-bottom-width: 3px;
+        border-bottom-color: var(--principal);
+        border-bottom-style: solid;
+        font-size: 1em;
+        color: #000;
+        margin-bottom: 20px;
+
+    }
+}
+
+@media (max-width: 800px) {
+    .rowOportunidades {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .imageOportunidades {
+        margin-top: 40px;
+    }
+
+    .txtOportunidades {
+        width: 95%;
+    }
+
+    .txtOportunidades h4 {
+        font-size: 2.4em;
+    }
+
+    .imageOportunidades img {
+        margin: 0;
+
+        padding: 20px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 500px) {
+    .rowOportunidades {
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtOportunidades {
+        width: 100%;
+    }
+
+    .imageOportunidades img {
+        width: 330px;
+    }
+}
+
+@media (max-width: 390px) {
+    .rowOportunidades {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtOportunidades {
+        width: 100%;
+    }
+
+
+    .txtOportunidades h4 {
+        font-size: 2.2em;
+    }
+
+    .imageOportunidades img {
+        padding: 0;
+
+        width: 270px;
+    }
+}
+
+@media (max-width: 350px) {
+    .rowOportunidades {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .txtOportunidades {
+        width: 100%;
+    }
+
+    .txtOportunidades h4 {
+        font-size: 1.9em;
+    }
+
+    .imageOportunidades img {
+        padding: 0;
+
+        width: 230px;
+    }
 }

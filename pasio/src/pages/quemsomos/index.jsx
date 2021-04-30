@@ -31,7 +31,7 @@ const QuemSomos = () => {
 
           <div className='equipeTotal'>
             <h5>Nossa Equipe</h5>
-            
+
             <div className='equipe'>
               <div className='cardEquipe'>
                 <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
@@ -62,7 +62,41 @@ const QuemSomos = () => {
                 </div>
 
               </div>
+
             </div>
+
+          </div>
+          <div id='trabalheconosco' className='trabalheConosco'>
+            <h5>Trabalhe Conosco</h5>
+
+            <div id="form">
+              <Form style={{ margin: '20px' }}>
+                <p ><b>Entrar em Contato</b></p>
+
+                <Form.Group controlId="formBasicName" >
+                  <Form.Label >Nome : </Form.Label>
+                  <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" required />
+                </Form.Group>
+
+                <Form.Group controlId='formBasicEmail' >
+                  <Form.Label >Email :</Form.Label>
+                  <Form.Control className='borda' type='email' placeholder="Insira um email válido" required />
+                </Form.Group>
+
+                <Form.Group controlId='formBasicMessage'>
+                  <Form.Label>Mensagem :</Form.Label>
+                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" rows={3} />
+                </Form.Group>
+
+                <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
+                  <a href="" className='buttonPrincipal' >
+                    Enviar
+                  </a>
+                </Button>
+              </Form>
+            </div>
+
+
           </div>
         </div>
 
