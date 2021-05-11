@@ -40,13 +40,17 @@ const Servicos = () => {
 
                 </div>
               </div>
-              <div>
-                <h5>Consultoria</h5>
+              <div className='cardServicosInfo'>
+                <div className='cardServicostxt'>
+                  <h5>Consultoria</h5>
 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
-                <a href="/Servicos" className='buttonPrincipal' >
-                  Entrar em Contato
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
+                  <a href="/Servicos" className='buttonPrincipal' >
+                    Entrar em Contato
               </a>
+
+                </div>
+
               </div>
             </div>
             <div className='cardServicos'>
@@ -56,29 +60,17 @@ const Servicos = () => {
 
                 </div>
               </div>
-              <div>
-                <h5>Consultoria</h5>
+              <div className='cardServicosInfo'>
+                <div className='cardServicostxt'>
+                  <h5>Consultoria</h5>
 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
-                <a href="/Servicos" className='buttonPrincipal' >
-                  Entrar em Contato
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
+                  <a href="/Servicos" className='buttonPrincipal' >
+                    Entrar em Contato
               </a>
-              </div>
-            </div>
-            <div className='cardServicos'>
-              <div className='imageCaptionServicos'>
-                <div>
-                  <img src="https://image.flaticon.com/icons/png/512/896/896866.png" alt="" />
 
                 </div>
-              </div>
-              <div>
-                <h5>Consultoria</h5>
 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
-                <a href="/Servicos" className='buttonPrincipal' >
-                  Entrar em Contato
-              </a>
               </div>
             </div>
 

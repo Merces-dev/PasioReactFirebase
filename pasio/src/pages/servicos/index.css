@@ -4,26 +4,31 @@
     --gray: #2a2d34ff;
     --white: #fcfff7ff;
     --black: #000000ff;
-  }
+}
+
 .width85 {
     max-width: 1440px;
 
     width: 85%;
 }
+
 .groupServicos {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
 .columnServicos {
     flex-direction: column;
 }
-.imagemFundo{
+
+.imagemFundo {
     fill: var(--principal);
     background-image: url(../../utils/img/bg-15.svg);
 }
-.rowServicos{
+
+.rowServicos {
     padding-top: 50px;
     margin-top: 50px;
     display: flex;
@@ -31,19 +36,47 @@
     align-items: flex-start;
     flex-direction: row;
     padding-bottom: 30px;
+    border-bottom: 1px solid var(--grey);
+
 }
-.txtServicos{
+.cardServicosInfo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}.cardServicosInfo h5{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.cardServicostxt{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    margin-left: 50px;
+}
+.cardServicostxt a{
+margin-top: 20px;
+}
+.cardServicostxt p{
+text-align: justify;
+
+}
+.txtServicos {
     width: 60%;
 }
-.txtServicos h4{
+
+.txtServicos h4 {
     font-size: 3em;
     font-weight: 700;
 }
 
-.imageServicos img{
+.imageServicos img {
     margin-left: 80px;
     width: 400px;
 }
+
 .buttonPrincipal {
     color: var(--white);
     font-weight: 500;
@@ -72,17 +105,17 @@
     border-style: solid;
     transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
 }
-.cardServicos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    padding: 20px;
-    max-width: 700px;
-    border-radius: 20px;
+
+.cardServicos {
+
+    padding: 20px 20px 40px 20px;
+    border-bottom: 1px solid var(--grey);
+    margin-bottom: 50px;
+    width: 100%;
 
 }
-.imageCaptionServicos{
+
+.imageCaptionServicos {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -93,91 +126,123 @@
     margin: 20px;
 
 }
-.imageCaptionServicos img{
+
+.imageCaptionServicos img {
     width: 100px;
 }
-.alinhamentoCardsServicos{
+
+.alinhamentoCardsServicos {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
 }
-@media (max-width: 800px) {
-    .rowServicos{
+
+@media (max-width: 900px) {
+    .rowServicos {
         padding-top: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
+
     .imageServicos {
         margin-top: 40px;
     }
-    .txtServicos{
+
+    .txtServicos {
         width: 95%;
     }
-    .txtServicos h4{
+
+    .txtServicos h4 {
         font-size: 2.4em;
     }
-    .imageServicos img{
+
+    .imageServicos img {
         margin: 0;
 
         padding: 20px;
         width: 500px;
     }
+    .cardServicostxt{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        margin-left: 0;
+        padding: 0;
+    }
+    .cardServicosInfo{
+        padding: 0;
+    }
+    .imageCaptionServicos{
+        margin-left: 0;
+    }
 }
+
 @media (max-width: 500px) {
-    .rowServicos{
+    .rowServicos {
         padding: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .txtServicos{
+
+    .txtServicos {
         width: 100%;
     }
 
-    .imageServicos img{
+    .imageServicos img {
         width: 330px;
     }
 }
+
 @media (max-width: 390px) {
-    .rowServicos{
+    .rowServicos {
         padding-top: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .txtServicos{
+
+    .txtServicos {
         width: 100%;
     }
-    .txtServicos h4{
+
+    .txtServicos h4 {
         font-size: 2.2em;
     }
-    .imageServicos img{
+
+    .imageServicos img {
         padding: 0;
 
         width: 270px;
     }
 }
+
 @media (max-width: 350px) {
-    .rowServicos{
-        padding-top: 30px;
+    .rowServicos {
+        padding: 0;
+        padding-bottom: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .txtServicos{
+
+    .txtServicos {
         width: 100%;
     }
-    .txtServicos h4{
+
+    .txtServicos h4 {
         font-size: 1.9em;
     }
-    .imageServicos img{
+
+    .imageServicos img {
         padding: 0;
 
         width: 230px;
