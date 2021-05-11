@@ -6,6 +6,8 @@
     --black: #000000ff;
   }
 .width85 {
+    max-width: 1440px;
+
     width: 85%;
 }
 .groupServicos {

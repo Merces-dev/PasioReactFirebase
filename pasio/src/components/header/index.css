@@ -60,7 +60,9 @@
   .containerPos{
       display: flex;
       width: 90%;
-      justify-content: space-evenly;
+      max-width: 1440px;
+
+      justify-content: space-between;
       align-items: center;
   }
   .containerPos div img{

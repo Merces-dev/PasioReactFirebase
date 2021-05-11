@@ -23,7 +23,7 @@
 
 select {
     border: 1px solid var(--principal);
-    height: 40px;
+    height: 30px;
 
 }
 
@@ -34,6 +34,10 @@ option {
 
 select::selection {
     border: 1px solid var(--principal)
+}
+
+.filtrarSelectButton Button {
+    height: 30px;
 }
 
 .buttonPrincipal {
@@ -68,7 +72,7 @@ select::selection {
 .filtrar {
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     width: 100%;
 
@@ -79,7 +83,17 @@ select::selection {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: row;
 
+}
+
+p {
+    width: 100%;
+}
+
+#categorias {
+    margin-right: 30px;
 }
 
 .headerOportunidade {
@@ -90,6 +104,35 @@ select::selection {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.hr {
+    background-color: var(--grey);
+    width: 100%;
+    height: 1px;
+    opacity: 50%;
+}
+
+.oportunidadeDiv1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.oportunidadeDiv2 {
+    width: 100%;
+
+
+}
+
+.oportunidadeFiltro {
+    margin-top: 40px;
+    margin-left: 20px;
+    padding-right: 200px;
+    margin-bottom: 40px;
+    border-right: 1px solid var(--grey);
 }
 
 .rowOportunidades {
@@ -106,19 +149,61 @@ select::selection {
     width: 60%;
 }
 
+.marginBottom {
+    margin-bottom: 50px;
+}
+
 .txtOportunidades h4 {
     font-size: 3em;
     font-weight: 700;
 }
+
 .txtOportunidades p {
 
     margin-bottom: 20px;
 }
+
+.oportunidadeCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    border-bottom: 1px solid var(--grey);
+    margin-bottom: 50px;
+}
+
+.oportunidadeCard h5,
+.oportunidadeCard h4 {
+
+    text-align: start;
+    margin: 0;
+    padding: 0 0 20px 0px;
+}
+
+.oportunidadeCard h5 {
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.descricao {
+    width: 40%;
+    text-align: justify;
+}
+
 .imageOportunidades img {
     margin-left: 80px;
     width: 400px;
 }
 
+.dados h4 {
+    font-size: 50px;
+    font-weight: 200;
+}
+@media (max-width: 900px) {
+    .descricao, .contatos{
+        padding: 0 20px;
+    }
+}
 @media (max-width: 540px) {
 
     .buttonPrincipal {
@@ -134,6 +219,27 @@ select::selection {
         margin-bottom: 20px;
 
     }
+    .descricao, .contatos{
+padding: 0;    }
+    .oportunidadeCard {
+        flex-direction: column;
+        padding: 0px 0px 30px 20px;
+    }
+
+    .descricao {
+        margin-top: 40px;
+        width: 100%;
+    }
+    .contatos {
+        margin-top: 40px;
+        width: 100%;
+    }
+    .oportunidadeFiltro{
+        margin-left: 0;
+        padding: 0;
+        border: 0;
+    }
+    
 }
 
 @media (max-width: 800px) {
@@ -206,6 +312,17 @@ select::selection {
 
         width: 270px;
     }
+    .filtrarSelectButton{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .filtrarSelectButton div{
+        margin-bottom: 20px;
+
+    }
+    .rowOportunidades{
+        padding: 0;
+    }
 }
 
 @media (max-width: 350px) {
@@ -229,5 +346,8 @@ select::selection {
         padding: 0;
 
         width: 230px;
+    }
+    .oportunidadeCard{
+        padding: 0 0 20px 0;
     }
 }

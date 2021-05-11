@@ -41,6 +41,8 @@ main {
 
 .width85 {
     width: 85%;
+    max-width: 1440px;
+
 }
 
 #principal {

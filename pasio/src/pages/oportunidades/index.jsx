@@ -15,7 +15,7 @@ const Oportunidades = () => {
       <Header />
       <main>
         <div className="groupOportunidades columnOportunidades width85">
-        <div className='rowOportunidades'>
+          <div className='rowOportunidades'>
             <div className='txtOportunidades'>
               <h4>
                 Oportunidades
@@ -30,9 +30,88 @@ const Oportunidades = () => {
               <img src={imageOportunidades} alt="" />
             </div>
           </div>
+          <hr />
+          <div className='hr'>
+          </div>
+          <div className='oportunidadeDiv1'>
+            <div className='oportunidadeFiltro'>
+              <div className='filtrar'>
+
+                <form className='filtrarSelectButton' action="">
+                  <div>
+
+                    <p style={{ marginBottom: '20px' }}>Área Profissional : </p>
+
+                    <select id="categorias">
+                      <option value="" disabled selected>Selecione uma opção</option>
+                      <option value="administracao">Administração</option>
+                      <option value="ti">Tecnologia da informação</option>
+                      <option value="logistica">Logística</option>
+                      <option value="telemarketing">Telemarketing</option>
+                      <option value="contabilidade">Contabilidade</option>
+                      <option value="saude">Saúde</option>
+                      <option value="manutencao">Manutencao</option>
+                      <option value="comercial">Comercial</option>
+                    </select>
+                  </div>
+
+                  <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
+                    <a href="" className='buttonPrincipal' >
+                      Filtrar
+                    </a>
+                  </Button>
+                </form>
+              </div>
+            </div>
+            
+            <div className='hr marginBottom'>
+              
+            </div>
+            <div className='oportunidadeDiv2'>
+              <div className='oportunidadeCard'>
+                <div className='dados'>
+                  <h4>Pasio</h4>
+                  <h6>Vaga publicada em: 11/02/2021</h6>
+                  <h6>Área: Logística</h6>
+                  <h6>Vaga publicada em: 11/02/2021</h6>
+
+                </div>
+                <div className='descricao'>
+                  <h5>Descrição da oportunidade:</h5>
+
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatum dignissimos repellat voluptatem nobis maiores quos ipsa nostrum beatae magnam consectetur assumenda, ratione necessitatibus eveniet temporibus perferendis quidem illum omnis?</p>
+                </div>
+                <div className='contatos'>
+                  <h5>Contatos:</h5>
+                  <p>11 99999-9999</p>
+                  <p>pasio@consultoria.com</p>
+                </div>
+              </div>
+              <div className='oportunidadeCard'>
+                <div className='dados'>
+                  <h4>Pasio</h4>
+                  <h6>Vaga publicada em: 11/02/2021</h6>
+                  <h6>Área: Logística</h6>
+                  <h6>Vaga publicada em: 11/02/2021</h6>
+
+                </div>
+                <div className='descricao'>
+                  <h5>Descrição da oportunidade:</h5>
+
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatum dignissimos repellat voluptatem nobis maiores quos ipsa nostrum beatae magnam consectetur assumenda, ratione necessitatibus eveniet temporibus perferendis quidem illum omnis?</p>
+                </div>
+                <div className='contatos'>
+                  <h5>Contatos:</h5>
+                  <p>11 99999-9999</p>
+                  <p>pasio@consultoria.com</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
         <div>
-          
+
         </div>
       </main>
       <Footer />
@@ -41,25 +120,7 @@ const Oportunidades = () => {
 }
 
 export default Oportunidades;
-              {/* <div className='filtrar'>
-                <p>Área Profissional : </p>
-                <form className='filtrarSelectButton' action="">
-                  <select id="categorias">
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="administracao">Administração</option>
-                    <option value="ti">Tecnologia da informação</option>
-                    <option value="logistica">Logística</option>
-                    <option value="telemarketing">Telemarketing</option>
-                    <option value="contabilidade">Contabilidade</option>
-                    <option value="saude">Saúde</option>
-                    <option value="manutencao">Manutencao</option>
-                    <option value="comercial">Comercial</option>
-                  </select>
-                  <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                    <a href="" className='buttonPrincipal' >
-                      Filtrar
-                    </a>
-                  </Button>
-                </form>
+{/* <div className='filtrar'>
+                
 
               </div> */}

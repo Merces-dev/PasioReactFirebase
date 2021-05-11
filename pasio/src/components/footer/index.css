@@ -13,6 +13,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  
+  
 }
 
 .developed {
@@ -36,6 +38,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  max-width: 1440px;
+
   flex-direction: row;
 }
 
