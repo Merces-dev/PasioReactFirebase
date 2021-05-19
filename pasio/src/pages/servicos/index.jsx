@@ -56,7 +56,7 @@ const Servicos = () => {
             <div className='cardServicos'>
               <div className='imageCaptionServicos'>
                 <div>
-                  <img src="https://image.flaticon.com/icons/png/512/896/896866.png" alt="" />
+                  <img src="https://blog.rhopen.com.br/wp-content/uploads/2019/03/280406-entenda-como-uma-consultoria-pode-contribuir-na-tomada-de-decisao.jpg" alt="" />
 
                 </div>
               </div>

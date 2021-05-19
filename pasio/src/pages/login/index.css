@@ -58,6 +58,20 @@
 .botaoEntireLogin{
     margin-bottom: 20px;
     width: 100%;
+    border: none;
+    background-color: var(--principal);
+}
+.botaoEntireLogin:active, .botaoEntireLogin:target{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    background-color: var(--principal);
+}
+.botaoEntireLogin:hover{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    background-color: var(--principal);
 }
 .buttonPrincipalLogin {
     color: #E6E6E6;
