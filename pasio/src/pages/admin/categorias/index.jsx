@@ -3,6 +3,7 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
 import { db, storage } from '../../../utils/firebaseConfig';
+import { Link } from "react-router-dom";
 
 import './index.css'
 
@@ -29,7 +30,7 @@ const Categorias = () => {
             return {
               id: doc.id,
               titulo: doc.data().titulo,
-              descricao: doc.data().descricao,
+              descricao: doc.data().descricao,  
 
             }
           })
@@ -86,6 +87,7 @@ const Categorias = () => {
       })
   }
 
+
   const editar = (event) => {
     event.preventDefault();
     try {
@@ -111,53 +113,67 @@ const Categorias = () => {
   }
   return (
     <div >
-      <Header />
-      <main >
-        <div className="groupCategorias width85 columnCategorias ">
-        <h1>Gerenciar Categorias</h1>
-        <h2>Categorias Atuais - {categorias.length}</h2>
-          <div>
-            <div>
-              <Form onSubmit={event => salvar(event)}>
-                <Form.Group>
+    <Header />
+    <h2 className='tituloBase'>Gerenciamento de Oportunidades</h2>
 
-                </Form.Group>
+    <main >
+      <div className="groupOportunidades width85 columnOportunidades ">
+        <div className='main'>
+          <div className='caixaCrud'>
+            <form className='formBase' onSubmit={salvar}>
+              <div className='inputs'>
 
-                <Form.Group controlId="formBasicNome">
-                  <Form.Label>Nome</Form.Label>
-                  <Form.Control type="text" value={titulo} onChange={event => setTitulo(event.target.value)} placeholder="Nome da categoria"></Form.Control>
-                </Form.Group>
+              <label>
+                Nome da empresa<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)}  type="text" placeholder='Digite o nome da categoria' required />
+              </label>
+            
+              <label>
+               Descrição<input maxLength='50' className='inputCRUD' value={descricao} onChange={event => setDescricao(event.target.value)}  type="text" placeholder='Digite a descrição da categoria'  />
+              </label>
+              </div>
 
 
-                <Form.Group controlId="formBasicUrl">
-                  <Form.Label>Descrição</Form.Label>
-                  <Form.Control as="textarea" rows={3} value={descricao} onChange={event => setDescricao(event.target.value)} />
-                </Form.Group>
+              <div className='botoes'>
+                <input className='submit1' type='submit' value='Publicar'></input>
 
-                <Button type="submit">Salvar</Button>
-              </Form>
-            </div>
+                <Link to="/admin/dashboard">
+                  <button className='submit1'>
+                    Retornar à Dashboard
+                  </button>
+                </Link>
+              </div>
+            </form>
+
           </div>
-          <div className='width85'>
-            {
-              categorias.map((item, index) => {
-                return (
-                  <div>
-                  
-                    <h6>{item.titulo}</h6>
-                    <p>{item.descricao}</p>
-                    <button value={item.id} onClick={event => editar(event)} >Editar</button>
-                    <button value={item.id} onClick={event => remover(event)} >Remover</button>
-                  </div>
-                )
-              })
-            }
-          </div>
-
         </div>
-      </main>
-      <Footer />
-    </div>
+        <div className='caixaCrud posicionamento'>
+                  {
+                      categorias.map((item, index) => {
+                          return (
+                            <div className='cardCrudOportunidades'>
+                              <div className='cardCrud'>
+                              <div className='dados'>
+                                  <h6>{item.titulo}</h6>
+                                  <p>{item.descricao}</p>
+                                  </div>
+
+                              </div>
+
+
+
+
+                                  <button value={item.id} onClick={event => editar(event)} ><p>Editar</p></button>
+                                  <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} ><p>Remover</p></button>
+                              </div>
+                          )
+                      })
+                  }
+              </div>
+      
+      </div>
+    </main>
+    <Footer />
+  </div>
   );
 }
 

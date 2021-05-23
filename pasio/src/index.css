@@ -23,3 +23,12 @@ code {
   --white: #fcfff7ff;
   --black: #000000ff;
 }
+.width85 {
+  width: 85%;
+  max-width: 1440px;
+
+}
+
+button{
+  border: 0;
+}
