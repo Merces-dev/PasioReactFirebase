@@ -6,14 +6,23 @@ import Logo from '../../utils/img/login.svg';
 import './index.css'
 import FileUploader from 'react-firebase-file-uploader';
 import { db, storage } from '../../utils/firebaseConfig';
+import { useFirebaseApp } from 'reactfire';
 
 
+import { useToasts } from 'react-toast-notifications';
 
 const Cadastro = () => {
+  const firebase = useFirebaseApp();
+  const { addToast } = useToasts();
+
   useEffect(() => {
     listarCategorias();
   }, [])
 
+  const [email, setEmail] = useState('');
+  const [nome, setNome] = useState('');
+
+  const [senha, setSenha] = useState('');
   const [id, setId] = useState(0);
   const [urlArquivo, setUrlArquivo] = useState('');
   const [descricao, setDescricao] = useState('');
@@ -78,15 +87,42 @@ const Cadastro = () => {
             }
 
           })
-          
+
           setCategorias(data);
-           
+
         })
     }
     catch (error) {
       console.error(error)
       console.log('erro')
     }
+  }
+
+  const registrar = (event) => {
+    event.preventDefault();
+    const usuario = {
+      nome: nome,
+      email: email,
+    }
+    firebase.auth().createUserWithEmailAndPassword(email, senha)
+      .then(result => {
+        addToast('Seja bem-vindo, usuário cadastrado com sucesso!', { appearance: 'success', autoDismiss: true });
+
+        db.collection('usuarios').doc(result.user.uid)
+          .set(usuario)
+          .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
+          )
+
+        limparCampos()
+        //navega para a página 
+      })
+      .catch(error => {
+        addToast('Não foi possivel cadastrar o usuário', { appearance: 'error', autoDismiss: true });
+      })
+  }
+  const limparCampos = () => {
+    setEmail('');
+    setSenha('')
   }
   return (
     <div >
@@ -103,78 +139,30 @@ const Cadastro = () => {
           <div className='CadastroContainerContent'>
 
             <div className='formPasioCadastro'>
-              <Form className='form '>
-                <div className=' formAsk'>
-                  <label>Nome Completo</label>
-                  <input class="mainCadastroInput" type="text" placeholder="Digite seu nome completo" /> <br />
-                </div>
-                <div className=' formAsk'>
-                  <label>Email</label>
-                  <input class="mainCadastroInput" type="email" placeholder="Digite seu email" /> <br />
-                </div>
-                <div className=' formAsk'>
-                  <label>Senha</label>
-                  <input class="mainCadastroInput" type="password" placeholder="Digite sua senha" /> <br />
-                </div>
-                <div className=' formAsk'>
-                  <label>Estado</label>
-                  <select name="estados-brasil">
-                    <option value={0}>Selecione seu Estado</option>
-                    {
-                      states.map((item, index) => {
-                        return (
-                          <option key={index} value={item.value}>{item.label}</option>
-                        )
-                      })
-                    }
-                  </select>
-                  <br />
-                </div>
+              <form className='formBase' onSubmit={event => registrar(event)}>
+                <div>
 
-                <div className=' formAsk'>
-                  <label>Data de Nascimento</label>
-                  <input class="mainCadastroInput" type="date" /> <br />
-                </div>
-                <div className=' formAsk'>
-                  <label>Área Profissional</label>
-
-
-                  <select name="estados-brasil">
-                    <option value={0}>Selecione sua área profissional</option>
-                    {
-                      categorias.map((item, index) => {
-                        return (
-                          <option key={index} value={item.id}>{item.titulo}</option>
-                        )
-                      })
-                    }
-                  </select><br />
-                </div>                <div className=' formAsk'>
-                  <label>Nome</label>
-                  <input class="mainCadastroInput" type="text" placeholder="   Nome Completo" /> <br />
-                </div>
-                <Button className='buttonCadastrar' style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                  <a href="" className='buttonPrincipalCadastro' >
-                    Cadastrar
-                  </a>
-                </Button>
-                <p>Ao cadastrar-se você concorda com os <a href="">termos de uso</a>  e <a href="">Política de Privacidade</a> da Pasio Consultoria</p>
-                <div className=' formAsk'>
-                  <label >Selecione o arquivo do seu currículo:</label>
-
-                  <label style={{ padding: 14, borderRadius: 5, cursor: 'pointer' }}>
-                    <FileUploader
-
-                      accept=".pdf,.doc,.jpg,.docx"
-                      name="urlArquivo"
-                      randomizeFilename
-                      storageRef={storage.ref('currículos')}
-                      onUploadError={handleUploadError}
-                      onUploadSuccess={handleUploadSuccess}
-                    />
+                  <label>
+                    Email
                   </label>
+                  <input value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder='Digite o seu email' required />
+                  <label>
+                    Senha
+                  </label>
+                  <input value={senha} onChange={event => setSenha(event.target.value)} type="password" placeholder='Digite a sua senha' />
+                  <label>
+                    Nome Completo
+                  </label>
+                  <input value={nome} onChange={event => setNome(event.target.value)} type="name" placeholder='Digite seu nome completo' />
                 </div>
-              </Form>
+
+                <div >
+                  <input type='submit' value='Publicar'></input>
+
+                </div>
+
+              </form>
+
             </div>
 
           </div>

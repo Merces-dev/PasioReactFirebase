@@ -65,8 +65,7 @@ const Oportunidades = () => {
             </div>
           </div>
           <hr />
-          <div className='hr'>
-          </div>
+
           <div className='oportunidadeDiv1'>
             <div className='oportunidadeFiltro'>
               <div className='filtrar'>
