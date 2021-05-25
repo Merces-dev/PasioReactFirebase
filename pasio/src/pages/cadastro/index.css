@@ -1,4 +1,3 @@
-@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
 
 :root {
     --principal: #99313D;
@@ -19,17 +18,13 @@
     width: 500px;
 }
 
-.CadastroContainerContent img {
-    width: 260px;
-}
-.buttonCadastrar{
-    margin-bottom:40px
-}
+
 .CadastroContainerContent {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .logoPasioCadastro {
@@ -46,6 +41,35 @@
 
 }
 
+.formInputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+
+}
+.formInputs label{
+    padding-bottom:5px;
+ width: 100%;
+    text-align:start
+}
+.formInputs input, .formInputs select{
+    margin-bottom:20px;
+    border:0;
+    width: 100%;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;}
+.formInputs select{
+    padding: 20px;
+    height: auto;
+}
+.formBaseCad{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
 .opacity {
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
@@ -54,46 +78,27 @@
     justify-content: center;
     align-items: center;
 }
-
+div .buttonCad{
+width: 100%;
+}
+ .buttonCad{
+    width: 100%;
+    border: 0;
+    background-color: var(--principal);
+    color: white;
+    }
 .opacity h3 {
     font-size: 2.5em;
     color: var(--white);
 
 }
 
-.buttonPrincipalCadastro {
-    color: #E6E6E6;
-    font-weight: 500;
-    padding-left: 40px;
-    padding-bottom: 5px;
-    padding-right: 40px;
-    border-bottom-width: 3px;
-    border-bottom-color: var(--principal);
-    border-bottom-style: solid;
-    font-size: 1em;
-    color: var(--black);
-    background-color: #E6E6E6;
-    margin-bottom: 20px;
 
-}
 
 .fundo {
     background-color: var(--principal);
 }
 
-.buttonPrincipalCadastro:hover {
-    color: var(--gray);
-
-}
-
-.buttonPrincipalCadastro:hover {
-    border-bottom-width: 0px;
-
-    border-width: 3px;
-    border-color: var(--principal);
-    border-style: solid;
-    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
-}
 
 .formPasioCadastro {
     display: flex;
@@ -101,57 +106,40 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    background-color: #E7EBEB;
 }
-.formAsk{
+
+.formAsk {
     display: flex;
     flex-direction: column;
 }
-.form h3 {
-    margin-bottom: 20px;
-}
-Form{
+
+Form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.mainCadastroInput {
-    height: 30px;
-    border: none;
-    padding-right: 30px;
-    padding-left: 30px;
-    font-size: 15px;
-    background-color: #E6E6E6;
-}
 
-.mainCadastroInput::-webkit-input-placeholder {
-    font-weight: normal;
-    overflow: visible;
-    vertical-align: top;
-    display: inline-block !important;
-    padding-left: 10px;
-    padding-top: 2px;
-    color: #8a8a8a;
-}
 
-.btn,
-.btn-primary {
-    padding: 0
-}
+
+
 
 .marginTopCadastro {
     margin-top: 10px;
 }
-
-p a {
-    margin-top: 10px;
-    color: var(--gray);
-    font-size: 13px;
+#buttoncaddiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#buttoncad{
+    min-width: 200px;
+    height: 40px;
+    background-color: #E7EBEB;
 }
 
-p a:hover {
-    color: var(--principal);
-}
 
 @media (max-width: 500px) {
     .CadastroContainerContent {
