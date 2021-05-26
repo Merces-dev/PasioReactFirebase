@@ -124,7 +124,7 @@ const Categorias = () => {
               <div className='inputs'>
 
               <label>
-                Nome da empresa<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)}  type="text" placeholder='Digite o nome da categoria' required />
+                Nome da categoria<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)}  type="text" placeholder='Digite o nome da categoria' required />
               </label>
             
               <label>

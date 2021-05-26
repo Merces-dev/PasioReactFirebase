@@ -9,6 +9,8 @@ const Footer = () => {
       <div className='content'>
       <div className='cardFooterLinks'>
           <a href="/">Início</a>
+          <a href="/login">Login</a>
+
           <a href="/cadastro">Cadastre-se</a>
           <a href="/servicos">Serviços</a>
           <a href="/oportunidades">Oportunidades</a>

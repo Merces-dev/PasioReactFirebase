@@ -15,6 +15,7 @@ const Oportunidades = () => {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
+    listarOportunidades();
     listarCategorias()
   }, [])
   const listarCategorias = () => {
@@ -46,7 +47,6 @@ const Oportunidades = () => {
       db.collection('oportunidades')
         .get()
         .then((result) => {
-          console.log(result.docs);
           const data = result.docs.map(doc => {
             return {
               id: doc.id,
@@ -58,6 +58,7 @@ const Oportunidades = () => {
               email: doc.data().email,
               descricao: doc.data().descricao,
               categoria: doc.data().categoria,
+              dataCriacao: doc.data().dataCriacao,
 
             }
           })
@@ -77,7 +78,6 @@ const Oportunidades = () => {
         .where("categoria", "==", categoria)
         .get()
         .then((result) => {
-          console.log(result.docs);
           const data = result.docs.map(doc => {
             return {
               id: doc.id,
@@ -94,7 +94,6 @@ const Oportunidades = () => {
             }
           })
           setOportunidades(data);
-          console.log(oportunidades)
         })
     }
     catch (error) {
@@ -146,7 +145,7 @@ const Oportunidades = () => {
 
                   </div>
 
-                  <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
+                  <Button className={'marginMobile'} style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
                     <p className='buttonPrincipal' >
                       Filtrar
                     </p>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {ToastProvider} from 'react-toast-notifications';
+import { ToastProvider } from 'react-toast-notifications';
+import { db, storage } from './utils/firebaseConfig';
 
 import Home from './pages/home'
 import QuemSomos from './pages/quemsomos'
@@ -19,26 +20,65 @@ import Categorias from './pages/admin/categorias';
 import Dashboard from './pages/admin/dashboard';
 import OportunidadesAdmin from './pages/admin/oportunidades';
 import NotFound from './pages/notfound';
-import {FirebaseAppProvider} from 'reactfire';
+import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
+import getRole from './utils/roles';
+
+const cargo = getRole();
+
+const RotaNaoCadastrado = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={
+      props =>
+      cargo !== null ?
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} /> :
+          <Component {...props} />
+    }
+  />
+);
+
+const RotaComum = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={
+      props =>
+      cargo === null ?
+          <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> :
+          <Component {...props} />
+    }
+  />
+);
+
+const RotaPrivada = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      cargo === null && cargo !== 'admin' ?
+        <Component {...props} /> :
+        <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+    }
+  />
+);
+
 
 const routing = (
   <Router>
     <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/oportunidades' component={Oportunidades} />
-        <Route path='/cadastro' component={Cadastro} />
-        <Route path='/login' component={Login} />
-        <Route path='/servicos' component={Servicos} />
-        <Route path='/quemsomos' component={QuemSomos} />
-        <Route path='/servicos' component={Servicos} />
-        <Route path='/termos' component={Termos} />
-        <Route path='/politica' component={Politica} />
-        <Route path='/admin/candidatos' component={Candidatos} />
-        <Route path='/admin/categorias' component={Categorias} />
-        <Route path='/admin/dashboard' component={Dashboard} />
-        <Route path='/admin/oportunidades' component={OportunidadesAdmin} />
-        <Route component={NotFound} />
+      <Route exact path='/' component={Home} />
+      <Route path='/oportunidades' component={Oportunidades} />
+      <RotaComum path='/cadastro' component={Cadastro} />
+      <RotaComum path='/login' component={Login} />
+      <Route path='/servicos' component={Servicos} />
+      <Route path='/quemsomos' component={QuemSomos} />
+      <Route path='/servicos' component={Servicos} />
+      <Route path='/termos' component={Termos} />
+      <Route path='/politica' component={Politica} />
+      <RotaPrivada path='/admin/candidatos' component={Candidatos} />
+      <RotaPrivada path='/admin/categorias' component={Categorias} />
+      <RotaPrivada path='/admin/dashboard' component={Dashboard} />
+      <RotaPrivada path='/admin/oportunidades' component={OportunidadesAdmin} />
+      <Route component={NotFound} />
     </Switch>
   </Router>
 )
@@ -46,12 +86,12 @@ const routing = (
 ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
 
-  <ToastProvider>
-    {routing}
-  </ToastProvider>
+    <ToastProvider>
+      {routing}
+    </ToastProvider>
   </FirebaseAppProvider>
-, 
-   document.getElementById('root')
+  ,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

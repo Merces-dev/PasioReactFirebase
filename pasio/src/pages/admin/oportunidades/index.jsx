@@ -4,6 +4,7 @@ import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
 import { db, storage } from '../../../utils/firebaseConfig';
 import { Link } from "react-router-dom";
+import BrM from 'br-masks'
 
 import './index.css'
 import { useToasts } from 'react-toast-notifications';
@@ -104,7 +105,7 @@ const OportunidadesAdmin = () => {
       empresa: empresa,
       nivel: nivel,
       turno: turno,
-      telefone: telefone,
+      telefone: BrM.phone(telefone),
       descricao: descricao,
       email: email,
       categoria: categoria,

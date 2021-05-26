@@ -6,21 +6,22 @@ import Logo from '../../utils/img/login.svg';
 import './index.css'
 import { useFirebaseApp } from 'reactfire';
 import { useToasts } from 'react-toast-notifications';
+import { db, storage } from '../../utils/firebaseConfig';
 
 
 const Login = () => {
     const firebase = useFirebaseApp();
     const {addToast} = useToasts();
     const [email, setEmail] = useState('');
+
     const [senha, setSenha] = useState('');
     const logar = (event) => {
         event.preventDefault();
-
-        console.log(`${email} - ${senha}`);
-
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(result => {
-                localStorage.setItem('pasio-token', result.user.refreshToken);
+                db.collection('usuarios').doc(result.user.uid).get().then(user => {console.log(user.data());} );
+                localStorage.setItem('uid', result.user.uid);
+
                 addToast('Seja bem-vindo', {appearance:'success', autoDismiss : true});
                 //navega para a página 
             })
@@ -61,7 +62,7 @@ const Login = () => {
                                     Enviar
                                 </Button>
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <p className='marginTopLogin'><a href="">Esqueci a Senha</a> /<a href="">Cadastrar</a></p>
+                                    <p className='marginTopLogin'><a href="">Esqueci a Senha</a> / <a href="/cadastro">Cadastrar</a></p>
 
                                 </div>
 

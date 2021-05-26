@@ -137,6 +137,8 @@ Form {
 #buttoncad{
     min-width: 200px;
     height: 40px;
+    font-size: 17px;
+
     background-color: #E7EBEB;
 }
 

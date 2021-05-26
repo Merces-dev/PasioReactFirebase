@@ -26,10 +26,11 @@ select {
     height: auto;
     padding: 10px;
     border-radius: 10px;
-    margin-right: 20px;
 
 }
-
+.selectCategorias{
+    margin-right: 20px;
+}
 option {
     padding: 10px;
 
@@ -210,7 +211,7 @@ p {
         padding: 0 20px;
     }
 }
-@media (max-width: 540px) {
+@media (max-width: 900px) {
 
     .buttonPrincipal {
 
@@ -247,7 +248,16 @@ padding: 0;    }
         padding: 0;
         border: 0;
     }
-    
+    .filtrarSelectButton{
+        width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    }
+    .marginMobile{
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 800px) {
@@ -357,5 +367,11 @@ padding: 0;    }
     }
     .oportunidadeCard{
         padding: 0 0 20px 0;
+    }
+    .selectCategorias {
+        margin-right: 0;
+    }
+    .filtrarSelectButton {
+        padding: 0;
     }
 }

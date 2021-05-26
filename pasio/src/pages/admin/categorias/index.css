@@ -1,13 +1,13 @@
 
 
-.groupOportunidades {
+.groupCategorias {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-.columnOportunidades {
+.columnCategorias {
     flex-direction: column;
 }
 
