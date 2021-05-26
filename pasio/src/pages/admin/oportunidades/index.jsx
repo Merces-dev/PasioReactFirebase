@@ -28,6 +28,8 @@ const OportunidadesAdmin = () => {
   useEffect(() => {
     listarOportunidades();
     listarCategorias();
+    dataAtualFormatada();
+
   }, [])
 
   const listarCategorias = () => {
@@ -49,7 +51,20 @@ const OportunidadesAdmin = () => {
       console.error(error)
     }
   }
-
+  const   dataAtualFormatada = () => {
+    var data = new Date(),
+        hora = data.getHours().toString(),
+        horaF = (hora.length == 1) ? '0' + hora : hora,
+        minuto = data.getMinutes().toString(),
+        minutoF = (minuto.length == 1) ? '0' + minuto : minuto,
+        dia = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0' + mes : mes,
+        anoF = data.getFullYear();
+    setDataCriacao(diaF + "/" + mesF + "/" + anoF  + " - " + horaF + ":" + minutoF  )
+    return dataCriacao;
+}
   const listarOportunidades = () => {
     try {
       db.collection('oportunidades')
@@ -67,6 +82,7 @@ const OportunidadesAdmin = () => {
               email: doc.data().email,
               descricao: doc.data().descricao,
               categoria: doc.data().categoria,
+              dataCriacao: doc.data().dataCriacao,
 
             }
           })
@@ -80,7 +96,9 @@ const OportunidadesAdmin = () => {
 
   const salvar = (event) => {
     event.preventDefault();
+
     const oportunidade = {
+      
       id: id,
       local: local,
       empresa: empresa,
@@ -88,8 +106,9 @@ const OportunidadesAdmin = () => {
       turno: turno,
       telefone: telefone,
       descricao: descricao,
+      email: email,
       categoria: categoria,
-      dataCriacao: Date.now()
+      dataCriacao: dataCriacao,
     }
     if (id === 0) {
       db.collection('oportunidades')
@@ -118,6 +137,19 @@ const OportunidadesAdmin = () => {
     }
   }
 
+
+  // const remover = (event) => {
+  //   event.preventDefault();
+
+  //   db.collection('oportunidades')
+  //     .doc(event.target.value)
+  //     .delete()
+  //     .then(() => {
+  //       addToast('Oportunidade Removida', { appearance: 'success', autoDismiss: true });
+  //       listarOportunidades();
+  //     })
+  // }
+
   const remover = (event) => {
     event.preventDefault();
 
@@ -125,8 +157,7 @@ const OportunidadesAdmin = () => {
       .doc(event.target.value)
       .delete()
       .then(() => {
-        addToast('Oportunidade Removida', { appearance: 'success', autoDismiss: true });
-        listarOportunidades();
+        addToast('Categoria Removida', {appearance:'success', autoDismiss : true});
       })
   }
 
@@ -138,13 +169,14 @@ const OportunidadesAdmin = () => {
         .get()
         .then(doc => {
           setId(doc.id);
-          setDataCriacao(doc.data().dataCriacao);
-          setDescricao(doc.data().descricao);
           setEmpresa(doc.data().empresa);
+          setDescricao(doc.data().descricao);
           setCategoria(doc.data().categoria);
           setTurno(doc.data().turno);
+          setEmail(doc.data().email);
           setTelefone(doc.data().telefone);
           setLocal(doc.data().local);
+          setNivel(doc.data().nivel);
 
         })
     }
@@ -156,13 +188,15 @@ const OportunidadesAdmin = () => {
   }
   const limparCampos = () => {
     setId(0);
-    setDataCriacao('');
     setDescricao('');
     setEmpresa('');
     setCategoria('');
     setTurno('');
     setTelefone('');
     setLocal('');
+    setEmail('');
+    setNivel('');
+
   }
   return (
     <div >
@@ -177,23 +211,22 @@ const OportunidadesAdmin = () => {
                 <div className='inputs'>
 
                 <label>
-                  Nome da empresa<input maxLength='50' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Digite o nome da empresa' required />
+                  Nome da empresa<input maxLength='20' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Digite o nome da empresa' required />
+                </label>
+                
+
+                
+                <label>
+                  Turno<input maxLength='20' className='inputCRUD' value={turno} onChange={event => setTurno(event.target.value)} type="text" placeholder='Digite o turno da vaga' required />
                 </label>
                 
                 <label>
-                  Título<input maxLength='50' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
+                  Nível da vaga<input maxLength='24' className='inputCRUD' value={nivel} onChange={event => setNivel(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
                 </label>
                 
                 <label>
-                  Turno<input maxLength='50' className='inputCRUD' value={turno} onChange={event => setTurno(event.target.value)} type="text" placeholder='Digite o turno da vaga' required />
-                </label>
-                
-                <label>
-                  Título<input maxLength='50' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
-                </label>
-                
-                <label>
-                  Título<input maxLength='50' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
+                  Contato<input maxLength='50' className='inputCRUD' value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder='Digite o Email para contato' required />
+                  <input maxLength='15' className='inputCRUD' value={telefone} onChange={event => setTelefone(event.target.value)} type="tel" placeholder='11999999999' required />
                 </label>
 
                 <label>
@@ -214,7 +247,6 @@ const OportunidadesAdmin = () => {
                   </select>
                 </label>
                 </div>
-
 
                 <div className='botoes'>
                   <input className='submit1' type='submit' value='Publicar'></input>
@@ -240,29 +272,27 @@ const OportunidadesAdmin = () => {
                         oportunidades.map((item, index) => {
                             return (
                               <div className='cardCrudOportunidades'>
+                                
                                 <div className='cardCrud'>
                                 <div className='dados'>
-                                <h4>{item.empresa}</h4>
-                                <h6>Vaga publicada em: 11/02/2021</h6>
-                                <h6>Área: Logística</h6>
-                                <h6>Vaga publicada em: 11/02/2021</h6>
-        
-                              </div>
-                              <div className='descricao'>
-                                <h5>Descrição da oportunidade:</h5>
-        
-                                <p>{item.descricao}</p>
-                              </div>
-                              <div className='contatos'>
-                                <h5>Contatos:</h5>
-                                <p>11 99999-9999</p>
-                                <p>pasio@consultoria.com</p>
-                              </div>
+                                  <h4>{item.empresa}</h4>
+                                  <h6>Vaga publicada em: {item.dataCriacao}</h6>
+                                  <h6>Área: {item.categoria}</h6>
+                                  <h6>Nível da vaga: {item.nivel}</h6>
+                                  <h6>Turno da vaga: {item.turno}</h6>
+
                                 </div>
+                                <div className='descricao'>
+                                  <h5>Descrição da oportunidade:</h5>
 
-
-
-
+                                  <p>{item.descricao}</p>
+                                </div>
+                                <div className='contatos'>
+                                  <h5>Contatos:</h5>
+                                  <p>{item.telefone}</p>
+                                  <p>{item.email}</p>
+                                </div>
+                                </div>
                                     <button value={item.id} onClick={event => editar(event)} ><p>Editar</p></button>
                                     <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} ><p>Remover</p></button>
                                 </div>

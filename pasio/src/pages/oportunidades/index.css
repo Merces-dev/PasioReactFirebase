@@ -23,7 +23,10 @@
 
 select {
     border: 1px solid var(--principal);
-    height: 30px;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
 
 }
 
@@ -187,6 +190,9 @@ p {
 
 .descricao {
     width: 40%;
+    margin-left: 40px;
+
+    margin-right: 40px;
     text-align: justify;
 }
 
@@ -196,7 +202,7 @@ p {
 }
 
 .dados h4 {
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 200;
 }
 @media (max-width: 900px) {
@@ -219,6 +225,7 @@ p {
         margin-bottom: 20px;
 
     }
+
     .descricao, .contatos{
 padding: 0;    }
     .oportunidadeCard {
@@ -228,6 +235,7 @@ padding: 0;    }
 
     .descricao {
         margin-top: 40px;
+        margin-left: 0;
         width: 100%;
     }
     .contatos {

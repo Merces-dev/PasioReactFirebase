@@ -1,5 +1,16 @@
 
 
+.groupOportunidades {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.columnOportunidades {
+    flex-direction: column;
+}
+
 .form-label{
     text-transform: capitalize;
 }

@@ -96,7 +96,6 @@ const Cadastro = () => {
     }
     catch (error) {
       console.error(error)
-      console.log('erro')
     }
   }
   function mascara(telefone) {
@@ -231,7 +230,8 @@ const Cadastro = () => {
                     Localização
                   </label>
                   <select value={estado} onChange={event => setEstado(event.target.value)} name="estados-brasil">
-                    <option value={0}>Selecione seu Estado</option>
+                    <option value="" disabled selected>Selecione seu Estado</option>
+
                     {
                       states.map((item, index) => {
                         return (
@@ -245,7 +245,8 @@ const Cadastro = () => {
                     Área Profissional
                   </label>
                   <select value={area} onChange={event => setArea(event.target.value)} name="estados-brasil">
-                    <option value={'indefinida'}>Selecione sua área profissional</option>
+                    <option value="" disabled selected>Selecione sua área profissional</option>
+
                     {
                       categorias.map((item, index) => {
                         return (

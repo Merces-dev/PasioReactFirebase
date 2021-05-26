@@ -114,10 +114,10 @@ const Categorias = () => {
   return (
     <div >
     <Header />
-    <h2 className='tituloBase'>Gerenciamento de Oportunidades</h2>
+    <h2 className='tituloBase'>Gerenciamento de Categorias</h2>
 
     <main >
-      <div className="groupOportunidades width85 columnOportunidades ">
+      <div className="groupCategorias width85 columnCategorias ">
         <div className='main'>
           <div className='caixaCrud'>
             <form className='formBase' onSubmit={salvar}>
@@ -128,7 +128,7 @@ const Categorias = () => {
               </label>
             
               <label>
-               Descrição<input maxLength='50' className='inputCRUD' value={descricao} onChange={event => setDescricao(event.target.value)}  type="text" placeholder='Digite a descrição da categoria'  />
+               Descrição<input  className='inputCRUD' value={descricao} onChange={event => setDescricao(event.target.value)}  type="text" placeholder='Digite a descrição da categoria'  />
               </label>
               </div>
 

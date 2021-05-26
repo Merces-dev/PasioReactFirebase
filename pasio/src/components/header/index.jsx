@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import Logo from '../../utils/img/pasio.png'
 import { IoMenuOutline } from 'react-icons/io5';
 import { useHistory } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 import { RiAccountCircleLine } from 'react-icons/ri';
 
@@ -30,6 +31,10 @@ const Header = () => {
     }
     const renderAccount = () => {
         const token = localStorage.getItem('pasio-token');
+        // var decoded = jwt_decode(token);
+        // var decodedHeader = jwt_decode(token, { header: true });
+        // console.log(decodedHeader);
+
         if (token === null) {
             return (
                 <Nav>

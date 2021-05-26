@@ -11,11 +11,36 @@ import imageOportunidades from '../../utils/img/oportunidades.svg'
 
 const Oportunidades = () => {
   const [oportunidades, setOportunidades] = useState([]);
+  const [categoria, setCategoria] = useState('');
+  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    listarOportunidades();
+    listarCategorias()
   }, [])
+  const listarCategorias = () => {
+    try {
+      db.collection('categorias')
+        .get()
+        .then((result) => {
+          const data = result.docs.map(doc => {
 
+            return {
+              id: doc.id,
+              titulo: doc.data().titulo,
+              descricao: doc.data().descricao,
+
+            }
+
+          })
+
+          setCategorias(data);
+
+        })
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
   const listarOportunidades = () => {
     try {
       db.collection('oportunidades')
@@ -43,7 +68,39 @@ const Oportunidades = () => {
       console.error(error)
     }
   }
+  const listarFiltrado = (event, categoria) => {
+    event.preventDefault();
 
+    try {
+
+      db.collection('oportunidades')
+        .where("categoria", "==", categoria)
+        .get()
+        .then((result) => {
+          console.log(result.docs);
+          const data = result.docs.map(doc => {
+            return {
+              id: doc.id,
+              local: doc.data().local,
+              empresa: doc.data().empresa,
+              nivel: doc.data().nivel,
+              turno: doc.data().turno,
+              telefone: doc.data().telefone,
+              email: doc.data().email,
+              descricao: doc.data().descricao,
+              categoria: doc.data().categoria,
+              dataCriacao: doc.data().dataCriacao,
+
+            }
+          })
+          setOportunidades(data);
+          console.log(oportunidades)
+        })
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div >
       <Header />
@@ -70,28 +127,29 @@ const Oportunidades = () => {
             <div className='oportunidadeFiltro'>
               <div className='filtrar'>
 
-                <form className='filtrarSelectButton' action="">
+                <form className='filtrarSelectButton'onSubmit={event => listarFiltrado(event, categoria)}>
                   <div>
 
                     <p style={{ marginBottom: '20px' }}>Área Profissional : </p>
 
-                    <select id="categorias">
-                      <option value="" disabled selected>Selecione uma opção</option>
-                      <option value="administracao">Administração</option>
-                      <option value="ti">Tecnologia da informação</option>
-                      <option value="logistica">Logística</option>
-                      <option value="telemarketing">Telemarketing</option>
-                      <option value="contabilidade">Contabilidade</option>
-                      <option value="saude">Saúde</option>
-                      <option value="manutencao">Manutencao</option>
-                      <option value="comercial">Comercial</option>
+                    <select className='selectCategorias' value={categoria} onChange={event => setCategoria(event.target.value)} name="categorias">
+                      <option value="" disabled selected>Selecione uma área profissional</option>
+
+                      {
+                        categorias.map((item, index) => {
+                          return (
+                            <option key={index} value={item.titulo}>{item.titulo}</option>
+                          )
+                        })
+                      }
                     </select>
+
                   </div>
 
                   <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                    <a href="" className='buttonPrincipal' >
+                    <p className='buttonPrincipal' >
                       Filtrar
-                    </a>
+                    </p>
                   </Button>
                 </form>
               </div>
@@ -107,9 +165,10 @@ const Oportunidades = () => {
                     <div className='oportunidadeCard'>
                       <div className='dados'>
                         <h4>{item.empresa}</h4>
-                        <h6>Vaga publicada em: 11/02/2021</h6>
-                        <h6>Área: Logística</h6>
-                        <h6>Vaga publicada em: 11/02/2021</h6>
+                        <h6>Vaga publicada em: {item.dataCriacao}</h6>
+                        <h6>Área: {item.categoria}</h6>
+                        <h6>Nível da vaga: {item.nivel}</h6>
+                        <h6>Turno da vaga: {item.turno}</h6>
 
                       </div>
                       <div className='descricao'>
@@ -119,33 +178,15 @@ const Oportunidades = () => {
                       </div>
                       <div className='contatos'>
                         <h5>Contatos:</h5>
-                        <p>11 99999-9999</p>
-                        <p>pasio@consultoria.com</p>
+                        <p>{item.telefone}</p>
+                        <p>{item.email}</p>
                       </div>
                     </div>
                   )
                 })
               }
 
-              <div className='oportunidadeCard'>
-                <div className='dados'>
-                  <h4>Pasio</h4>
-                  <h6>Vaga publicada em: 11/02/2021</h6>
-                  <h6>Área: Logística</h6>
-                  <h6>Vaga publicada em: 11/02/2021</h6>
 
-                </div>
-                <div className='descricao'>
-                  <h5>Descrição da oportunidade:</h5>
-
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatum dignissimos repellat voluptatem nobis maiores quos ipsa nostrum beatae magnam consectetur assumenda, ratione necessitatibus eveniet temporibus perferendis quidem illum omnis?</p>
-                </div>
-                <div className='contatos'>
-                  <h5>Contatos:</h5>
-                  <p>11 99999-9999</p>
-                  <p>pasio@consultoria.com</p>
-                </div>
-              </div>
 
             </div>
           </div>
