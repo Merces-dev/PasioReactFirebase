@@ -3,7 +3,6 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
 import { db, storage } from '../../../utils/firebaseConfig';
-
 import './index.css'
 
 

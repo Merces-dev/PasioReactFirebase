@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {db,storage} from './firebaseConfig';
+import {db} from './firebaseConfig';
 
 
 const GetRole = () => {

@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastProvider } from 'react-toast-notifications';
 import { db, storage } from './utils/firebaseConfig';
-// import GetRole from './utils/roles';
 import Home from './pages/home'
 import QuemSomos from './pages/quemsomos'
 import Oportunidades from './pages/oportunidades';
@@ -25,56 +24,52 @@ import firebaseConfig from './utils/firebaseConfig';
 
 const token = localStorage.getItem('uid')
 
-const App =()=>{
 
-  let tokenRole = ''
+ function getRole() {
   if (token !== null) {
-  
-  var docRef = db.collection("usuarios").doc(token);
-          docRef.get()
-          .then((doc) => {
-           tokenRole = doc.data().role
-           console.log(tokenRole)
-          return(
-           tokenRole
-          )
-        })
-      }
-  
+    var role =  db.collection("usuarios")
+      .doc(token)
+      .get()
+      .then((doc) => {
+        console.log(doc.data().role.toString())
+        return doc.data().role.toString()
+      })
+    return role
+  }
+    // await new Promise((resolve, reject) => setTimeout(resolve, 500));
 
-  
 }
-const RotaComum = ({ component: Component, ...rest } ) => (
-    
-  <Route {...rest} render={ props => (
-        token === null ?(
-          <Component {...props} />
-  
-  
-        ) : (
-          <Redirect to={{ pathname: '/', state: { from: props.location } }} /> 
-  
-        )
-  
-      )}
-    />
-  );
-  console.log(App.tokenRole)
-  const RotaPrivada = ({ component: Component, ...rest }) => (
-    
-    <Route {...rest} render={ props => (
-        token !== 'admin' ?(
-            <Component {...props} />
-    
-    
-          ) : (
-            <Redirect to={{ pathname: '/', state: { from: props.location } }} /> 
-    
-          )
-    
-        )}
-      />
-    );
+
+const RotaComum = ({ component: Component, ...rest }) => (
+
+  <Route {...rest} render={props => (
+    token === null ? (
+      <Component {...props} />
+
+
+    ) : (
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+
+      )
+
+  )}
+  />
+);
+const RotaPrivada = ({ component: Component, ...rest }) => (
+
+  <Route {...rest} render={props => (
+    getRole() === 'admin' ? (
+      <Component {...props} />
+
+
+    ) : (
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+
+      )
+
+  )}
+  />
+);
 const routing = (
   <Router>
     <Switch>
