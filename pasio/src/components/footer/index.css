@@ -145,3 +145,10 @@ display: none
     margin-top: 20px;
   }
 }
+@media (max-width: 300px) {
+
+  .cardFooterMobile img {
+    width: 10em;
+    margin-top: 20px;
+  }
+}

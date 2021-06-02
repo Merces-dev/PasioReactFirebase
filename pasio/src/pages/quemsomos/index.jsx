@@ -43,20 +43,15 @@ const QuemSomos = () => {
                   <div className='infoMobile'>
                     <p className='nomeEquipeMobile' >Maria Santos - CEO</p>
                     <p className='descricaoEquipeMobile'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-
-
                   </div>
                   <div className='cardTxt centerTxt'>
                     <p className='nomeCargo'>CEO</p>
                   </div>
-
                 </div>
                 <div>
                   <p className='nomeEquipe' >Maria Santos</p>
                   <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
                 </div>
-
-
               </div>
               <div className='cardEquipeTotal'>
                 <div className='cardEquipe'>

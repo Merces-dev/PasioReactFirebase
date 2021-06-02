@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastProvider } from 'react-toast-notifications';
 import { db, storage } from './utils/firebaseConfig';
-
+// import GetRole from './utils/roles';
 import Home from './pages/home'
 import QuemSomos from './pages/quemsomos'
 import Oportunidades from './pages/oportunidades';
@@ -22,46 +22,59 @@ import OportunidadesAdmin from './pages/admin/oportunidades';
 import NotFound from './pages/notfound';
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
-import getRole from './utils/roles';
 
-const cargo = getRole();
+const token = localStorage.getItem('uid')
 
-const RotaNaoCadastrado = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={
-      props =>
-      cargo !== null ?
-          <Redirect to={{ pathname: '/', state: { from: props.location } }} /> :
+const App =()=>{
+
+  let tokenRole = ''
+  if (token !== null) {
+  
+  var docRef = db.collection("usuarios").doc(token);
+          docRef.get()
+          .then((doc) => {
+           tokenRole = doc.data().role
+           console.log(tokenRole)
+          return(
+           tokenRole
+          )
+        })
+      }
+  
+
+  
+}
+const RotaComum = ({ component: Component, ...rest } ) => (
+    
+  <Route {...rest} render={ props => (
+        token === null ?(
           <Component {...props} />
-    }
-  />
-);
-
-const RotaComum = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={
-      props =>
-      cargo === null ?
-          <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> :
-          <Component {...props} />
-    }
-  />
-);
-
-const RotaPrivada = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      cargo === null && cargo !== 'admin' ?
-        <Component {...props} /> :
-        <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-    }
-  />
-);
-
-
+  
+  
+        ) : (
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} /> 
+  
+        )
+  
+      )}
+    />
+  );
+  console.log(App.tokenRole)
+  const RotaPrivada = ({ component: Component, ...rest }) => (
+    
+    <Route {...rest} render={ props => (
+        token !== 'admin' ?(
+            <Component {...props} />
+    
+    
+          ) : (
+            <Redirect to={{ pathname: '/', state: { from: props.location } }} /> 
+    
+          )
+    
+        )}
+      />
+    );
 const routing = (
   <Router>
     <Switch>
@@ -82,7 +95,6 @@ const routing = (
     </Switch>
   </Router>
 )
-
 ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
 

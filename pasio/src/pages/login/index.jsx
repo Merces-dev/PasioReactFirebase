@@ -7,9 +7,12 @@ import './index.css'
 import { useFirebaseApp } from 'reactfire';
 import { useToasts } from 'react-toast-notifications';
 import { db, storage } from '../../utils/firebaseConfig';
+import { useHistory } from 'react-router-dom';
 
 
 const Login = () => {
+    const history = useHistory();
+
     const firebase = useFirebaseApp();
     const {addToast} = useToasts();
     const [email, setEmail] = useState('');
@@ -21,8 +24,9 @@ const Login = () => {
             .then(result => {
                 db.collection('usuarios').doc(result.user.uid).get().then(user => {console.log(user.data());} );
                 localStorage.setItem('uid', result.user.uid);
-
                 addToast('Seja bem-vindo', {appearance:'success', autoDismiss : true});
+                history.push('/');
+
                 //navega para a página 
             })
             .catch(error => {

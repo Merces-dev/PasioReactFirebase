@@ -29,6 +29,7 @@ const Categorias = () => {
           const data = result.docs.map(doc => {
             return {
               id: doc.id,
+
               titulo: doc.data().titulo,
               descricao: doc.data().descricao,  
 
@@ -36,6 +37,9 @@ const Categorias = () => {
           })
           setCategorias(data);
         })
+        .catch(error => {
+          console.error(error);
+      })
     }
     catch (error) {
       console.error(error)
@@ -71,13 +75,15 @@ const Categorias = () => {
         })
         .catch(error =>         addToast(error, {appearance:'error', autoDismiss : true})
         )
-
     }
+    listarCategorias();
+
+    limparCampos();
+
   }
 
   const remover = (event) => {
     event.preventDefault();
-
     db.collection('categorias')
       .doc(event.target.value)
       .delete()
@@ -86,7 +92,6 @@ const Categorias = () => {
         listarCategorias();
       })
   }
-
 
   const editar = (event) => {
     event.preventDefault();
@@ -103,7 +108,6 @@ const Categorias = () => {
     catch (error) {
       console.error(error)
       addToast(error, {appearance:'error', autoDismiss : true});
-
     }
   }
   const limparCampos = () => {
@@ -134,7 +138,7 @@ const Categorias = () => {
 
 
               <div className='botoes'>
-                <input className='submit1' type='submit' value='Publicar'></input>
+                <input className='submit1' style={{backgroundColor:'white', color:'red'}} type='submit' value='Publicar'></input>
 
                 <Link to="/admin/dashboard">
                   <button className='submit1'>
@@ -149,8 +153,10 @@ const Categorias = () => {
         <div className='caixaCrud posicionamento'>
                   {
                       categorias.map((item, index) => {
+                        console.log(item.id)
                           return (
-                            <div className='cardCrudOportunidades'>
+          
+                            <div  className='cardCrudOportunidades'>
                               <div className='cardCrud'>
                               <div className='dados'>
                                   <h6>{item.titulo}</h6>
@@ -161,9 +167,9 @@ const Categorias = () => {
 
 
 
+                              <button value={item.id} onClick={event => editar(event)} >Editar</button>
+                              <button value={item.id}  style={{backgroundColor:'red'}} onClick={event => remover(event)} >Remover</button>
 
-                                  <button value={item.id} onClick={event => editar(event)} ><p>Editar</p></button>
-                                  <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} ><p>Remover</p></button>
                               </div>
                           )
                       })

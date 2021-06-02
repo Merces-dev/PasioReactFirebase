@@ -270,3 +270,18 @@ a {
 
 
 }
+
+@media (max-width: 300px) {
+  .containerPos div img {
+    width: 8em;
+  
+  }
+
+}
+@media (max-width: 250px) {
+  .containerPos div img {
+    width: 5em;
+  
+  }
+
+}

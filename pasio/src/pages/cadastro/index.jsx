@@ -9,12 +9,14 @@ import { db, storage } from '../../utils/firebaseConfig';
 import { useFirebaseApp } from 'reactfire';
 import BrM from 'br-masks'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 
 import { useToasts } from 'react-toast-notifications';
 
 const Cadastro = () => {
   const firebase = useFirebaseApp();
   const { addToast } = useToasts();
+  const history = useHistory();
 
   useEffect(() => {
     listarCategorias();
@@ -129,7 +131,8 @@ const Cadastro = () => {
       dataNascimento: dataNascimento,
       localizacao: [estado, cidade],
       categoria: area,
-      curriculo: urlArquivo
+      curriculo: urlArquivo,
+      role: 'comum'
 
     }
 
@@ -151,6 +154,7 @@ const Cadastro = () => {
             .set(usuario)
             .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
             )
+            history.push('/login');
 
           limparCampos()
           //navega para a página 

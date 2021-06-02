@@ -99,9 +99,7 @@ const OportunidadesAdmin = () => {
     event.preventDefault();
 
     const oportunidade = {
-      
-      id: id,
-      local: local,
+            local: local,
       empresa: empresa,
       nivel: nivel,
       turno: turno,
@@ -139,18 +137,6 @@ const OportunidadesAdmin = () => {
   }
 
 
-  // const remover = (event) => {
-  //   event.preventDefault();
-
-  //   db.collection('oportunidades')
-  //     .doc(event.target.value)
-  //     .delete()
-  //     .then(() => {
-  //       addToast('Oportunidade Removida', { appearance: 'success', autoDismiss: true });
-  //       listarOportunidades();
-  //     })
-  // }
-
   const remover = (event) => {
     event.preventDefault();
 
@@ -158,8 +144,11 @@ const OportunidadesAdmin = () => {
       .doc(event.target.value)
       .delete()
       .then(() => {
-        addToast('Categoria Removida', {appearance:'success', autoDismiss : true});
-      })
+        addToast("Oportunidade Deletada com sucesso!", { appearance: 'success', autoDismiss: true });
+    }).catch((error) => {
+      addToast("Error removing document:" + error, { appearance: 'error', autoDismiss: true });
+
+    });
   }
 
   const editar = (event) => {
@@ -170,6 +159,7 @@ const OportunidadesAdmin = () => {
         .get()
         .then(doc => {
           setId(doc.id);
+
           setEmpresa(doc.data().empresa);
           setDescricao(doc.data().descricao);
           setCategoria(doc.data().categoria);
@@ -250,7 +240,7 @@ const OportunidadesAdmin = () => {
                 </div>
 
                 <div className='botoes'>
-                  <input className='submit1' type='submit' value='Publicar'></input>
+                <input className='submit1' style={{backgroundColor:'white', color:'red'}} type='submit' value='Publicar'></input>
 
                   <Link to="/oportunidades">
                     <button className='submit1'>
@@ -294,8 +284,8 @@ const OportunidadesAdmin = () => {
                                   <p>{item.email}</p>
                                 </div>
                                 </div>
-                                    <button value={item.id} onClick={event => editar(event)} ><p>Editar</p></button>
-                                    <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} ><p>Remover</p></button>
+                                    <button value={item.id} onClick={event => editar(event)} >Editar</button>
+                                    <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} >Remover</button>
                                 </div>
                             )
                         })
