@@ -261,6 +261,10 @@ Form p {
         display: flex;
 
     }
+    #form {
+        min-width: 300px;
+
+    }
     .cardEquipe{
         display: flex;
         width: 100%;
@@ -275,7 +279,7 @@ Form p {
             color: grAy;
     }
     #form {
-        min-width: 500px;
+        min-width: 350px;
         max-width: 560px;
         width: 90%;
         display: flex;

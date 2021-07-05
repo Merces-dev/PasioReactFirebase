@@ -30,10 +30,8 @@ const Header = () => {
 
     }
     const renderAccount = () => {
-        const token = localStorage.getItem('pasio-token');
-        // var decoded = jwt_decode(token);
-        // var decodedHeader = jwt_decode(token, { header: true });
-        // console.log(decodedHeader);
+        const token = localStorage.getItem('token');
+        var decoded = jwt_decode(token);
 
         if (token === null) {
             return (
@@ -48,13 +46,37 @@ const Header = () => {
                 </Nav>
 
             )
-        } else {
+        } else if (decoded.role == "admin") {
             return (
                 <Nav>
                     <Nav.Link className='hover' href="/perfil">
                         <div className="hoverMobile">
                             Meu Perfil
-                                </div>
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/dashboard">
+                        <div className="hoverMobile">
+                            Dashboard
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' onClick={event => logout(event)} >
+                        <div className="hoverMobile">
+                            Sair
+                        </div>
+
+                    </Nav.Link>
+                </Nav>
+            )
+        }
+        else {
+            return (
+                <Nav>
+                    <Nav.Link className='hover' href="/perfil">
+                        <div className="hoverMobile">
+                            Meu Perfil
+                        </div>
 
                     </Nav.Link>
                     <Nav.Link className='hover' onClick={event => logout(event)} >
@@ -128,10 +150,17 @@ const Header = () => {
                             </div>
                         </Nav.Link>
                         <Nav.Link onClick={openAccount}>
+
                             <div>
                                 <RiAccountCircleLine style={{ fontSize: '40px', color: '#99313D' }} />
                             </div>
+                            <div className='dropdown'>
+                                {renderAccount()}
+
+                            </div>   
                         </Nav.Link>
+
+
 
                     </Nav>
                 </div>
@@ -153,38 +182,38 @@ const Header = () => {
                         <Nav.Link className='hover' href="/">
                             <div className="hoverMobile">
                                 Início
-                                </div>
+                            </div>
 
                         </Nav.Link>
                         <Nav.Link className='hover' href="/cadastro">
                             <div className="hoverMobile">
                                 Cadastre-se
-                                </div>
+                            </div>
 
                         </Nav.Link>
                         <Nav.Link className='hover' href="/servicos">
                             <div className="hoverMobile">
                                 Serviços
-                                </div>
+                            </div>
 
                         </Nav.Link>
                         <Nav.Link className='hover' href="/oportunidades">
                             <div className="hoverMobile">
                                 Oportunidades
-                                </div>
+                            </div>
 
                         </Nav.Link>
                         <Nav.Link className='hover' href="/quemsomos">
                             <div className="hoverMobile">
                                 Quem Somos
-                                </div>
+                            </div>
 
                         </Nav.Link>
 
                         <Nav.Link className='hover' href="/quemsomos#trabalheconosco">
                             <div className="hoverMobile">
                                 Trabalhe Conosco
-                                </div>
+                            </div>
 
                         </Nav.Link>
 

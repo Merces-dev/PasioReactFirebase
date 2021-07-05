@@ -1,0 +1,163 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+:root {
+    --principal: #99313D;
+    --grey: #858786ff;
+    --gray: #2a2d34ff;
+    --white: #fcfff7ff;
+    --black: #000000ff;
+}
+.EsqueciSenhaContainerContent{
+    display: flex;
+    margin-top: 70px;
+    padding: 0 70px 70px 70px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.EsqueciSenhaContainer{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.EsqueciSenhaContainer img{
+    width: 260px;
+}
+.txtEsqueciSenha{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: var(--principal);
+}
+.h3EsqueciSenha {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h3EsqueciSenha h3{
+    color: var(--white);
+    font-size: 1.9em;
+
+}
+
+.logoPasio{
+    margin-right: 50px;
+}
+.botaoEntireEsqueciSenha{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    background-color: var(--principal);
+}
+.botaoEntireEsqueciSenha:active, .botaoEntireEsqueciSenha:target{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    background-color: var(--principal);
+}
+.botaoEntireEsqueciSenha:hover{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    background-color: var(--principal);
+}
+.buttonPrincipalEsqueciSenha {
+    color: #E6E6E6;
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--principal);
+    border-bottom-style: solid;
+    font-size: 1.2em;
+    width: 100%;
+
+    color: var(--black);
+    background-color: #E6E6E6;
+
+}
+.fundo{
+    background-color: var(--principal);
+}
+.buttonPrincipalEsqueciSenha:hover {
+    color: var(--gray);
+
+}
+
+.buttonPrincipalEsqueciSenha:hover {
+    border-bottom-width: 0px;
+
+    border-width: 3px;
+    border-color: var(--principal);
+    border-style: solid;
+    transition: border-width 0.2s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+.formPasioEsqueciSenha{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.form h3{
+    margin-bottom: 20px;
+}
+
+.mainEsqueciSenhaInput{
+    height: 30px;
+    border: none;
+    padding: 10px;
+    font-size: 19px;
+    margin: 5px 0;
+    background-color: #E6E6E6;
+  }
+  
+  .mainEsqueciSenhaInput::-webkit-input-placeholder { 
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+  color: #8a8a8a;
+  }
+  .btn, .btn-primary{
+    padding: 0
+  }
+
+.marginTopEsqueciSenha{
+    margin-top: 10px;
+}
+p a{
+    margin-top: 10px;
+    color: var(--gray);
+    font-size: 17px;
+}
+p a:hover{
+    color: var(--principal);
+}
+@media (max-width: 500px) {
+    .EsqueciSenhaContainer{
+        padding: 40px;
+        flex-direction: column;
+    }
+    .EsqueciSenhaContainer img{
+        width: 170px;
+    }
+
+
+}

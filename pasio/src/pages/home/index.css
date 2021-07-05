@@ -234,14 +234,14 @@ Form p {
     }
 
     .cardsContact {
-
+        align-items: center;
         flex-direction: column-reverse;
 
     }
 
     #form {
         margin-top: 40px;
-
+        min-width: none;
         margin-bottom: 40px;
     }
 

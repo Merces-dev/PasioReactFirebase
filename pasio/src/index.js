@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -21,25 +21,18 @@ import OportunidadesAdmin from './pages/admin/oportunidades';
 import NotFound from './pages/notfound';
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
+import EsqueciSenha from './pages/esquecisenha';
+import jwt_decode from 'jwt-decode';
 
-const token = localStorage.getItem('uid')
-
-
- function getRole() {
-  if (token !== null) {
-    var role =  db.collection("usuarios")
-      .doc(token)
-      .get()
-      .then((doc) => {
-        console.log(doc.data().role.toString())
-        return doc.data().role.toString()
-      })
-    return role
-  }
-    // await new Promise((resolve, reject) => setTimeout(resolve, 500));
-
+const uid = localStorage.getItem('uid')
+const token = localStorage.getItem('token')
+let role = ''
+if(token === null){
+  role = 'unlogged'
+}else{
+  const data = jwt_decode(token)
+  role = data.role
 }
-
 const RotaComum = ({ component: Component, ...rest }) => (
 
   <Route {...rest} render={props => (
@@ -55,21 +48,25 @@ const RotaComum = ({ component: Component, ...rest }) => (
   )}
   />
 );
+
 const RotaPrivada = ({ component: Component, ...rest }) => (
 
-  <Route {...rest} render={props => (
-    getRole() === 'admin' ? (
+  <Route 
+  {...rest}
+   render={
+    props => 
+    token !== null && uid !== null && role === "admin"  ? 
       <Component {...props} />
-
-
-    ) : (
+     : 
         <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-
-      )
-
-  )}
+      
+  }
   />
-);
+)
+;
+
+
+
 const routing = (
   <Router>
     <Switch>
@@ -77,6 +74,7 @@ const routing = (
       <Route path='/oportunidades' component={Oportunidades} />
       <RotaComum path='/cadastro' component={Cadastro} />
       <RotaComum path='/login' component={Login} />
+      <RotaComum path='/esquecisenha' component={EsqueciSenha} />
       <Route path='/servicos' component={Servicos} />
       <Route path='/quemsomos' component={QuemSomos} />
       <Route path='/servicos' component={Servicos} />
@@ -91,8 +89,8 @@ const routing = (
   </Router>
 )
 ReactDOM.render(
-  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
 
+  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <ToastProvider>
       {routing}
     </ToastProvider>

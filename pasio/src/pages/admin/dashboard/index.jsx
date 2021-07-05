@@ -64,6 +64,17 @@ const Dashboard = () => {
 
             </div>
           </a>
+          <a href="/admin/imagens">
+            <div className='cardDashboard'>
+              <div>
+                <h3>Gerenciar Imagens do Site</h3>
+              </div>
+              <div className='cardDashboardImg'>
+                <img src="https://www.moblee.com.br/blog/wp-content/uploads/sites/2/2017/08/Como-fazer-os-melhores-crach%C3%A1s-para-o-seu-evento.png" alt="" />
+              </div>
+
+            </div>
+          </a>
         </div>
 
       </main>
