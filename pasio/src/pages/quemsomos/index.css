@@ -94,12 +94,14 @@
     justify-content: center;
 }
 
- h5 {
+ .equipeTotal h5, .trabalheConosco h5 {
     font-size: 2em;
     font-weight: 600;
     color: var(--principal);
     padding: 30px;
     margin-top: 30px;
+    text-align: center;
+
     margin-bottom: 30px;
 }
 
@@ -160,9 +162,7 @@ p {
     border: 1px solid var(--principal);
     border-radius: 20px;
 }
-h5{
- text-align: center;
-}
+
 #form {
     min-width: 550px;
     max-width: 600px;
@@ -177,10 +177,6 @@ h5{
     border: 1px solid var(--principal);
 }
 
-Form {
-    padding: 15px;
-
-}
 
 Form p {
     color: var(--principal);

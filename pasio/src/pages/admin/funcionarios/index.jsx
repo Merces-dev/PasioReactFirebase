@@ -45,9 +45,11 @@ const Funcionarios = () => {
 
                     })
                     setUsuarios(data);
-                    console.log(usuarios)
                 })
+                if(usuarios != 0){
+                    addToast(`Usuário encontrado`, { appearance: 'success', autoDismiss: true });
 
+                }
         }
         catch (error) {
             console.error(error)
@@ -59,9 +61,9 @@ const Funcionarios = () => {
         event.preventDefault();
 
         if (window.confirm('Os dados conferem com seu funcionário?')) {
-            if(usuarios[0].role == "admin"){
+            if (usuarios[0].role == "admin") {
                 setRole('comum')
-            }else{
+            } else {
                 setRole('admin')
             }
             const usuario = {
@@ -91,48 +93,49 @@ const Funcionarios = () => {
     return (
         <div >
             <Header />
-            <h2 className='tituloBase'>Gerenciamento de Funcionários</h2>
+            <div className='tituloBase'>
+                <h2 >Gerenciamento de Funcionários</h2>
+
+            </div>
 
             <main >
                 <div className="groupCategorias width85 columnCategorias ">
                     <div className='main'>
-                        <div className='caixaCrud'>
-                            <form className='formBase' onSubmit={event => setAdmin(event)}>
-                                <div className='inputs'>
+                        <div className='caixaCrudFuncionario'>
+                            <form className='formBaseFuncionario' onSubmit={event => setAdmin(event)}>
+                                <div className='inputsFuncionario'>
 
                                     <label>
-                                        Email do Funcionario<input maxLength='50' className='inputCRUD' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
+                                        Email do Funcionario<input maxLength='50' className='inputCRUDFuncionario' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
                                     </label>
                                     <div>
-                                        {
-                                            usuarios.map((item) => {
-                                                return (
-                                                    <div className='oportunidadeCard'>
-                                                        <div className='dados'>
-                                                            <h4>{item.nome}</h4>
-                                                            <h6>Candidatos: {item.categoria}</h6>
-                                                            <p>{item.estado} - {item.cidade}</p>
+                                        <button className='inputCRUDFuncionario' onClick={event => searchEmail(event)} style={{ color: 'black', fontWeight: 500 }} value='Pesquisar'>Pesquisar</button>
 
-                                                            <h5 className='textoHeader'>Contatos:</h5>
-                                                            <h6>Telefone: {item.telefone}</h6>
-                                                            <h6>Email: {item.email}</h6>
-
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                        <input className='inputCRUDFuncionario' style={{ backgroundColor: '#99313D', color: 'white' }} type='submit' value='Publicar'></input>
                                     </div>
+
                                 </div>
 
 
-                                <div className='botoes'>
-                                    <button className='inputCRUD' onClick={event => searchEmail(event)} style={{ color: 'black', fontWeight: 500 }} value='Pesquisar'>Pesquisar</button>
 
-                                    <input className='inputCRUD' style={{ backgroundColor: 'white', color: 'red' }} type='submit' value='Publicar'></input>
-                                </div>
                             </form>
+                            <div>
+                                {
+                                    usuarios.map((item) => {
+                                        return (
+                                            <div className='boxUsuario'>
+                                                <div className='boxUsuarioDados'>
+                                                    <h3>Dados do Usuário</h3>
+                                                    <h5>{item.nome}</h5>
+                                                    <h6>Telefone: {item.telefone}</h6>
+                                                    <h6>Email: {item.email}</h6>
 
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
 

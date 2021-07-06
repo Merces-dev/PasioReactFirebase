@@ -1,0 +1,168 @@
+.caixaCrudFuncionario {
+    background-color: #E5E5E5;
+    box-shadow: 0 4px 4px -2px #989898;
+    margin-bottom: 30px;
+    width: 90%;
+    height: auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    margin-top: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.formBaseFuncionario {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: start;
+    margin-top: 40px;
+    font-weight: 600;
+    width: 100%;
+    font-size: 20px;
+    flex-direction: row;
+}
+
+.inputCRUDFuncionario {
+    width: 100%;
+    min-width: 400px;
+    height: 90px;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    display: block;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px -2px #989898;
+}
+
+.boxUsuario {
+    padding: 0 70px;
+    border-radius: 13px;
+    margin-right: 20px;
+    margin-top: 40px;
+    width: 100%;
+    min-width: 400px
+}
+
+.boxUsuarioDados h3 {
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(153, 49, 61);
+}
+
+.boxUsuarioDados h5,
+.boxUsuarioDados h6 {
+    font-weight: 500;
+
+}
+
+@media only screen and (max-device-width: 950px) {
+    .caixaCrudFuncionario {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    .formBase {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-device-width: 600px) {
+    .caixaCrudFuncionario {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    .formBase {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inputCRUDFuncionario {
+        width: calc(50vw);
+        min-width: calc(40vw);
+    }
+
+    .boxUsuario {
+
+        min-width: 300px
+    }
+
+    label {
+        text-align: center;
+        display: inline-block;
+        margin-bottom: .5rem;
+        font-size: 15px;
+    }
+}
+
+
+@media only screen and (max-device-width: 400px) {
+    .tituloBase {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .tituloBase h2 {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 70%;
+        padding: 20px;
+        padding-top: 0;
+
+        padding-bottom: 0;
+    }
+
+    .caixaCrudFuncionario {
+        margin-bottom: 20px;
+        padding: 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+    }
+
+    .formBase {
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 0;
+    }
+
+    .inputCRUDFuncionario {
+        width: calc(70vw);
+        height: 60px;
+
+    }
+
+    .boxUsuario {
+        max-width: calc(70vw);
+        width: 150px;
+        min-width: 150px;
+        height: auto;
+        padding: 10px 0px 20px 10px;
+        margin: 0;
+
+    }
+
+    .boxUsuarioDados h3 {
+        font-weight: 500;
+        font-size: 15px;
+        color: rgb(153, 49, 61);
+    }
+}
