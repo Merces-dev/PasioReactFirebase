@@ -102,17 +102,17 @@ const Home = () => {
                 <p ><b>Entrar em Contato</b></p>
 
                 <Form.Group controlId="formBasicName" >
-                  <Form.Label >Nome : </Form.Label>
+                  <Form.Label >Nome </Form.Label>
                   <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" required />
                 </Form.Group>
 
                 <Form.Group controlId='formBasicEmail' >
-                  <Form.Label >Email :</Form.Label>
+                  <Form.Label >Email</Form.Label>
                   <Form.Control className='borda' type='email' placeholder="Insira um email válido" required />
                 </Form.Group>
 
                 <Form.Group controlId='formBasicMessage'>
-                  <Form.Label>Mensagem :</Form.Label>
+                  <Form.Label>Mensagem</Form.Label>
                   <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" rows={3} />
                 </Form.Group>
 

@@ -16,7 +16,7 @@
 }
 
 .navDesktop {
-  width: 65%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -184,7 +184,7 @@ a {
 
 /* 800PX */
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .navDesktop {
     display: none;
   }

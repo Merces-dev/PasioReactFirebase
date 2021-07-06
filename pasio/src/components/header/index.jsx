@@ -14,7 +14,7 @@ const Header = () => {
 
     const logout = (event) => {
         event.preventDefault();
-        localStorage.removeItem('pasio-token');
+        localStorage.removeItem('token');
         history.push('/');
 
     }
@@ -31,16 +31,51 @@ const Header = () => {
     }
     const renderAccount = () => {
         const token = localStorage.getItem('token');
-        var decoded = jwt_decode(token);
+        if (token === null) {
+            decoded = 'unlogged'
+        } else {
+            var decoded = jwt_decode(token);
+        }
 
         if (token === null) {
             return (
-                <Nav>
+                <Nav className='navDesktop'>
+                    <Nav.Link className='hover' href="/">
+                        <div>
+                            Início
+                        </div>
+
+                    </Nav.Link>
                     <Nav.Link className='hover' href="/login">
-                        <div className="hoverMobile">
+                        <div href="/login" className="hoverMobile">
                             Login
                         </div>
 
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/cadastro">
+                        <div>
+                            Cadastre-se
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/servicos">
+                        <div>
+                            Serviços
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/oportunidades">
+                        <div>
+                            Oportunidades
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/quemsomos">
+                        <div>
+                            Quem Somos
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/quemsomos#trabalheconosco">
+                        <div>
+                            Trabalhe Conosco
+                        </div>
                     </Nav.Link>
 
                 </Nav>
@@ -48,16 +83,35 @@ const Header = () => {
             )
         } else if (decoded.role == "admin") {
             return (
-                <Nav>
-                    <Nav.Link className='hover' href="/perfil">
-                        <div className="hoverMobile">
-                            Meu Perfil
+                <Nav className='navDesktop'>
+                    <Nav.Link className='hover' href="/">
+                        <div>
+                            Início
                         </div>
 
                     </Nav.Link>
-                    <Nav.Link className='hover' href="/dashboard">
+
+                    <Nav.Link className='hover' href="/admin/dashboard">
                         <div className="hoverMobile">
                             Dashboard
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/candidatos">
+                        <div className="hoverMobile">
+                            Candidatos
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/candidatos">
+                        <div className="hoverMobile">
+                            Oportunidades
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/funcionarios">
+                        <div className="hoverMobile">
+                            Funcionarios
                         </div>
 
                     </Nav.Link>
@@ -72,7 +126,33 @@ const Header = () => {
         }
         else {
             return (
-                <Nav>
+                <Nav className='navDesktop'>
+                    <Nav.Link className='hover' href="/">
+                        <div>
+                            Início
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/servicos">
+                        <div>
+                            Serviços
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/oportunidades">
+                        <div>
+                            Oportunidades
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/quemsomos">
+                        <div>
+                            Quem Somos
+                        </div>
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/quemsomos#trabalheconosco">
+                        <div>
+                            Trabalhe Conosco
+                        </div>
+                    </Nav.Link>
                     <Nav.Link className='hover' href="/perfil">
                         <div className="hoverMobile">
                             Meu Perfil
@@ -118,50 +198,7 @@ const Header = () => {
                         </button>
                     </div>
                     <Nav className='navDesktop'>
-                        <Nav.Link className='hover' href="/">
-                            <div>
-                                Início
-                            </div>
-
-                        </Nav.Link>
-                        <Nav.Link className='hover' href="/cadastro">
-                            <div>
-                                Cadastre-se
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link className='hover' href="/servicos">
-                            <div>
-                                Serviços
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link className='hover' href="/oportunidades">
-                            <div>
-                                Oportunidades
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link className='hover' href="/quemsomos">
-                            <div>
-                                Quem Somos
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link className='hover' href="/quemsomos#trabalheconosco">
-                            <div>
-                                Trabalhe Conosco
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link onClick={openAccount}>
-
-                            <div>
-                                <RiAccountCircleLine style={{ fontSize: '40px', color: '#99313D' }} />
-                            </div>
-                            <div className='dropdown'>
-                                {renderAccount()}
-
-                            </div>   
-                        </Nav.Link>
-
-
-
+                        {renderAccount()}
                     </Nav>
                 </div>
             </div>

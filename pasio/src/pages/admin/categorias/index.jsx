@@ -153,7 +153,6 @@ const Categorias = () => {
         <div className='caixaCrud posicionamento'>
                   {
                       categorias.map((item, index) => {
-                        console.log(item.id)
                           return (
           
                             <div  className='cardCrudOportunidades'>

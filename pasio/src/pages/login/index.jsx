@@ -70,12 +70,12 @@ const Login = () => {
                         <div className='formPasioLogin'>
                             <Form className='form' onSubmit={event => logar(event)}>
 
-                                <Form.Group controlId="formBasicEmail">
+                                <Form.Group >
                                     <Form.Label>Email </Form.Label>
                                     <Form.Control type="email" placeholder="Informe o email" value={email} onChange={event => setEmail(event.target.value)} required />
                                 </Form.Group>
 
-                                <Form.Group controlId="formBasicPassword">
+                                <Form.Group >
                                     <Form.Label>Senha</Form.Label>
                                     <Form.Control type="password" placeholder="Senha" value={senha} onChange={event => setSenha(event.target.value)} required />
                                 </Form.Group>

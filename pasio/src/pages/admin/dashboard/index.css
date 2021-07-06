@@ -110,6 +110,12 @@ body {
     left: -320px;
     z-index: 9999;
 }
+#seta{
+    position:absolute;
+    right: 10px;
+    top: 80px;
+    
+}
 
 
 
@@ -203,7 +209,9 @@ body {
     #link {
         display: none;
     }
-
+    #seta {
+        display: none;
+    }
     #lateral {
         padding: 0;
         -moz-transition: all 0.5s ease;

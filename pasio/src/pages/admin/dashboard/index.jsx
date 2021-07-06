@@ -3,7 +3,7 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
 import Logo from '../../../utils/img/pasio.png'
-
+import {MdChevronRight} from 'react-icons/md'
 import './index.css'
 
 
@@ -13,6 +13,10 @@ const Dashboard = () => {
     <div >
       <Header />
       <div id="lateral">
+        <div id='seta'>
+        <MdChevronRight style={{color:'white', fontSize:'40px'}}/>
+
+        </div>
         <div id="menu">
 
           <h3 class="link-titulo">Dashboard</h3>
@@ -71,6 +75,17 @@ const Dashboard = () => {
               </div>
               <div className='cardDashboardImg'>
                 <img src="https://www.moblee.com.br/blog/wp-content/uploads/sites/2/2017/08/Como-fazer-os-melhores-crach%C3%A1s-para-o-seu-evento.png" alt="" />
+              </div>
+
+            </div>
+          </a>
+          <a href="/admin/funcionarios">
+            <div className='cardDashboard'>
+              <div>
+                <h3>Gerenciar Funcionarios</h3>
+              </div>
+              <div className='cardDashboardImg'>
+                <img src="https://electiservicos.com.br/wp-content/uploads/2020/08/Por-que-contratar-uma-empresa-de-RH-para-fazer-o-recrutamento-e-sele%C3%A7%C3%A3o-1.jpg" alt="" />
               </div>
 
             </div>

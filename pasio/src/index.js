@@ -22,6 +22,8 @@ import NotFound from './pages/notfound';
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
 import EsqueciSenha from './pages/esquecisenha';
+import Funcionarios from './pages/admin/funcionarios';
+
 import jwt_decode from 'jwt-decode';
 
 const uid = localStorage.getItem('uid')
@@ -84,6 +86,8 @@ const routing = (
       <RotaPrivada path='/admin/categorias' component={Categorias} />
       <RotaPrivada path='/admin/dashboard' component={Dashboard} />
       <RotaPrivada path='/admin/oportunidades' component={OportunidadesAdmin} />
+      <RotaPrivada path='/admin/funcionarios' component={Funcionarios} />
+
       <Route component={NotFound} />
     </Switch>
   </Router>
