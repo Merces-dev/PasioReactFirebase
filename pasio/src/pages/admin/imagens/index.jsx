@@ -2,24 +2,25 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
+import { useToasts } from 'react-toast-notifications';
 import { db, storage } from '../../../utils/firebaseConfig';
 import './index.css'
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
 
 const Imagens = () => {
   const [imagens, setImagens] = useState([]);
-  const {addToast} = useToasts();
-
+  const { addToast } = useToasts();
   const [id, setId] = useState(0);
   const [titulo, setTitulo] = useState('');
   const [pagina, setPagina] = useState('');
-  const [imageLink, setImageLink] = useState('');
+  const [urlArquivo, setUrlArquivo] = useState('');
 
   useEffect(() => {
-    listarCategorias();
+    listarImagens();
   }, [])
 
-  const listarCategorias = () => {
+  const listarImagens = () => {
     try {
       db.collection('imagens')
         .get()
@@ -28,16 +29,16 @@ const Imagens = () => {
             return {
               id: doc.id,
               titulo: doc.data().titulo,
-              imageLink: doc.data().imageLink,
-              pagina: doc.data().pagina,  
+              urlArquivo: doc.data().urlArquivo,
+              pagina: doc.data().pagina,
 
             }
           })
-          setCategorias(data);
+          setImagens(data);
         })
         .catch(error => {
           console.error(error);
-      })
+        })
     }
     catch (error) {
       console.error(error)
@@ -46,41 +47,53 @@ const Imagens = () => {
 
   const salvar = (event) => {
     event.preventDefault();
-    const categoria = {
+    const imagem = {
       titulo: titulo,
-      descricao: descricao,
+      urlArquivo: urlArquivo,
     }
     if (id === 0) {
-      db.collection('categorias')
-        .add(categoria)
+      db.collection('imagens')
+        .add(imagem)
         .then(() => {
-          addToast('Categoria Cadastrada', {appearance:'success', autoDismiss : true});
-          listarCategorias();
+          addToast('Imagem Cadastrada', { appearance: 'success', autoDismiss: true });
+          listarImagens();
           limparCampos();
         })
-        .catch(error =>        addToast(error, {appearance:'error', autoDismiss : true})
+        .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
         )
 
     }
     else {
-      db.collection('categorias')
+      db.collection('imagens')
         .doc(id)
-        .set(categoria)
+        .set(imagem)
         .then(() => {
-          addToast('Categoria Alterada', {appearance:'success', autoDismiss : true});
-          listarCategorias();
+          addToast('Imagem Alterada', { appearance: 'success', autoDismiss: true });
+          listarImagens();
           limparCampos();
         })
-        .catch(error =>         addToast(error, {appearance:'error', autoDismiss : true})
+        .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
         )
     }
-    listarCategorias();
+    listarImagens();
 
     limparCampos();
 
   }
+  const handleUploadSuccess = filename => {
+    console.log('SUCESSO UPLOAD: ' + filename);
 
+    storage
+      .ref('imagens')
+      .child(filename)
+      .getDownloadURL()
+      .then(url => setUrlArquivo(url))
+      .catch(error => console.error(error))
 
+  }
+  const handleUploadError = error => {
+    console.error(error);
+  }
   const editar = (event) => {
     event.preventDefault();
     try {
@@ -89,7 +102,7 @@ const Imagens = () => {
         .get()
         .then(doc => {
           setId(doc.id);
-          setImageLink(doc.data().imageLink);
+          setUrlArquivo(doc.data().urlArquivo);
           setPagina(doc.data().pagina);
           setTitulo(doc.data().titulo);
 
@@ -97,117 +110,79 @@ const Imagens = () => {
     }
     catch (error) {
       console.error(error)
-      addToast(error, {appearance:'error', autoDismiss : true});
+      addToast(error, { appearance: 'error', autoDismiss: true });
     }
   }
   const limparCampos = () => {
     setId(0);
     setTitulo('');
-    setDescricao('');
+    setUrlArquivo('');
   }
   return (
     <div >
       <Header />
       <main>
+        <div className="groupImagens width85 columnImagens ">
+          <div className='main'>
+            <div className='caixaCrud'>
+              <form className='formBase' onSubmit={salvar}>
+                <div className='inputs'>
 
-        <div className="groupCandidatos columnCandidatos width85">
-          <div className='groupCandidatos2'>
-            <h1>Visualizar Candidatos</h1>
+                  <label>
+                    Nome da imagem<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
+                  </label>
 
-            <div className='oportunidadeDiv1'>
-              <div className='headerFiltro'>
 
-                <div className='oportunidadeFiltro'>
-                  <div className='filtrar'>
-
-                    <form className='filtrarSelectButton' onSubmit={event => listarFiltrado(event, categoria)}>
-                      <div>
-
-                        <p style={{ marginBottom: '20px' }}>Área Profissional : </p>
-
-                        <select className='selectCategorias' value={categoria} onChange={event => setCategoria(event.target.value)} name="categorias">
-                          <option value="" disabled selected>Selecione uma área profissional</option>
-
-                          {
-                            categorias.map((item, index) => {
-                              return (
-                                <option key={index} value={item.titulo}>{item.titulo}</option>
-                              )
-                            })
-                          }
-                        </select>
-
-                      </div>
-
-                      <Button className={'marginMobile'} style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                        <p className='buttonPrincipal' >
-                          Filtrar
-                    </p>
-                      </Button>
-                    </form>
-                  </div>
+                  <label className='columnUploader' style={{ padding: 14, borderRadius: 10, cursor: 'pointer' }}>
+                    <CustomUploadButton
+                      style={{ backgroundColor: 'var(--principal)', color: 'white', padding: 30, borderRadius: 10,cursor: 'pointer' }}
+                      accept=".png,.jpg"
+                      name="urlArquivo"
+                      randomizeFilename
+                      storageRef={storage.ref('imagens')}
+                      onUploadError={handleUploadError}
+                      onUploadSuccess={handleUploadSuccess}
+                      required>
+                      Selecione o arquivo do seu currículo:
+                      </CustomUploadButton>
+                  </label >
                 </div>
-                <div className='dadosPesquisa'>
-                  <h4>
-                    Candidatos cadastrados - {usuarios.length}
-                  </h4>
+
+
+                <div className='botoes'>
+                  <input className='submit1' style={{ backgroundColor: 'white', color: 'red' }} type='submit' value='Publicar'></input>
+
                 </div>
-              </div>
-              <div className='hr marginBottom'>
-
-              </div>
-              <div className='oportunidadeDiv2'>
-                <div className='oportunidadeCard headerCard'>
-                  <div className='dados'>
-                    <h5>Dados</h5>
-                  </div>
-                  <div className='descricao'>
-                    <h5>Curriculo:</h5>
-                  </div>
-                  <div className='contatos'>
-                    <h5>Contatos:</h5>
-                  </div>
-                </div>
-              </div>
-
-              {
-                usuarios.map((item) => {
-                  return (
-                    <div className='oportunidadeCard'>
-                      <div className='dados'>
-                        <h4>{item.nome}</h4>
-                        <h6>Vaga publicada em: {item.dataNascimento}</h6>
-                        <h6>Candidatos: {item.categoria}</h6>
-                        <p>{item.estado} - {item.cidade}</p>
-
-                      </div>
-                      <div className='descricao'>
-                        <h5 className='textoHeader'>Currículo:</h5>
-
-                        <div className='curriculodiv2'>
-                          <iframe src={item.curriculo} ></iframe>
-                          <a href={item.curriculo} target="_blank"> Clique aqui para visualizar o currículo   </a>
-                        </div>
-
-                      </div>
-                      <div className='contatos'>
-                        <h5 className='textoHeader'>Contatos:</h5>
-                        <h6>Telefone: {item.telefone}</h6>
-                        <h6>Email: {item.email}</h6>
-
-                      </div>
-                    </div>
-                  )
-                })
-              }
-
+              </form>
 
             </div>
+          </div>
+          <div className='caixaCrud posicionamento'>
+            {
+              imagens.map((item, index) => {
+                return (
 
+                  <div className='cardCrudOportunidades'>
+                    <div className='cardCrud'>
+                      <div className='dados'>
+                        <h6>{item.titulo}</h6>
+                        <img src={item.urlArquivo} />
+                      </div>
+
+                    </div>
+
+
+
+                    <button value={item.id} onClick={event => editar(event)} >Editar</button>
+
+                  </div>
+                )
+              })
+            }
           </div>
 
-
         </div>
+
 
       </main >
       <Footer />
@@ -215,4 +190,4 @@ const Imagens = () => {
   );
 }
 
-export default Candidatos;
+export default Imagens;

@@ -8,6 +8,7 @@ import Interview from '../../utils/img/Interview.svg'
 import Icon05 from '../../utils/img/information.svg'
 import Image from '../../utils/img/Teamwork_Monochromatic.svg'
 
+import sendEmail from '../../utils/email';
 
 const QuemSomos = () => {
 
@@ -87,28 +88,33 @@ const QuemSomos = () => {
             <h5>Trabalhe Conosco</h5>
 
             <div id="form">
-              <Form style={{ margin: '20px' }}>
+            <Form style={{ margin: '20px' }} onSubmit={event => sendEmail(event)}>
                 <p ><b>Entrar em Contato</b></p>
 
                 <Form.Group controlId="formBasicName" >
-                  <Form.Label >Nome : </Form.Label>
-                  <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" required />
+                  <Form.Label >Nome </Form.Label>
+                  <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" name='name' required />
                 </Form.Group>
 
                 <Form.Group controlId='formBasicEmail' >
-                  <Form.Label >Email :</Form.Label>
-                  <Form.Control className='borda' type='email' placeholder="Insira um email válido" required />
+                  <Form.Label >Assunto</Form.Label>
+                  <Form.Control className='borda' type='text' placeholder="Insira o assunto da mensagem" name='subject' required />
+                </Form.Group>
+
+                <Form.Group controlId='formBasicEmail' >
+                  <Form.Label >Email</Form.Label>
+                  <Form.Control className='borda' type='email' placeholder="Insira um email válido" name='email' required />
                 </Form.Group>
 
                 <Form.Group controlId='formBasicMessage'>
-                  <Form.Label>Mensagem :</Form.Label>
-                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" rows={3} />
+                  <Form.Label>Mensagem</Form.Label>
+                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" name='message'  rows={3} />
                 </Form.Group>
 
                 <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                  <a href="" className='buttonPrincipal' >
+                  <p href="" className='buttonPrincipal' >
                     Enviar
-                  </a>
+                  </p>
                 </Button>
               </Form>
             </div>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/header'
-import Footer from '../../components/footer'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer'
 import { Container, Form, Button } from 'react-bootstrap';
-import Logo from '../../utils/img/login.svg';
+import Logo from '../../../utils/img/login.svg';
 import './index.css'
 import FileUploader from 'react-firebase-file-uploader';
-import { db, storage } from '../../utils/firebaseConfig';
+import { db, storage } from '../../../utils/firebaseConfig';
 import { useFirebaseApp } from 'reactfire';
 import BrM from 'br-masks'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
@@ -276,7 +276,7 @@ const Cadastro = () => {
                 </div>
 
                 <div id='buttoncaddiv' >
-                  <button className='hover'  id='buttoncad' type='submit'>Cadastrar</button>
+                  <button className='hoverCad'  id='buttoncad' type='submit'>Cadastrar</button>
 
                 </div>
 

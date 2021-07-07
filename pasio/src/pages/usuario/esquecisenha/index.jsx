@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer'
 import { Container, Form, Button } from 'react-bootstrap';
-import Password from '../../utils/img/password.svg';
+import Password from '../../../utils/img/password.svg';
 import './index.css'
 import { useFirebaseApp } from 'reactfire';
-import { db, storage } from '../../utils/firebaseConfig';
+import { db, storage } from '../../../utils/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 

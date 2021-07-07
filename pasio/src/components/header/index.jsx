@@ -103,7 +103,7 @@ const Header = () => {
                         </div>
 
                     </Nav.Link>
-                    <Nav.Link className='hover' href="/admin/candidatos">
+                    <Nav.Link className='hover' href="/admin/oportunidades">
                         <div className="hoverMobile">
                             Oportunidades
                         </div>

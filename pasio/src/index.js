@@ -9,19 +9,20 @@ import { db, storage } from './utils/firebaseConfig';
 import Home from './pages/home'
 import QuemSomos from './pages/quemsomos'
 import Oportunidades from './pages/oportunidades';
-import Cadastro from './pages/cadastro';
-import Login from './pages/login';
+import Cadastro from './pages/usuario/cadastro';
+import Login from './pages/usuario/login';
 import Politica from './pages/politica';
 import Termos from './pages/termos';
 import Servicos from './pages/servicos';
 import Candidatos from './pages/admin/candidatos';
 import Categorias from './pages/admin/categorias';
+import Imagens from './pages/admin/imagens';
 import Dashboard from './pages/admin/dashboard';
 import OportunidadesAdmin from './pages/admin/oportunidades';
 import NotFound from './pages/notfound';
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
-import EsqueciSenha from './pages/esquecisenha';
+import EsqueciSenha from './pages/usuario/esquecisenha';
 import Funcionarios from './pages/admin/funcionarios';
 
 import jwt_decode from 'jwt-decode';
@@ -85,6 +86,8 @@ const routing = (
       <RotaPrivada path='/admin/candidatos' component={Candidatos} />
       <RotaPrivada path='/admin/categorias' component={Categorias} />
       <RotaPrivada path='/admin/dashboard' component={Dashboard} />
+      <RotaPrivada path='/admin/imagens' component={Imagens} />
+
       <RotaPrivada path='/admin/oportunidades' component={OportunidadesAdmin} />
       <RotaPrivada path='/admin/funcionarios' component={Funcionarios} />
 

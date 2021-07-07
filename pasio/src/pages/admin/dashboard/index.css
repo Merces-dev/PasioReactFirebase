@@ -166,8 +166,8 @@ body {
 }
 
 #menu {
-    font-style: italic;
     position: relative;
+    font-weight: 100;
     font-size: 1.0em;
     margin: 1em 0 1em -1em;
     padding: 0;

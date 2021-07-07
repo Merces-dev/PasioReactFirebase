@@ -1,0 +1,15 @@
+
+.groupImagens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.columnImagens {
+    flex-direction: column;
+}
+.columnUploader{
+    display: flex;
+    flex-direction: column;
+}

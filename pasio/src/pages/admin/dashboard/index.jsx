@@ -82,7 +82,7 @@ const Dashboard = () => {
           <a href="/admin/funcionarios">
             <div className='cardDashboard'>
               <div>
-                <h3>Gerenciar Funcionarios</h3>
+                <h3>Gerenciar Funcionários</h3>
               </div>
               <div className='cardDashboardImg'>
                 <img src="https://electiservicos.com.br/wp-content/uploads/2020/08/Por-que-contratar-uma-empresa-de-RH-para-fazer-o-recrutamento-e-sele%C3%A7%C3%A3o-1.jpg" alt="" />

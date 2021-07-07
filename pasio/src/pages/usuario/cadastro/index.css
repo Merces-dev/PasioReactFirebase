@@ -17,8 +17,27 @@
     flex-direction: column;
     width: 500px;
 }
-
-
+.hoverCad{
+        display: flex;
+        width: 100%;
+        border-bottom-width: 3px;
+        border-bottom-color: var(--principal);
+        border-bottom-style: solid;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    
+}
+.hoverCad:hover {
+    border-bottom-width: 0px;
+    border-width: 3px;
+    color: var(--gray);
+    border-color: var(--principal);
+    border-style: solid;
+    opacity: 90%;
+    transition: border-width 0.1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+  }
 .CadastroContainerContent {
     display: flex;
     flex-direction: row;
@@ -33,7 +52,7 @@
 
     height: 200px;
     background-position: center;
-    background-image: url('../../utils/img/login.svg');
+    background-image: url('../../../utils/img/login.svg');
     background-repeat: no-repeat;
     background-color: var(--principal);
     background-size: 300px 300px;
@@ -65,7 +84,8 @@
     padding: 20px;
     height: auto;
 }
-.formBaseCad{
+.formBaseCad {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -145,13 +165,41 @@ Form {
 
 @media (max-width: 500px) {
     .CadastroContainerContent {
-        padding: 40px;
         flex-direction: column;
     }
 
     .CadastroContainerContent img {
         width: 170px;
     }
+    .formPasioCadastro{
+        padding: 20px;
+        max-width: calc(99vw);
+    }
+    .opacity h3 {
+        text-align: center;
+        font-size: calc(9vw);
+    }
+}
 
+@media (max-width: 350px) {
+    .formInputs label {
+        font-size: calc(5vw);
 
+    }
+    .formInputs input, .formInputs select {
+        height: 10px;
+        width: calc(85vw);
+        color: black;
+
+    }
+    .formPasioCadastro{
+        padding: 5px;
+    }
+    .formInputs {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-left: 10px;
+    }
 }

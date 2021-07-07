@@ -111,7 +111,7 @@ const Home = () => {
 
                 <Form.Group controlId='formBasicEmail' >
                   <Form.Label >Assunto</Form.Label>
-                  <Form.Control className='borda' type='email' placeholder="Insira o assunto da mensagem" name='subject' required />
+                  <Form.Control className='borda' type='text' placeholder="Insira o assunto da mensagem" name='subject' required />
                 </Form.Group>
 
                 <Form.Group controlId='formBasicEmail' >

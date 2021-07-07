@@ -52,20 +52,20 @@ const OportunidadesAdmin = () => {
       console.error(error)
     }
   }
-  const   dataAtualFormatada = () => {
+  const dataAtualFormatada = () => {
     var data = new Date(),
-        hora = data.getHours().toString(),
-        horaF = (hora.length == 1) ? '0' + hora : hora,
-        minuto = data.getMinutes().toString(),
-        minutoF = (minuto.length == 1) ? '0' + minuto : minuto,
-        dia = data.getDate().toString(),
-        diaF = (dia.length == 1) ? '0' + dia : dia,
-        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-        mesF = (mes.length == 1) ? '0' + mes : mes,
-        anoF = data.getFullYear();
-    setDataCriacao(diaF + "/" + mesF + "/" + anoF  + " - " + horaF + ":" + minutoF  )
+      hora = data.getHours().toString(),
+      horaF = (hora.length == 1) ? '0' + hora : hora,
+      minuto = data.getMinutes().toString(),
+      minutoF = (minuto.length == 1) ? '0' + minuto : minuto,
+      dia = data.getDate().toString(),
+      diaF = (dia.length == 1) ? '0' + dia : dia,
+      mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+      mesF = (mes.length == 1) ? '0' + mes : mes,
+      anoF = data.getFullYear();
+    setDataCriacao(diaF + "/" + mesF + "/" + anoF + " - " + horaF + ":" + minutoF)
     return dataCriacao;
-}
+  }
   const listarOportunidades = () => {
     try {
       db.collection('oportunidades')
@@ -99,7 +99,7 @@ const OportunidadesAdmin = () => {
     event.preventDefault();
 
     const oportunidade = {
-            local: local,
+      local: local,
       empresa: empresa,
       nivel: nivel,
       turno: turno,
@@ -145,10 +145,10 @@ const OportunidadesAdmin = () => {
       .delete()
       .then(() => {
         addToast("Oportunidade Deletada com sucesso!", { appearance: 'success', autoDismiss: true });
-    }).catch((error) => {
-      addToast("Error removing document:" + error, { appearance: 'error', autoDismiss: true });
+      }).catch((error) => {
+        addToast("Error removing document:" + error, { appearance: 'error', autoDismiss: true });
 
-    });
+      });
   }
 
   const editar = (event) => {
@@ -201,50 +201,50 @@ const OportunidadesAdmin = () => {
               <form className='formBase' onSubmit={salvar}>
                 <div className='inputs'>
 
-                <label>
-                  Nome da empresa<input maxLength='20' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Digite o nome da empresa' required />
-                </label>
-                
+                  <label>
+                    Nome da empresa<input maxLength='20' className='inputCRUD' value={empresa} onChange={event => setEmpresa(event.target.value)} type="text" placeholder='Digite o nome da empresa' required />
+                  </label>
 
-                
-                <label>
-                  Turno<input maxLength='20' className='inputCRUD' value={turno} onChange={event => setTurno(event.target.value)} type="text" placeholder='Digite o turno da vaga' required />
-                </label>
-                
-                <label>
-                  Nível da vaga<input maxLength='24' className='inputCRUD' value={nivel} onChange={event => setNivel(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
-                </label>
-                
-                <label>
-                  Contato<input maxLength='50' className='inputCRUD' value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder='Digite o Email para contato' required />
-                  <input maxLength='15' className='inputCRUD' value={telefone} onChange={event => setTelefone(event.target.value)} type="tel" placeholder='11999999999' required />
-                </label>
 
-                <label>
-                  Descrição<textarea maxLength='512' style={{ minWidth: '200px', padding: '20px', width: '400px', maxHeight: '400px', minHeight: '100px', maxWidth: '700px' }} required className='inputCRUD' value={descricao} onChange={event => setDescricao(event.target.value)} type="text" placeholder='Qual é a sua dúvida?' />
-                </label>
 
-                <label>Tipo
-                                
-                <select className='inputCRUD' value={categoria} onChange={event => setCategoria(event.target.value)} required >
-                    <option value="" disabled selected>Selecione uma categoria</option>
-                    {
-                    categorias.map((item, index) => {
-                      return (
-                        <option key={index} value={item.titulo}>{item.titulo}</option>
-                      )
-                    })
-                  }
-                  </select>
-                </label>
+                  <label>
+                    Turno<input maxLength='20' className='inputCRUD' value={turno} onChange={event => setTurno(event.target.value)} type="text" placeholder='Digite o turno da vaga' required />
+                  </label>
+
+                  <label>
+                    Nível da vaga<input maxLength='24' className='inputCRUD' value={nivel} onChange={event => setNivel(event.target.value)} type="text" placeholder='Título da sua dúvida' required />
+                  </label>
+
+                  <label>
+                    Contato<input maxLength='50' className='inputCRUD' value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder='Digite o Email para contato' required />
+                    <input maxLength='15' className='inputCRUD' value={telefone} onChange={event => setTelefone(event.target.value)} type="tel" placeholder='11999999999' required />
+                  </label>
+
+                  <label>
+                    Descrição<textarea maxLength='512' style={{ minWidth: '200px', padding: '20px', width: '400px', maxHeight: '400px', minHeight: '100px', maxWidth: '700px' }} required className='inputCRUD' value={descricao} onChange={event => setDescricao(event.target.value)} type="text" placeholder='Qual é a sua dúvida?' />
+                  </label>
+
+                  <label>Tipo
+
+                    <select className='inputCRUD' value={categoria} onChange={event => setCategoria(event.target.value)} required >
+                      <option value="" disabled selected>Selecione uma categoria</option>
+                      {
+                        categorias.map((item, index) => {
+                          return (
+                            <option key={index} value={item.titulo}>{item.titulo}</option>
+                          )
+                        })
+                      }
+                    </select>
+                  </label>
                 </div>
 
                 <div className='botoes'>
-                <input className='submit1' style={{backgroundColor:'white', color:'red'}} type='submit' value='Publicar'></input>
+                  <input className='submit1' style={{ backgroundColor: 'white', color: 'red' }} type='submit' value='Publicar'></input>
 
                   <Link to="/oportunidades">
                     <button className='submit1'>
-                      Visualizar Página de Oportunidades          
+                      Visualizar Página de Oportunidades
                     </button>
                   </Link>
 
@@ -259,39 +259,39 @@ const OportunidadesAdmin = () => {
             </div>
           </div>
           <div className='caixaCrud posicionamento'>
-                    {
-                        oportunidades.map((item, index) => {
-                            return (
-                              <div className='cardCrudOportunidades'>
-                                
-                                <div className='cardCrud'>
-                                <div className='dados'>
-                                  <h4>{item.empresa}</h4>
-                                  <h6>Vaga publicada em: {item.dataCriacao}</h6>
-                                  <h6>Área: {item.categoria}</h6>
-                                  <h6>Nível da vaga: {item.nivel}</h6>
-                                  <h6>Turno da vaga: {item.turno}</h6>
+            {
+              oportunidades.map((item, index) => {
+                return (
+                  <div className='cardCrudOportunidades'>
 
-                                </div>
-                                <div className='descricao'>
-                                  <h5>Descrição da oportunidade:</h5>
+                    <div className='cardCrud'>
+                      <div className='dados'>
+                        <h4>{item.empresa}</h4>
+                        <h6>Vaga publicada em: {item.dataCriacao}</h6>
+                        <h6>Área: {item.categoria}</h6>
+                        <h6>Nível da vaga: {item.nivel}</h6>
+                        <h6>Turno da vaga: {item.turno}</h6>
 
-                                  <p>{item.descricao}</p>
-                                </div>
-                                <div className='contatos'>
-                                  <h5>Contatos:</h5>
-                                  <p>{item.telefone}</p>
-                                  <p>{item.email}</p>
-                                </div>
-                                </div>
-                                    <button value={item.id} onClick={event => editar(event)} >Editar</button>
-                                    <button style={{backgroundColor:'red'}} value={item.id} onClick={event => remover(event)} >Remover</button>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-        
+                      </div>
+                      <div className='descricao'>
+                        <h5>Descrição da oportunidade:</h5>
+
+                        <p>{item.descricao}</p>
+                      </div>
+                      <div className='contatos'>
+                        <h5>Contatos:</h5>
+                        <p>{item.telefone}</p>
+                        <p>{item.email}</p>
+                      </div>
+                    </div>
+                    <button value={item.id} onClick={event => editar(event)} >Editar</button>
+                    <button style={{ backgroundColor: 'red' }} value={item.id} onClick={event => remover(event)} >Remover</button>
+                  </div>
+                )
+              })
+            }
+          </div>
+
         </div>
       </main>
       <Footer />

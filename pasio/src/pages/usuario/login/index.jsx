@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer'
 import { Container, Form, Button } from 'react-bootstrap';
-import Logo from '../../utils/img/login.svg';
+import Logo from '../../../utils/img/login.svg';
 import './index.css'
 import { useFirebaseApp } from 'reactfire';
 import { useToasts } from 'react-toast-notifications';
-import { db, storage } from '../../utils/firebaseConfig';
+import { db, storage } from '../../../utils/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 
 import jwtEncode from 'jwt-encode'
@@ -43,6 +43,8 @@ const Login = () => {
                 localStorage.setItem('uid', result.user.uid);
                 addToast('Seja bem-vindo', { appearance: 'success', autoDismiss: true });
                 history.push('/');
+                setTimeout(function(){                 window.location.reload();
+                }, 200);
 
                 //navega para a página 
             })

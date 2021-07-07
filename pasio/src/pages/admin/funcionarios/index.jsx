@@ -46,10 +46,6 @@ const Funcionarios = () => {
                     })
                     setUsuarios(data);
                 })
-                if(usuarios != 0){
-                    addToast(`Usuário encontrado`, { appearance: 'success', autoDismiss: true });
-
-                }
         }
         catch (error) {
             console.error(error)
@@ -59,34 +55,40 @@ const Funcionarios = () => {
     }
     const setAdmin = (event) => {
         event.preventDefault();
+        if (usuarios != 0) {
 
-        if (window.confirm('Os dados conferem com seu funcionário?')) {
-            if (usuarios[0].role == "admin") {
-                setRole('comum')
-            } else {
-                setRole('admin')
+            if (window.confirm('Os dados conferem com seu funcionário?')) {
+                if (usuarios[0].role == "admin") {
+                    setRole('comum')
+                } else {
+                    setRole('admin')
+                }
+                const usuario = {
+                    id: usuarios[0].id,
+                    email: usuarios[0].email,
+                    nome: usuarios[0].nome,
+                    localizacao: usuarios[0].localizacao,
+                    role: role,
+                    telefone: usuarios[0].telefone,
+                    curriculo: usuarios[0].curriculo,
+                    categoria: usuarios[0].categoria,
+                }
+                console.log(usuario.id)
+                console.log(usuario)
+
+                db.collection('usuarios')
+                    .doc(usuario.id)
+                    .set(usuario)
+
+                addToast(`Usuário cadastrado como ${role}`, { appearance: 'success', autoDismiss: true });
+
+
             }
-            const usuario = {
-                id: usuarios[0].id,
-                email: usuarios[0].email,
-                nome: usuarios[0].nome,
-                localizacao: usuarios[0].localizacao,
-                role: role,
-                telefone: usuarios[0].telefone,
-                curriculo: usuarios[0].curriculo,
-                categoria: usuarios[0].categoria,
-            }
-            console.log(usuario.id)
-            console.log(usuario)
-
-            db.collection('usuarios')
-                .doc(usuario.id)
-                .set(usuario)
-
-            addToast(`Usuário cadastrado como ${role}`, { appearance: 'success', autoDismiss: true });
-
+        } else {
+            addToast(`Usuário não encontrado`, { appearance: 'error', autoDismiss: true });
 
         }
+
 
 
     }
@@ -106,7 +108,7 @@ const Funcionarios = () => {
                                 <div className='inputsFuncionario'>
 
                                     <label>
-                                        Email do Funcionario<input maxLength='50' className='inputCRUDFuncionario' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
+                                        Email do Funcionário<input maxLength='50' className='inputCRUDFuncionario' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
                                     </label>
                                     <div>
                                         <button className='inputCRUDFuncionario' onClick={event => searchEmail(event)} style={{ color: 'black', fontWeight: 500 }} value='Pesquisar'>Pesquisar</button>
