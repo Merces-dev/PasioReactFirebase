@@ -58,6 +58,21 @@ const RotaPrivada = ({ component: Component, ...rest }) => (
   {...rest}
    render={
     props => 
+    token !== null && uid !== null && ( role === "funcionario" || role === "admin")  ? 
+      <Component {...props} />
+     : 
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+      
+  }
+  />
+)
+;
+const RotaPrivadaMaxima = ({ component: Component, ...rest }) => (
+
+  <Route 
+  {...rest}
+   render={
+    props => 
     token !== null && uid !== null && role === "admin"  ? 
       <Component {...props} />
      : 
@@ -67,6 +82,7 @@ const RotaPrivada = ({ component: Component, ...rest }) => (
   />
 )
 ;
+
 
 
 
@@ -89,7 +105,7 @@ const routing = (
       <RotaPrivada path='/admin/imagens' component={Imagens} />
 
       <RotaPrivada path='/admin/oportunidades' component={OportunidadesAdmin} />
-      <RotaPrivada path='/admin/funcionarios' component={Funcionarios} />
+      <RotaPrivadaMaxima path='/admin/funcionarios' component={Funcionarios} />
 
       <Route component={NotFound} />
     </Switch>

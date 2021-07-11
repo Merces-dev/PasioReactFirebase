@@ -143,7 +143,7 @@ const Imagens = () => {
                       onUploadError={handleUploadError}
                       onUploadSuccess={handleUploadSuccess}
                       required>
-                      Selecione o arquivo do seu currículo:
+                      Selecione a imagem
                       </CustomUploadButton>
                   </label >
                 </div>

@@ -267,7 +267,10 @@ a {
   #divMenu {
     color: blue;
   }
+  .hoverMobile {
+    width: auto;
 
+  }
 
 }
 

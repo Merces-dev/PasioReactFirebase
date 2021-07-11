@@ -67,19 +67,20 @@
     width: 100%;
     border: none;
     background-color: var(--principal);
+    border-radius: .25rem;
+    color: white;
+    height: 30px;
 }
 
 .botaoEntireLogin:active,
 .botaoEntireLogin:target {
     margin-bottom: 20px;
-    width: 100%;
     border: none;
-    background-color: var(--principal);
+    opacity: 70%;
 }
 
 .botaoEntireLogin:hover {
     margin-bottom: 20px;
-    width: 100%;
     border: none;
     background-color: var(--principal);
 }

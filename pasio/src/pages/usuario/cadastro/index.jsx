@@ -10,6 +10,7 @@ import { useFirebaseApp } from 'reactfire';
 import BrM from 'br-masks'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
 import { useToasts } from 'react-toast-notifications';
 
@@ -72,6 +73,8 @@ const Cadastro = () => {
   ];
   const handleUploadError = error => {
     console.error(error);
+    addToast('Falha ao salvar currículo, tente novamente', { appearance: 'error', autoDismiss: true });
+
   }
 
 
@@ -119,6 +122,7 @@ const Cadastro = () => {
       .getDownloadURL()
       .then(url => setUrlArquivo(url))
       .catch(error => console.error(error))
+      addToast('Currículo salvo', { appearance: 'info', autoDismiss: true });
 
   }
 
@@ -154,7 +158,7 @@ const Cadastro = () => {
             .set(usuario)
             .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
             )
-            history.push('/login');
+          history.push('/login');
 
           limparCampos()
           //navega para a página 
@@ -261,8 +265,8 @@ const Cadastro = () => {
                   </select>
 
                   <label style={{ padding: 14, borderRadius: 5, cursor: 'pointer' }}>
-                  Selecione o arquivo do seu currículo:
-                    <FileUploader
+                    <CustomUploadButton
+                      style={{ backgroundColor: 'var(--principal)', color: 'white', padding: 30, borderRadius: 10, cursor: 'pointer', textAlign: 'center' }}
 
                       accept=".pdf,.doc,.jpg,.docx"
                       name="urlArquivo"
@@ -270,13 +274,16 @@ const Cadastro = () => {
                       storageRef={storage.ref('currículos')}
                       onUploadError={handleUploadError}
                       onUploadSuccess={handleUploadSuccess}
-                      required
-                    />
+                      required>
+                      Clique para adicionar o arquivo do seu currículo
+
+                    </CustomUploadButton>
+
                   </label >
                 </div>
 
                 <div id='buttoncaddiv' >
-                  <button className='hoverCad'  id='buttoncad' type='submit'>Cadastrar</button>
+                  <button className='hoverCad' id='buttoncad' type='submit'>Cadastrar</button>
 
                 </div>
 

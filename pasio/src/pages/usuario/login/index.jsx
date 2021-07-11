@@ -24,6 +24,7 @@ const Login = () => {
         event.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(result => {
+                console.log(result.user.uid)
                 db.collection('usuarios')
                     .doc(result.user.uid)
                     .get()
@@ -35,16 +36,14 @@ const Login = () => {
 
                         }
                         console.log(user.data().role);
-
                         const jwt = jwtEncode(userToken, secretToken);
                         localStorage.setItem('token', jwt)
+                        localStorage.setItem('uid', result.user.uid);
                     });
 
-                localStorage.setItem('uid', result.user.uid);
+
                 addToast('Seja bem-vindo', { appearance: 'success', autoDismiss: true });
                 history.push('/');
-                setTimeout(function(){                 window.location.reload();
-                }, 200);
 
                 //navega para a página 
             })
@@ -81,9 +80,9 @@ const Login = () => {
                                     <Form.Label>Senha</Form.Label>
                                     <Form.Control type="password" placeholder="Senha" value={senha} onChange={event => setSenha(event.target.value)} required />
                                 </Form.Group>
-                                <Button className='botaoEntireLogin ' type="submit" >
+                                <button className='botaoEntireLogin ' type="submit" >
                                     Enviar
-                                </Button>
+                                </button>
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <p className='marginTopLogin'><a href="/esquecisenha">Esqueci a Senha</a> / <a href="/cadastro">Cadastrar</a></p>
 
