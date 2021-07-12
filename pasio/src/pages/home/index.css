@@ -192,8 +192,10 @@ a:hover {
 
 
 Form p {
+    text-align: center;
     color: var(--principal);
     font-size: 17px;
+    margin-bottom: 20px;
 }
 
 .borda {

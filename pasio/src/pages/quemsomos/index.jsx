@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import { Form, Button } from 'react-bootstrap';
-import {TiSocialLinkedinCircular} from 'react-icons/ti'
+import { TiSocialLinkedinCircular } from 'react-icons/ti'
 import './index.css'
 import Interview from '../../utils/img/Interview.svg'
 import Icon05 from '../../utils/img/information.svg'
@@ -34,16 +34,11 @@ const QuemSomos = () => {
             <h5>Nossa Equipe</h5>
 
             <div className='equipe'>
-            <div className='cardEquipeTotal'>
+
+              <div className='cardEquipeTotal'>
                 <div className='cardEquipe'>
                   <div className='imgCard'>
-
-                  <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
-                  </div>
-
-                  <div className='infoMobile'>
-                    <p className='nomeEquipeMobile' >Maria Santos - CEO</p>
-                    <p className='descricaoEquipeMobile'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
+                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
                   </div>
                   <div className='cardTxt centerTxt'>
                     <p className='nomeCargo'>CEO</p>
@@ -56,29 +51,31 @@ const QuemSomos = () => {
               </div>
               <div className='cardEquipeTotal'>
                 <div className='cardEquipe'>
-                  <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
-                  <div className='infoMobile'>
-                    <p className='nomeEquipeMobile' >Maria Santos - CEO</p>
-                    <p className='descricaoEquipeMobile'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-
-
+                  <div className='imgCard'>
+                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
                   </div>
                   <div className='cardTxt centerTxt'>
                     <p className='nomeCargo'>CEO</p>
                   </div>
-
                 </div>
                 <div>
                   <p className='nomeEquipe' >Maria Santos</p>
-                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-                  <div className='alignIcon'>
-                    <a href=""><TiSocialLinkedinCircular className='socialMediaIcon'/></a>
-
-
+                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
+                </div>
+              </div>
+              <div className='cardEquipeTotal'>
+                <div className='cardEquipe'>
+                  <div className='imgCard'>
+                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
+                  </div>
+                  <div className='cardTxt centerTxt'>
+                    <p className='nomeCargo'>CEO</p>
                   </div>
                 </div>
-
-
+                <div>
+                  <p className='nomeEquipe' >Maria Santos</p>
+                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
+                </div>
               </div>
 
             </div>
@@ -88,7 +85,7 @@ const QuemSomos = () => {
             <h5>Trabalhe Conosco</h5>
 
             <div id="form">
-            <Form style={{ margin: '20px' }} onSubmit={event => sendEmail(event)}>
+              <Form style={{ margin: '20px' }} onSubmit={event => sendEmail(event)}>
                 <p ><b>Entrar em Contato</b></p>
 
                 <Form.Group controlId="formBasicName" >
@@ -108,7 +105,7 @@ const QuemSomos = () => {
 
                 <Form.Group controlId='formBasicMessage'>
                   <Form.Label>Mensagem</Form.Label>
-                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" name='message'  rows={3} />
+                  <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" name='message' rows={3} />
                 </Form.Group>
 
                 <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >

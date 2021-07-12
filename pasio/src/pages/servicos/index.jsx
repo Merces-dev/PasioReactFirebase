@@ -1,15 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import { Form, Button } from 'react-bootstrap';
+import { db, storage } from '../../utils/firebaseConfig';
 
 import './index.css'
-import Interview from '../../utils/img/Interview.svg'
-import Icon05 from '../../utils/img/information.svg'
+
 import Image from '../../utils/img/choices.svg'
 
+import sendEmail from '../../utils/email';
 
 const Servicos = () => {
+  const [servicos, setServicos] = useState([]);
+  const [nome, setNome] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [imagem, setImagem] = useState('');
+  const [id, setId] = useState('');
+
+
+  useEffect(() => {
+    listarServicos();
+  }, [])
+  const listarServicos = () => {
+    try {
+      db.collection('servicos')
+        .get()
+        .then((result) => {
+          const data = result.docs.map(doc => {
+
+            return {
+              id: doc.id,
+              nome: doc.data().nome,
+              descricao: doc.data().descricao,
+              imagem: doc.data().imagem,
+
+            }
+
+          })
+
+          setServicos(data);
+          console.log(data)
+        })
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <div >
@@ -23,7 +59,7 @@ const Servicos = () => {
               </h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officiis ipsum rem repudiandae itaque dolorem ducimus nesciunt architecto quam commodi consequatur animi incidunt saepe eos nemo amet odit, assumenda alias.</p>
 
-              <a href="/Servicos" className='buttonPrincipal' >
+              <a href="/Servicos#servicos" className='buttonPrincipal' >
                 Saiba Mais
               </a>
             </div>
@@ -32,48 +68,65 @@ const Servicos = () => {
             </div>
           </div>
 
-          <div className='alinhamentoCardsServicos'>
-            <div className='cardServicos'>
-              <div className='imageCaptionServicos'>
-                <div>
-                  <img src="https://image.flaticon.com/icons/png/512/896/896866.png" alt="" />
+          <div className='servicos' id="servicos">
+            {
+              servicos.map((item, index) => {
+                return (
+                  <div className='cardServicos'>
+                    <div className='imageCaptionServicos'>
+                      <div>
+                        <img src={item.imagem} alt="" />
 
-                </div>
-              </div>
-              <div className='cardServicosInfo'>
-                <div className='cardServicostxt'>
-                  <h5>Consultoria</h5>
+                      </div>
+                    </div>
+                    <div className='cardServicosInfo'>
+                      <div className='cardServicostxt'>
+                        <h5>{item.nome}</h5>
 
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
-                  <a href="/Servicos" className='buttonPrincipal' >
-                    Entrar em Contato
-              </a>
+                        <p>{item.descricao}</p>
+                        <button className='buttonPrincipal' onClick={event => setNome(item.nome)} >
+                            <a  href='servicos#form'>Entrar em Contato</a>
+                        </button>
 
-                </div>
 
-              </div>
-            </div>
-            <div className='cardServicos'>
-              <div className='imageCaptionServicos'>
-                <div>
-                  <img src="https://blog.rhopen.com.br/wp-content/uploads/2019/03/280406-entenda-como-uma-consultoria-pode-contribuir-na-tomada-de-decisao.jpg" alt="" />
+                      </div>
 
-                </div>
-              </div>
-              <div className='cardServicosInfo'>
-                <div className='cardServicostxt'>
-                  <h5>Consultoria</h5>
+                    </div>
+                  </div>)
+              })
+            }
 
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut sequi perspiciatis a ipsum natus! Dolorum laborum culpa nihil eos nulla totam, velit suscipit. Deserunt quae illo corporis, nostrum a omnis!</p>
-                  <a href="/Servicos" className='buttonPrincipal' >
-                    Entrar em Contato
-              </a>
+          </div>
+          <div id="form">
+            <Form style={{ margin: '20px' }} onSubmit={event => sendEmail(event)}>
+              <p ><b>Entrar em Contato</b></p>
 
-                </div>
+              <Form.Group controlId="formBasicName" >
+                <Form.Label >Nome </Form.Label>
+                <Form.Control className='borda' type="text" placeholder="Insira seu nome completo" name='name' required />
+              </Form.Group>
 
-              </div>
-            </div>
+              <Form.Group controlId='formBasicEmail' >
+                <Form.Label >Assunto</Form.Label>
+                <Form.Control className='borda capitalize' type='text' value={nome} onChange={event => setNome(event.target.value)}  placeholder="Insira o assunto da mensagem" name='subject' required />
+              </Form.Group>
 
+              <Form.Group controlId='formBasicEmail' >
+                <Form.Label >Email</Form.Label>
+                <Form.Control className='borda' type='email' placeholder="Insira um email válido" name='email' required />
+              </Form.Group>
+
+              <Form.Group controlId='formBasicMessage'>
+                <Form.Label>Mensagem</Form.Label>
+                <Form.Control className='borda' placeholder="Insira sua mensagem" as="textarea" name='message' rows={3} />
+              </Form.Group>
+
+              <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
+                <p href="" className='buttonPrincipalContato' >
+                  Enviar
+                </p>
+              </Button>
+            </Form>
           </div>
         </div>
 
