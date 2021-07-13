@@ -64,11 +64,6 @@ const Cadastro = () => {
     { value: 'SE', label: 'Sergipe' },
     { value: 'TO', label: 'Tocantins' }
   ];
-  const handleUploadError = error => {
-    console.error(error);
-    addToast('Falha ao salvar currículo, tente novamente', { appearance: 'error', autoDismiss: true });
-
-  }
 
 
   const listarCategorias = () => {
@@ -105,8 +100,16 @@ const Cadastro = () => {
       .getDownloadURL()
       .then(url => setUrlArquivo(url))
       .catch(error => console.error(error))
-  }
+      if(urlArquivo !== null){
+        addToast('Currículo salvo com sucesso', { appearance: 'info', autoDismiss: true });
 
+      }
+  }
+  const handleUploadError = error => {
+    console.error(error);
+    addToast('Falha ao salvar currículo, tente novamente', { appearance: 'error', autoDismiss: true });
+
+  }
   const registrar = (event) => {
     event.preventDefault();
     const usuario = {

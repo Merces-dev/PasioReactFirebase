@@ -31,6 +31,7 @@ import ChangeEmail from './pages/usuario/changeMailPassword/changeEmail';
 
 import jwt_decode from 'jwt-decode';
 import Perfil from './pages/usuario/perfil';
+import AtualizarCurriculo from './pages/usuario/atualizarCurriculo';
 
 const uid = localStorage.getItem('uid')
 const token = localStorage.getItem('token')
@@ -72,6 +73,21 @@ const RotaPrivada = ({ component: Component, ...rest }) => (
   />
 )
 ;
+const RotaLogado = ({ component: Component, ...rest }) => (
+
+  <Route 
+  {...rest}
+   render={
+    props => 
+    token !== null  ? 
+      <Component {...props} />
+     : 
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+      
+  }
+  />
+)
+;
 const RotaPrivadaMaxima = ({ component: Component, ...rest }) => (
 
   <Route 
@@ -103,9 +119,11 @@ const routing = (
       <Route path='/quemsomos' component={QuemSomos} />
       <Route path='/servicos' component={Servicos} />
       <Route path='/termos' component={Termos} />
-      <Route path='/perfil' component={Perfil}/>
-      <Route path='/trocarsenha' component={ChangePassword}/>
-      <Route path='/trocaremail' component={ChangeEmail}/>
+      <RotaLogado path='/perfil' component={Perfil}/>
+      <RotaLogado path='/trocarsenha' component={ChangePassword}/>
+      <RotaLogado path='/trocaremail' component={ChangeEmail}/>
+      <RotaLogado path='/atualizarcurriculo' component={AtualizarCurriculo}/>
+
       <Route path='/politica' component={Politica} />
       <RotaPrivada path='/admin/candidatos' component={Candidatos} />
       <RotaPrivada path='/admin/categorias' component={Categorias} />

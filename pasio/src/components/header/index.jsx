@@ -120,6 +120,13 @@ const Header = () => {
                         </div>
 
                     </Nav.Link>
+                    <Nav.Link className='hover' href="/perfil">
+                        <div className="hoverMobile">
+                        Meu Perfil
+
+                        </div>
+
+                    </Nav.Link>
                     <Nav.Link className='hover' onClick={event => logout(event)} >
                         <div className="hoverMobile">
                             Sair
@@ -160,6 +167,13 @@ const Header = () => {
                     <Nav.Link className='hover' href="/admin/funcionarios">
                         <div className="hoverMobile">
                             Servicos
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/perfil">
+                        <div className="hoverMobile">
+                        Meu Perfil
+
                         </div>
 
                     </Nav.Link>
@@ -294,6 +308,12 @@ const Header = () => {
                     <Nav.Link className='hover' href="/admin/funcionarios">
                         <div className="hoverMobile">
                             Funcionarios
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/perfil">
+                        <div className="hoverMobile">
+                            Meu Perfil
                         </div>
 
                     </Nav.Link>

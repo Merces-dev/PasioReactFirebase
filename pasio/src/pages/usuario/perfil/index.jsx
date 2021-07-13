@@ -254,6 +254,7 @@ const Perfil = () => {
                 <input className='inputCRUDPerfil' style={{ backgroundColor: 'var(--principal)', color: 'white' }} type="submit" onClick={salvar} value='Salvar' />
                 <a className='inputCRUDPerfil' href='/trocarsenha' style={{ backgroundColor: 'white', color: 'var(--principal)' }} type="submit" value='Trocar Senha'>Trocar Senha</a>
                 <a className='inputCRUDPerfil' href='/trocaremail' style={{ backgroundColor: 'white', color: 'var(--principal)' }} value='Trocar Email'>Trocar Email</a>
+                <a className='inputCRUDPerfil' href='/atualizarCurriculo' style={{ backgroundColor: 'white', color: 'var(--principal)' }} value='Atualizar Curriculo'>Atualizar Currículo</a>
 
               </div>
             </form>

@@ -141,10 +141,15 @@ const EquipeAdmin = () => {
       .getDownloadURL()
       .then(url => setImagem(url))
       .catch(error => console.error(error))
+      if(imagem !== null){
+        addToast('Currículo salvo com sucesso', { appearance: 'info', autoDismiss: true });
 
+      }
   }
   const handleUploadError = error => {
     console.error(error);
+    addToast('Falha ao salvar currículo, tente novamente', { appearance: 'error', autoDismiss: true });
+
   }
   return (
     <div >

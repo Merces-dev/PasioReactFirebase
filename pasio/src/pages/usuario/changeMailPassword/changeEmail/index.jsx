@@ -36,6 +36,7 @@ const ChangeEmail = () => {
             const usuario = {
                 email: novoEmail,
                 nome: nome,
+                id: token,
                 telefone: telefone,
                 dataNascimento: dataNascimento,
                 localizacao: [estado, cidade],

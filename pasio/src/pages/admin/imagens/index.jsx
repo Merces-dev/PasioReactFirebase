@@ -89,10 +89,15 @@ const Imagens = () => {
       .getDownloadURL()
       .then(url => setUrlArquivo(url))
       .catch(error => console.error(error))
+      if(urlArquivo !== null){
+        addToast('Imagem salva com sucesso', { appearance: 'info', autoDismiss: true });
 
+      }
   }
   const handleUploadError = error => {
     console.error(error);
+    addToast('Falha ao salvar currículo, tente novamente', { appearance: 'error', autoDismiss: true });
+
   }
   const editar = (event) => {
     event.preventDefault();
