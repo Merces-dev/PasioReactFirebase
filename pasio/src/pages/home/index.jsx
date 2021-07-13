@@ -55,13 +55,13 @@ const Home = () => {
               <div className='cards'>
                 <a href="/cadastro">
                   <div className="card">
-                    <img src={Icon01} alt="" />
+                    <img src={Icon01} alt="Icone de cadastrar" />
                     <h4>Cadastre-se</h4>
                   </div>
                 </a>
                 <a href="/oportunidades">
                   <div className="card">
-                    <img src={Icon02} alt="" />
+                    <img src={Icon02} alt="Icone de oportunidades" />
                     <h4>Oportunidades</h4>
 
                   </div>
@@ -70,7 +70,7 @@ const Home = () => {
               <div className='cards'>
                 <a href="/servicos">
                   <div className="card">
-                    <img src={Icon04} alt="" />
+                    <img src={Icon04} alt="Icone de Serviços" />
                     <h4>Serviços</h4>
 
                   </div>
@@ -79,7 +79,7 @@ const Home = () => {
 
                 <a href="/quemsomos#trabalheconosco">
                   <div className="card">
-                    <img src={Icon03} alt="" />
+                    <img src={Icon03} alt="Icone de trabalhe conosco" />
                     <h4>Trabalhe Conosco</h4>
 
                   </div>
@@ -89,7 +89,7 @@ const Home = () => {
 
                 <a href="/quemsomos">
                   <div className="card">
-                    <img src={Icon05} alt="" />
+                    <img src={Icon05} alt="Icone de quem somos" />
                     <h4>Quem Somos</h4>
 
                   </div>
@@ -125,7 +125,7 @@ const Home = () => {
                 </Form.Group>
 
                 <Button style={{ backgroundColor: 'white', border: 'none' }} type="submit" >
-                  <p href="" className='buttonPrincipal' >
+                  <p href="" className='buttonPrincipalEmail' >
                     Enviar
                   </p>
                 </Button>

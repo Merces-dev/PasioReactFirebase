@@ -129,7 +129,7 @@ const Imagens = () => {
                 <div className='inputs'>
 
                   <label>
-                    Nome da imagem<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
+                    Nome da imagem<input maxLength='50' className='inputCRUD' value={titulo} onChange={event => setTitulo(event.target.value)} type="text" placeholder='Digite o nome da imagem' required />
                   </label>
 
 

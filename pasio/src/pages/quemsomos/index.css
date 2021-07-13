@@ -86,6 +86,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    flex-direction: column;
+
     height: 199, 50px;
 }
 
@@ -119,6 +121,55 @@
 
 }
 
+.cardEquipe {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    max-width: 350px;
+    margin-left: 30px;
+    margin-right: 30px;
+width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 13px;
+    min-height: 500px;
+}
+.cardEquipeInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.cardEquipeInfo h5 {
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+.imageCaptionEquipe {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.imageCaptionEquipe img {
+   width: 100%;
+}
+
+.alinhamentoCardsEquipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
 .infoMobile .nomeEquipeMobile,
 .infoMobile .nomeCargoMobile {
     display: none;
@@ -143,7 +194,7 @@
 .equipe {
     display: flex;
     justify-content: space-around;
-    width: 70%;
+    width: 100%;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -200,7 +251,9 @@ Form p {
 .borda {
     border: 1px solid var(--principal);
 }
-
+.borda::placeholder {
+    font-size: 13px
+}
 .buttonColor {
     background-color: var(--principal);
     border: 1px solid var(--principal);
@@ -232,7 +285,7 @@ Form p {
 }
 
 .cardEquipeTotal {
-    margin: 0 20px 0 20px;
+    margin: 0 10px 0 10px;
     margin-top: 40px;
     max-width: 300px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -246,7 +299,9 @@ Form p {
         align-items: center;
         flex-direction: column;
     }
-
+    .cardServicosInfo {
+        padding: 20px;
+    }
     .imageQuemSomos {
         margin-top: 40px;
     }

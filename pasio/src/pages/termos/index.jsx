@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
-import { Form, Button } from 'react-bootstrap';
 
 import './index.css'
 

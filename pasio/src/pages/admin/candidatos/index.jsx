@@ -10,10 +10,7 @@ const Candidatos = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [categoria, setCategoria] = useState('');
   const [categorias, setCategorias] = useState([]);
-  function myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  }
+
   const listarFiltrado = (event, categoria) => {
     event.preventDefault();
 
@@ -170,8 +167,8 @@ const Candidatos = () => {
                     <div className='oportunidadeCard'>
                       <div className='dados'>
                         <h4>{item.nome}</h4>
-                        <h6>Vaga publicada em: {item.dataNascimento}</h6>
-                        <h6>Candidatos: {item.categoria}</h6>
+                        <h6>Data de Nascimento: {item.dataNascimento}</h6>
+                        <h6>Área: {item.categoria}</h6>
                         <p>{item.estado} - {item.cidade}</p>
 
                       </div>

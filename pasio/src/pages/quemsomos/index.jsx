@@ -1,17 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import { Form, Button } from 'react-bootstrap';
-import { TiSocialLinkedinCircular } from 'react-icons/ti'
 import './index.css'
-import Interview from '../../utils/img/Interview.svg'
-import Icon05 from '../../utils/img/information.svg'
+
 import Image from '../../utils/img/Teamwork_Monochromatic.svg'
+import { db } from '../../utils/firebaseConfig';
 
 import sendEmail from '../../utils/email';
 
 const QuemSomos = () => {
+  const [equipe, setEquipe] = useState([]);
 
+  useEffect(() => {
+    listarEquipe();
+  }, [])
+  const listarEquipe = () => {
+    try {
+      db.collection('equipe')
+
+        .get()
+        .then((result) => {
+          const data = result.docs.map(doc => {
+
+            return {
+              id: doc.id,
+              nome: doc.data().nome,
+              descricao: doc.data().descricao,
+              imagem: doc.data().imagem,
+              cargo: doc.data().cargo,
+
+            }
+
+          })
+
+          setEquipe(data);
+          console.log(data)
+        })
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div >
       <Header />
@@ -26,7 +56,7 @@ const QuemSomos = () => {
 
             </div>
             <div className='imageQuemSomos'>
-              <img src={Image} alt="" />
+              <img src={Image} alt="Equipe montando um quebra-cabeça" />
             </div>
           </div>
 
@@ -34,49 +64,28 @@ const QuemSomos = () => {
             <h5>Nossa Equipe</h5>
 
             <div className='equipe'>
+              {
+                equipe.map((item, index) => {
+                  return (
+                    <div className='cardEquipe'>
+                      <div className='imageCaptionEquipe'>
+                        <div>
+                          <img src={item.imagem} alt={'Imagem de ' +item.nome} />
 
-              <div className='cardEquipeTotal'>
-                <div className='cardEquipe'>
-                  <div className='imgCard'>
-                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
-                  </div>
-                  <div className='cardTxt centerTxt'>
-                    <p className='nomeCargo'>CEO</p>
-                  </div>
-                </div>
-                <div>
-                  <p className='nomeEquipe' >Maria Santos</p>
-                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-                </div>
-              </div>
-              <div className='cardEquipeTotal'>
-                <div className='cardEquipe'>
-                  <div className='imgCard'>
-                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
-                  </div>
-                  <div className='cardTxt centerTxt'>
-                    <p className='nomeCargo'>CEO</p>
-                  </div>
-                </div>
-                <div>
-                  <p className='nomeEquipe' >Maria Santos</p>
-                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-                </div>
-              </div>
-              <div className='cardEquipeTotal'>
-                <div className='cardEquipe'>
-                  <div className='imgCard'>
-                    <img src="https://image.freepik.com/fotos-gratis/fundo-branco-feliz-pessoa-feminina_1301-3449.jpg" alt="" />
-                  </div>
-                  <div className='cardTxt centerTxt'>
-                    <p className='nomeCargo'>CEO</p>
-                  </div>
-                </div>
-                <div>
-                  <p className='nomeEquipe' >Maria Santos</p>
-                  <p className='descricaoEquipe'  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at, cumque nihil, facilis eligendi voluptate quidem distinctio cupiditate dicta quibusdam error animi. Ut sit impedit voluptatibus natus quo, maxime rerum.</p>
-                </div>
-              </div>
+                        </div>
+                      </div>
+                      <div className='cardEquipeInfo'>
+                        <div className='cardEquipetxt'>
+                          <h5>{item.nome}</h5>
+                          <h6>{item.cargo}</h6>
+                          <p>{item.descricao}</p>
+
+                        </div>
+
+                      </div>
+                    </div>)
+                })
+              }
 
             </div>
 

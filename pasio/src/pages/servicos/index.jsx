@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import { Form, Button } from 'react-bootstrap';
-import { db, storage } from '../../utils/firebaseConfig';
+import { db } from '../../utils/firebaseConfig';
 
 import './index.css'
 
@@ -13,9 +13,7 @@ import sendEmail from '../../utils/email';
 const Servicos = () => {
   const [servicos, setServicos] = useState([]);
   const [nome, setNome] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [imagem, setImagem] = useState('');
-  const [id, setId] = useState('');
+
 
 
   useEffect(() => {
@@ -64,7 +62,7 @@ const Servicos = () => {
               </a>
             </div>
             <div className='imageServicos'>
-              <img src={Image} alt="" />
+              <img src={Image} alt="Figura masculina analisando escolhas" />
             </div>
           </div>
 
@@ -75,7 +73,7 @@ const Servicos = () => {
                   <div className='cardServicos'>
                     <div className='imageCaptionServicos'>
                       <div>
-                        <img src={item.imagem} alt="" />
+                        <img src={item.imagem} alt={'imagem referente à ' + item.nome} />
 
                       </div>
                     </div>

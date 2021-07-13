@@ -45,11 +45,26 @@ const Funcionarios = () => {
 
                     })
                     setUsuarios(data);
+                    if (data[0] !== undefined) {
+
+                        if (data[0].role === "funcionario") {
+                            setRole('comum')
+                        } else {
+                            setRole('funcionario')
+                        }
+                    }else {
+                        addToast(`Usuário não encontrado`, { appearance: 'error', autoDismiss: true });
+                        limparCampos()
+
+                    }
+            
                 })
         }
         catch (error) {
             console.error(error)
             addToast(error, { appearance: 'error', autoDismiss: true });
+            limparCampos()
+
         }
 
     }
@@ -58,11 +73,7 @@ const Funcionarios = () => {
         if (usuarios != 0) {
 
             if (window.confirm('Os dados conferem com seu funcionário?')) {
-                if (usuarios[0].role == "admin") {
-                    setRole('comum')
-                } else {
-                    setRole('admin')
-                }
+
                 const usuario = {
                     id: usuarios[0].id,
                     email: usuarios[0].email,
@@ -79,19 +90,29 @@ const Funcionarios = () => {
                 db.collection('usuarios')
                     .doc(usuario.id)
                     .set(usuario)
-
                 addToast(`Usuário cadastrado como ${role}`, { appearance: 'success', autoDismiss: true });
 
 
             }
+
         } else {
             addToast(`Usuário não encontrado`, { appearance: 'error', autoDismiss: true });
 
         }
+        limparCampos()
 
 
 
     }
+    const limparCampos = () => {
+        setId(0);
+        setEmail('');
+        setEscolhido('');
+        setRole('');
+        setFuncionario('')
+        setNome('');
+        
+      }
     return (
         <div >
             <Header />
@@ -104,16 +125,16 @@ const Funcionarios = () => {
                 <div className="groupCategorias width85 columnCategorias ">
                     <div className='main'>
                         <div className='caixaCrudFuncionario'>
-                            <form className='formBaseFuncionario' onSubmit={event => setAdmin(event)}>
+                            <form className='formBaseFuncionario' onSubmit={event => searchEmail(event)}>
                                 <div className='inputsFuncionario'>
 
                                     <label>
-                                        Email do Funcionário<input maxLength='50' className='inputCRUDFuncionario' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o nome da categoria' required />
+                                        Email do Funcionário<input maxLength='50' className='inputCRUDFuncionario' value={funcionario} onChange={event => setFuncionario(event.target.value)} type="text" placeholder='Digite o email do funcionário' required />
                                     </label>
                                     <div>
-                                        <button className='inputCRUDFuncionario' onClick={event => searchEmail(event)} style={{ color: 'black', fontWeight: 500 }} value='Pesquisar'>Pesquisar</button>
+                                        <button className='inputCRUDFuncionario' type='submit' style={{ color: 'black', fontWeight: 500 }} value='Pesquisar'>Pesquisar</button>
 
-                                        <input className='inputCRUDFuncionario' style={{ backgroundColor: '#99313D', color: 'white' }} type='submit' value='Publicar'></input>
+                                        <input className='inputCRUDFuncionario' style={{ backgroundColor: '#99313D', color: 'white' }} onClick={event => setAdmin(event)} value='Publicar'></input>
                                     </div>
 
                                 </div>

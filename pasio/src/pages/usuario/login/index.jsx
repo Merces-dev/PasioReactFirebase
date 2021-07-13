@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { Container, Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import Logo from '../../../utils/img/login.svg';
 import './index.css'
 import { useFirebaseApp } from 'reactfire';
 import { useToasts } from 'react-toast-notifications';
-import { db, storage } from '../../../utils/firebaseConfig';
+import { db } from '../../../utils/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 
 import jwtEncode from 'jwt-encode'
@@ -66,19 +66,19 @@ const Login = () => {
                     <div className='loginContainerContent'>
 
                         <div className='logoPasio'>
-                            <img src={Logo} alt="" />
+                            <img src={Logo} alt="Imagem referente ao login" />
                         </div>
                         <div className='formPasioLogin'>
                             <Form className='form' onSubmit={event => logar(event)}>
 
-                                <Form.Group >
+                                <Form.Group className='tamForm' >
                                     <Form.Label>Email </Form.Label>
                                     <Form.Control type="email" placeholder="Informe o email" value={email} onChange={event => setEmail(event.target.value)} required />
                                 </Form.Group>
 
-                                <Form.Group >
+                                <Form.Group className='tamForm' >
                                     <Form.Label>Senha</Form.Label>
-                                    <Form.Control type="password" placeholder="Senha" value={senha} onChange={event => setSenha(event.target.value)} required />
+                                    <Form.Control type="password" placeholder="Senha" value={senha} onChange={event => setSenha(event.target.value) } required />
                                 </Form.Group>
                                 <button className='botaoEntireLogin ' type="submit" >
                                     Enviar

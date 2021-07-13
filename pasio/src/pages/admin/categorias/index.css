@@ -135,7 +135,7 @@ text-align: start;
     box-shadow: 0 4px 4px -2px #989898; 
     margin-top: 80px;
 }
-@media only screen and (max-device-width: 800px) {
+@media (max-width: 800px) {
     .inputCRUD{width: 95%;}
     .botoes{  
         position: relative; 

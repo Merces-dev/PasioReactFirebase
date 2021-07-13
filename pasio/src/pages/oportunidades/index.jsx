@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
-import { Form, Button } from 'react-bootstrap';
-import { db, storage } from '../../utils/firebaseConfig';
+import { Button } from 'react-bootstrap';
+import { db } from '../../utils/firebaseConfig';
 
 import './index.css'
-import Interview from '../../utils/img/Interview.svg'
 import imageOportunidades from '../../utils/img/oportunidades.svg'
 
 
@@ -16,7 +15,7 @@ const Oportunidades = () => {
 
   useEffect(() => {
     listarOportunidades();
-    listarCategorias()
+    listarCategorias();
   }, [])
   const listarCategorias = () => {
     try {
@@ -117,7 +116,7 @@ const Oportunidades = () => {
               </a>
             </div>
             <div className='imageOportunidades'>
-              <img src={imageOportunidades} alt="" />
+              <img src={imageOportunidades} alt="Figura feminina apontando para folhas de papel" />
             </div>
           </div>
           <hr />
@@ -126,7 +125,7 @@ const Oportunidades = () => {
             <div className='oportunidadeFiltro'>
               <div className='filtrar'>
 
-                <form className='filtrarSelectButton'onSubmit={event => listarFiltrado(event, categoria)}>
+                <form className='filtrarSelectButton' onSubmit={event => listarFiltrado(event, categoria)}>
                   <div>
 
                     <p style={{ marginBottom: '20px' }}>Área Profissional : </p>

@@ -1,0 +1,214 @@
+.groupPerfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--principal);
+
+}
+
+.columnPerfil {
+    flex-direction: column;
+}
+
+.labelInputs {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 50%;
+    padding: 0 0 0 20px;
+}
+.h3Perfil{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: white;
+    background-color: #3d1418;
+    max-height: 200px;
+}
+.h3Perfil h3 {
+    color: var(--white);
+    font-size: 1.9em;
+    text-align: center;
+
+}
+
+.containerPerfil {
+    width: 60%;
+    height: 700px;
+    margin: 20px;
+    
+    background-color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.formPerfil {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.buttonsPerfil {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: flex-end;
+    flex-direction: column;
+}
+
+.formPerfil label {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.formPerfil input, .formPerfil select {
+    width: 90%;
+    padding: 10px;
+    outline: none;
+
+    border: 0;
+    border-radius: 13px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(153, 49, 61) 0px 0px 0px 1px inset;
+}
+
+.pointerEvents {
+    pointer-events: none;
+}
+
+
+.inputCRUDPerfil {
+    width: 90%;
+    min-width: 200px;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+@media (max-width:800px) {
+    .formPerfil {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .formPerfil input, .formPerfil select {
+        padding: 10px;
+        border: 0;
+        border-radius: 13px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(153, 49, 61) 0px 0px 0px 1px inset;
+        font-size: 13px;
+    }
+
+    .formPerfil label {
+        font-size: 12px;
+        align-self: flex-start;
+        margin-left: 20px;
+    }
+
+    .buttonsPerfil {
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        margin-top: 20px;
+    }
+
+    .labelInputs {
+        align-items: center;
+        text-align: start;
+        justify-content: center;
+        width: 70%;
+        padding: 0
+    }
+
+    .containerPerfil {
+        width: 90%;
+        margin: 20px;
+        height: 850px;
+
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .inputCRUDPerfil {
+        width: 90%;
+        min-width: 250px;
+        margin-top: 20px;
+
+    }
+}
+
+@media (max-width:400px) {
+    .h3Perfil h3 {
+        color: var(--white);
+        font-size: 1.5em;
+        text-align: center;
+    
+    }
+    .formPerfil {
+        flex-direction: column;
+        
+    }
+
+    .formPerfil input, .formPerfil select {
+        padding: 10px;
+        border: 0;
+        border-radius: 13px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(153, 49, 61) 0px 0px 0px 1px inset;
+        font-size: 13px;
+    }
+
+    .formPerfil label {
+        font-size: 12px;
+        align-self: flex-start;
+        margin-left: 10px;
+    }
+
+    .buttonsPerfil {
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .labelInputs {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .containerPerfil {
+        width: 90%;
+        margin: 20px;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .inputCRUDPerfil {
+        width: 90%;
+        min-width: 200px;
+        margin-top: 10px;
+
+    }
+}
+
+@media (max-width:300px) {
+
+    .inputCRUDPerfil {
+        width: 90%;
+        min-width: 100px;
+        margin-top: 10px;
+
+    }
+}

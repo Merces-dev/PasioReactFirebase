@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
-import { db, storage } from '../../../utils/firebaseConfig';
+import { db } from '../../../utils/firebaseConfig';
 import { Link } from "react-router-dom";
 import BrM from 'br-masks'
+import firebase from 'firebase/app';
 
 import './index.css'
 import { useToasts } from 'react-toast-notifications';
@@ -17,7 +18,7 @@ const OportunidadesAdmin = () => {
   const [categoria, setCategoria] = useState('');
   const [nivel, setNivel] = useState('');
   const [email, setEmail] = useState('');
-
+  let time = firebase.firestore.Timestamp.now();
   const [telefone, setTelefone] = useState('');
   const [turno, setTurno] = useState('');
   const [dataCriacao, setDataCriacao] = useState('');
@@ -84,7 +85,6 @@ const OportunidadesAdmin = () => {
               descricao: doc.data().descricao,
               categoria: doc.data().categoria,
               dataCriacao: doc.data().dataCriacao,
-
             }
           })
           setOportunidades(data);
@@ -108,6 +108,8 @@ const OportunidadesAdmin = () => {
       email: email,
       categoria: categoria,
       dataCriacao: dataCriacao,
+      ordem: time
+
     }
     if (id === 0) {
       db.collection('oportunidades')

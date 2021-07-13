@@ -10,7 +10,7 @@ const NotFound = () => {
 
                 <div className="container container-404">
                     <div className="container-divs">
-                        <img className='container-img'src={NotFoundImage} alt=""/>
+                        <img className='container-img'src={NotFoundImage} alt="imagem do erro 404"/>
                     </div>
                     <div className="container-divs">
                         <p  className="texto">Página Não Encontrada</p>

@@ -129,6 +129,49 @@ const Header = () => {
                 </Nav>
             )
         }
+        else if (decoded.role == "funcionario") {
+            return (
+                <Nav >
+                    <Nav.Link className='hover' href="/">
+                        <div className="hoverMobile">
+                            Início
+                        </div>
+
+                    </Nav.Link>
+
+                    <Nav.Link className='hover' href="/admin/dashboard">
+                        <div className="hoverMobile">
+                            Dashboard
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/candidatos">
+                        <div className="hoverMobile">
+                            Candidatos
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/oportunidades">
+                        <div className="hoverMobile">
+                            Oportunidades
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' href="/admin/funcionarios">
+                        <div className="hoverMobile">
+                            Servicos
+                        </div>
+
+                    </Nav.Link>
+                    <Nav.Link className='hover' onClick={event => logout(event)} >
+                        <div className="hoverMobile">
+                            Sair
+                        </div>
+
+                    </Nav.Link>
+                </Nav>
+            )
+        }
         else {
             return (
                 <Nav >
@@ -320,7 +363,7 @@ const Header = () => {
             <div className='container1'>
                 <div className='containerPos'>
                     <div>
-                        <a href="/"><img src={Logo} alt="logo" /></a>
+                        <a href="/"><img src={Logo} alt="Logo Pasio" /></a>
                     </div>
                     <div id="openMenu">
                         <button className='botaoStyle' onClick={openNavDropDown}>

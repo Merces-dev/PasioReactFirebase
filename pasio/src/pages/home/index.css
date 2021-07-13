@@ -132,7 +132,20 @@ hr {
     transition: border-width 0.44s, opacity 0.4s, stroke-dasharray 1s;
 
 }
-
+.buttonPrincipalEmail{
+    color: var(--white);
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--principal);
+    border-bottom-style: solid;
+    font-size: 1em;
+    color: #000;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
 .buttonPrincipal {
     color: var(--white);
     font-weight: 500;
@@ -148,12 +161,13 @@ hr {
 
 }
 
-.buttonPrincipal:hover {
+.buttonPrincipal:hover, 
+.buttonPrincipalEmail:hover{
     color: var(--gray);
 
 }
-
-.buttonPrincipal:hover {
+.buttonPrincipal:hover, 
+.buttonPrincipalEmail:hover{
     border-bottom-width: 0px;
 
     border-width: 3px;

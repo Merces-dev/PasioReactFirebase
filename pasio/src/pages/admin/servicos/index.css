@@ -1,4 +1,4 @@
-.caixaCrudFuncionario {
+.caixaCrudServicos {
     background-color: #E5E5E5;
     box-shadow: 0 4px 4px -2px #989898;
     margin-bottom: 30px;
@@ -13,7 +13,16 @@
 
 }
 
-.formBaseFuncionario {
+.columnServicos {
+    display: flex;
+    flex-direction: column;
+}
+
+.lateralServicos {
+    margin-left: 60px;
+}
+
+.formBaseServicos {
     display: flex;
     /* justify-content: space-between; */
     align-items: start;
@@ -24,7 +33,7 @@
     flex-direction: row;
 }
 
-.inputCRUDFuncionario {
+.inputCRUDServicos {
     width: 100%;
     min-width: 400px;
     height: 90px;
@@ -36,7 +45,6 @@
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 4px -2px #989898;
-    text-align: center;
 }
 
 .boxUsuario {
@@ -60,8 +68,80 @@
 
 }
 
-@media (max-width: 950px) {
-    .caixaCrudFuncionario {
+.dados img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.dados h6 {
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.cardCrudServicos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    margin: 60px;
+    border-radius: 10px;
+}
+
+.cardCrud {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.cardCrud h5 {
+    text-align: start;
+    margin: 0;
+    padding: 0;
+}
+
+.cardCrudServicos h6 {
+    font-size: 14px;
+}
+
+.cardCrudServicos p {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.cardCrudServicos button {
+    padding: 10px;
+    background-color: #989898;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: white;
+
+    border-radius: 10px;
+}
+
+.cardCrudServicos button p {
+    color: white;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .formBaseServicos {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .lateralServicos {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .caixaCrudServicos {
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -75,13 +155,20 @@
     }
 }
 
+@media (max-width: 700px) {
+    .dados img {
+        width: calc(30vw);
+        margin-bottom: 20px;
+    }
+}
+
 @media (max-width: 600px) {
-    .caixaCrudFuncionario {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
 
 
+    .cardCrudServicos {
+        width: 80%;
+        margin: 10px;
+        padding: 20px;
     }
 
     .formBase {
@@ -89,7 +176,7 @@
         justify-content: center;
     }
 
-    .inputCRUDFuncionario {
+    .inputCRUDServicos {
         width: calc(50vw);
         min-width: calc(40vw);
     }
@@ -117,6 +204,17 @@
         width: 100%;
     }
 
+    .cardCrudServicos {
+        width: 90%;
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .cardCrud {
+        padding: 0;
+
+    }
+
     .tituloBase h2 {
         font-size: 20px;
         display: flex;
@@ -130,7 +228,7 @@
         padding-bottom: 0;
     }
 
-    .caixaCrudFuncionario {
+    .caixaCrudServicos {
         margin-bottom: 20px;
         padding: 0;
         align-items: flex-start;
@@ -145,7 +243,7 @@
         padding: 0;
     }
 
-    .inputCRUDFuncionario {
+    .inputCRUDServicos {
         width: calc(70vw);
         height: 60px;
 

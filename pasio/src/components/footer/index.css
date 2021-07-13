@@ -5,7 +5,10 @@
   --white: #fcfff7ff;
   --black: #000000ff;
 }
-
+.column{
+  display: flex;
+  flex-direction: column;
+}
 .totalFooter {
   display: flex;
   background-color: #E7EBEB;

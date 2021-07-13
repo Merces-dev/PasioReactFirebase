@@ -4,6 +4,7 @@ import Footer from '../../../components/footer'
 import { Form, Button } from 'react-bootstrap';
 import { db, storage } from '../../../utils/firebaseConfig';
 import { Link } from "react-router-dom";
+import firebase from 'firebase/app';
 
 import './index.css'
 
@@ -11,7 +12,7 @@ import { useToasts } from 'react-toast-notifications';
 
 const Categorias = () => {
   const {addToast} = useToasts();
-
+  let time = firebase.firestore.Timestamp.now();
   const [id, setId] = useState(0);
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');
@@ -51,6 +52,7 @@ const Categorias = () => {
     const categoria = {
       titulo: titulo,
       descricao: descricao,
+      ordem: time
     }
     if (id === 0) {
       db.collection('categorias')

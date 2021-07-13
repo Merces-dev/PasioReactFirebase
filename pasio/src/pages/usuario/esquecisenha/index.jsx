@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { Container, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import Password from '../../../utils/img/password.svg';
 import './index.css'
 import { useFirebaseApp } from 'reactfire';
-import { db, storage } from '../../../utils/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
@@ -19,7 +18,7 @@ const EsqueciSenha = () => {
     const changePassword = (event) => {
         event.preventDefault()
         var auth = firebase.auth();
-        if (email != '') {
+        if (email !== '') {
             try {
                 auth.sendPasswordResetEmail(email)
                     .then(r =>{
@@ -50,7 +49,7 @@ const EsqueciSenha = () => {
                     <div className='EsqueciSenhaContainerContent'>
 
                         <div className='logoPasio'>
-                            <img src={Password} alt="" />
+                            <img src={Password} alt="Imagem referente a esquecer senha" />
                         </div>
                         <div className='formPasioEsqueciSenha'>
                             <Form className='form' onSubmit={event => changePassword(event)}>

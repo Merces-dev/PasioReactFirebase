@@ -24,8 +24,11 @@ import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './utils/firebaseConfig';
 import EsqueciSenha from './pages/usuario/esquecisenha';
 import Funcionarios from './pages/admin/funcionarios';
+import ServicosAdmin from './pages/admin/servicos';
+import EquipeAdmin from './pages/admin/equipe';
 
 import jwt_decode from 'jwt-decode';
+import Perfil from './pages/usuario/perfil';
 
 const uid = localStorage.getItem('uid')
 const token = localStorage.getItem('token')
@@ -98,12 +101,14 @@ const routing = (
       <Route path='/quemsomos' component={QuemSomos} />
       <Route path='/servicos' component={Servicos} />
       <Route path='/termos' component={Termos} />
+      <Route path='/perfil' component={Perfil}/>
       <Route path='/politica' component={Politica} />
       <RotaPrivada path='/admin/candidatos' component={Candidatos} />
       <RotaPrivada path='/admin/categorias' component={Categorias} />
       <RotaPrivada path='/admin/dashboard' component={Dashboard} />
       <RotaPrivada path='/admin/imagens' component={Imagens} />
-
+      <RotaPrivada path='/admin/servicos' component={ServicosAdmin} />
+      <RotaPrivada path='/admin/equipe' component={EquipeAdmin} />
       <RotaPrivada path='/admin/oportunidades' component={OportunidadesAdmin} />
       <RotaPrivadaMaxima path='/admin/funcionarios' component={Funcionarios} />
 

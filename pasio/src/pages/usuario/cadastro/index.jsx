@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { Container, Form, Button } from 'react-bootstrap';
-import Logo from '../../../utils/img/login.svg';
 import './index.css'
-import FileUploader from 'react-firebase-file-uploader';
 import { db, storage } from '../../../utils/firebaseConfig';
 import { useFirebaseApp } from 'reactfire';
 import BrM from 'br-masks'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
@@ -34,10 +30,7 @@ const Cadastro = () => {
   const [area, setArea] = useState('');
 
   const [senha, setSenha] = useState('');
-  const [id, setId] = useState(0);
   const [urlArquivo, setUrlArquivo] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [titulo, setTitulo] = useState('');
   const [categorias, setCategorias] = useState([]);
   const [dataMax, setDataMax] = useState('');
   const [idadeMin, setIdadeMin] = useState('');
@@ -83,7 +76,6 @@ const Cadastro = () => {
       db.collection('categorias')
         .get()
         .then((result) => {
-          console.log(result.docs);
           const data = result.docs.map(doc => {
 
             return {
@@ -103,27 +95,16 @@ const Cadastro = () => {
       console.error(error)
     }
   }
-  function mascara(telefone) {
-    if (telefone.value.length == 0)
-      telefone.value = '(' + telefone.value;
-    if (telefone.value.length == 3)
-      telefone.value = telefone.value + ') ';
 
-    if (telefone.value.length == 8)
-      telefone.value = telefone.value + '-';
-
-  }
   const handleUploadSuccess = filename => {
     console.log('SUCESSO UPLOAD: ' + filename);
 
     storage
-      .ref('currículos')
+      .ref('curriculos')
       .child(filename)
       .getDownloadURL()
       .then(url => setUrlArquivo(url))
       .catch(error => console.error(error))
-      addToast('Currículo salvo', { appearance: 'info', autoDismiss: true });
-
   }
 
   const registrar = (event) => {
@@ -165,6 +146,7 @@ const Cadastro = () => {
         })
         .catch(error => {
           addToast('Não foi possivel cadastrar o usuário', { appearance: 'error', autoDismiss: true });
+          limparCampos()
         })
       // Telefone válido.
       return true;
@@ -178,18 +160,21 @@ const Cadastro = () => {
   }
   const limparCampos = () => {
     setEmail('');
-    setSenha('')
+    setSenha('');
+    setNome('');
+    setDataNascimento('');
+    setTelefone('');
+    setEstado('');
+    setCidade('');
+    setArea('');
+    setUrlArquivo('');
   }
   function dataAtualFormatada() {
     var data = new Date(),
-      hora = data.getHours().toString(),
-      horaF = (hora.length == 1) ? '0' + hora : hora,
-      minuto = data.getMinutes().toString(),
-      minutoF = (minuto.length == 1) ? '0' + minuto : minuto,
       dia = data.getDate().toString(),
-      diaF = (dia.length == 1) ? '0' + dia : dia,
+      diaF = (dia.length === 1) ? '0' + dia : dia,
       mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-      mesF = (mes.length == 1) ? '0' + mes : mes,
+      mesF = (mes.length === 1) ? '0' + mes : mes,
       anoF = data.getFullYear();
 
     setIdadeMin((anoF - 16) + "-" + mesF + "-" + diaF)
@@ -218,6 +203,22 @@ const Cadastro = () => {
                     Email
                   </label>
                   <input value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder='Digite o seu email' required />
+                  <label style={{ padding: 14, borderRadius: 5, cursor: 'pointer' }}>
+                    <CustomUploadButton
+                      style={{ backgroundColor: 'var(--principal)', color: 'white', padding: 30, borderRadius: 10, cursor: 'pointer', textAlign: 'center' }}
+
+                      accept=".pdf,.doc,.jpg,.docx"
+                      name="urlArquivo"
+                      randomizeFilename
+                      storageRef={storage.ref('curriculos')}
+                      onUploadError={handleUploadError}
+                      onUploadSuccess={handleUploadSuccess}
+                      required>
+                      Clique para adicionar o arquivo do seu currículo
+
+                    </CustomUploadButton>
+
+                  </label >
                   <label>
                     Senha
                   </label>
@@ -264,22 +265,7 @@ const Cadastro = () => {
                     }
                   </select>
 
-                  <label style={{ padding: 14, borderRadius: 5, cursor: 'pointer' }}>
-                    <CustomUploadButton
-                      style={{ backgroundColor: 'var(--principal)', color: 'white', padding: 30, borderRadius: 10, cursor: 'pointer', textAlign: 'center' }}
 
-                      accept=".pdf,.doc,.jpg,.docx"
-                      name="urlArquivo"
-                      randomizeFilename
-                      storageRef={storage.ref('currículos')}
-                      onUploadError={handleUploadError}
-                      onUploadSuccess={handleUploadSuccess}
-                      required>
-                      Clique para adicionar o arquivo do seu currículo
-
-                    </CustomUploadButton>
-
-                  </label >
                 </div>
 
                 <div id='buttoncaddiv' >
