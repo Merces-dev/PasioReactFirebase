@@ -12,6 +12,8 @@ import { useToasts } from 'react-toast-notifications';
 
 const Perfil = () => {
   const { addToast } = useToasts();
+  const [id, setId] = useState('');
+
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
@@ -19,12 +21,28 @@ const Perfil = () => {
   const [estado, setEstado] = useState('');
   const [cidade, setCidade] = useState('');
   let token = localStorage.getItem('uid')
+  const [idadeMin, setIdadeMin] = useState('');
+  const [dataMax, setDataMax] = useState('');
 
   const [urlArquivo, setUrlArquivo] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [role, setRole] = useState('');
 
   const [categorias, setCategorias] = useState([]);
   const [usuario, setUsuario] = useState([])
+  function dataAtualFormatada() {
+    var data = new Date(),
+      dia = data.getDate().toString(),
+      diaF = (dia.length === 1) ? '0' + dia : dia,
+      mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+      mesF = (mes.length === 1) ? '0' + mes : mes,
+      anoF = data.getFullYear();
+
+    setIdadeMin((anoF - 16) + "-" + mesF + "-" + diaF)
+    setDataMax(anoF + "-" + mesF + "-" + diaF)
+    return dataMax;
+  }
+
   const states = [
     { value: 'AC', label: 'Acre' },
     { value: 'AL', label: 'Alagoas' },
@@ -57,36 +75,61 @@ const Perfil = () => {
 
   const salvar = (event) => {
     event.preventDefault();
-    const usuario = {
-      nome: nome,
-      telefone: BrM.phone(telefone),
-      dataNascimento: dataNascimento,
-      localizacao: [estado, cidade],
-      categoria: categoria,
+    if (window.confirm('Os seus dados conferem ?')) {
+
+      const usuario = {
+        nome: nome,
+        email: email,
+        telefone: BrM.phone(telefone),
+        dataNascimento: dataNascimento,
+        localizacao: [estado, cidade],
+        categoria: categoria,
+        curriculo: urlArquivo,
+        role: role
+      }
+
+      db.collection('usuarios')
+        .doc(token)
+        .set(usuario)
+        .then(() => {
+          addToast('Dados Alterados', { appearance: 'success', autoDismiss: true });
+          listarCategorias();
+          limparCampos()
+          listarUsuario();
+        })
+        .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
+        )
+
+      listarUsuario();
+
     }
-
-    db.collection('usuarios')
-      .doc(token)
-      .set(usuario)
-      .then(() => {
-        addToast('Dados Alterados', { appearance: 'success', autoDismiss: true });
-        listarCategorias();
-        listarUsuario();
-
-        limparCampos();
-      })
-      .catch(error => addToast(error, { appearance: 'error', autoDismiss: true })
-      )
-
+    listarCategorias();
+    limparCampos()
     listarUsuario();
-
   }
-  const editar =  (event) => {
+  const editar = (event) => {
     event.preventDefault();
-    var elementos =  document.getElementsByClassName('pointerEvents');
+    var elementos = document.getElementsByClassName('pointerEvents');
+    let all = 0
+    let none = 0
     console.log(elementos)
-    for(let i = 0; i < elementos.length; i++){
-      elementos[i].style['pointer-events'] = "all";
+    for (let i = 0; i < elementos.length; i++) {
+      if (elementos[i].style['pointer-events'] == 'all') {
+        elementos[i].style['pointer-events'] = "none";
+        elementos[i].style['cursor'] = "not-allowed";
+
+        none++
+      } else {
+        elementos[i].style['pointer-events'] = "all";
+        elementos[i].style['cursor'] = "text";
+
+        all++
+      }
+    }
+    if (all > none) {
+      addToast('Agora você pode alterar seus dados', { appearance: 'info', autoDismiss: true });
+    } else {
+      addToast('Agora você não pode alterar seus dados', { appearance: 'info', autoDismiss: true });
 
     }
   }
@@ -107,7 +150,7 @@ const Perfil = () => {
           })
 
           setCategorias(data);
-
+          console.log(categorias)
         })
     }
     catch (error) {
@@ -119,14 +162,16 @@ const Perfil = () => {
       db.collection("usuarios").doc(token)
         .get()
         .then((result) => {
-
+          setId(result.data().id);
           setUsuario(result.data());
           setNome(result.data().nome)
           setDataNascimento(result.data().dataNascimento)
           setCategoria(result.data().categoria)
           setEstado(result.data().localizacao[0])
+          setEmail(result.data().email)
           setCidade(result.data().localizacao[1])
           setTelefone(result.data().telefone.replace(/\D/g, ""))
+          setRole(result.data().role)
           setUrlArquivo(result.data().curriculo)
           console.log(result.data())
         })
@@ -140,7 +185,10 @@ const Perfil = () => {
 
   }
   useEffect(() => {
-    listarUsuario()
+    listarUsuario();
+    listarCategorias();
+    dataAtualFormatada();
+
   },
     [])
   const limparCampos = () => {
@@ -167,11 +215,22 @@ const Perfil = () => {
                 <label  >Nome</label>
                 <input className='pointerEvents' type='text' value={nome} onChange={event => setNome(event.target.value)} />
                 <label  >Data de Nascimento</label>
-                <input className='pointerEvents' type='date' value={dataNascimento} onChange={event => setDataNascimento(event.target.value)} />
+                <input className='pointerEvents' type='date' value={dataNascimento} max={idadeMin} onChange={event => setDataNascimento(event.target.value)} />
                 <label >Área</label>
-                <input className='pointerEvents' type='text' value={categoria} onChange={event => setCategoria(event.target.value)} />
+
+                <select className='pointerEvents' value={categoria} onChange={event => setCategoria(event.target.value)} name="estados-brasil">
+                  <option value="" disabled selected>Selecione sua área profissional</option>
+                  {
+                    categorias.map((item, index) => {
+                      return (
+                        <option key={index} value={item.titulo}>{item.titulo}</option>
+                      )
+                    })
+                  }
+                </select>
+
                 <label >Estado</label>
-                <select  className='pointerEvents' value={estado} onChange={event => setEstado(event.target.value)} name="estados-brasil">
+                <select className='pointerEvents' value={estado} onChange={event => setEstado(event.target.value)} name="estados-brasil">
                   <option value="" disabled selected>Selecione seu Estado</option>
 
                   {
@@ -189,12 +248,13 @@ const Perfil = () => {
 
               </div>
               <div className='buttonsPerfil'>
-                <input className='inputCRUDPerfil' style={{ backgroundColor: 'white', color: 'var(--principal)' }} type="submit" value='Trocar Senha' />
-                <input className='inputCRUDPerfil' style={{ backgroundColor: 'white', color: 'var(--principal)' }} type="submit" value='Trocar Email' />
 
-                <input className='inputCRUDPerfil' style={{ backgroundColor: 'white', color: 'var(--principal)' }} onClick={editar} value='Editar' />
+                <input className='inputCRUDPerfil' style={{ backgroundColor: 'white', color: 'var(--principal)' }} type="submit" onClick={editar} value='Editar' />
 
-                <input className='inputCRUDPerfil' style={{ backgroundColor: 'var(--principal)', color: 'white' }} onClick={salvar} value='Salvar' />
+                <input className='inputCRUDPerfil' style={{ backgroundColor: 'var(--principal)', color: 'white' }} type="submit" onClick={salvar} value='Salvar' />
+                <a className='inputCRUDPerfil' href='/trocarsenha' style={{ backgroundColor: 'white', color: 'var(--principal)' }} type="submit" value='Trocar Senha'>Trocar Senha</a>
+                <a className='inputCRUDPerfil' href='/trocaremail' style={{ backgroundColor: 'white', color: 'var(--principal)' }} value='Trocar Email'>Trocar Email</a>
+
               </div>
             </form>
 

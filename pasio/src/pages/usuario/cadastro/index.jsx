@@ -27,7 +27,7 @@ const Cadastro = () => {
   const [estado, setEstado] = useState('');
 
   const [cidade, setCidade] = useState('');
-  const [area, setArea] = useState('');
+  const [categoria, setCategoria] = useState('');
 
   const [senha, setSenha] = useState('');
   const [urlArquivo, setUrlArquivo] = useState('');
@@ -115,7 +115,7 @@ const Cadastro = () => {
       telefone: BrM.phone(telefone),
       dataNascimento: dataNascimento,
       localizacao: [estado, cidade],
-      categoria: area,
+      categoria: categoria,
       curriculo: urlArquivo,
       role: 'comum'
 
@@ -166,7 +166,7 @@ const Cadastro = () => {
     setTelefone('');
     setEstado('');
     setCidade('');
-    setArea('');
+    setCategoria('');
     setUrlArquivo('');
   }
   function dataAtualFormatada() {
@@ -253,7 +253,7 @@ const Cadastro = () => {
                   <label>
                     Área Profissional
                   </label>
-                  <select value={area} onChange={event => setArea(event.target.value)} name="estados-brasil">
+                  <select value={categoria} onChange={event => setCategoria(event.target.value)} name="estados-brasil">
                     <option value="" disabled selected>Selecione sua área profissional</option>
 
                     {

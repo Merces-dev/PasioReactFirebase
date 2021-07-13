@@ -26,6 +26,8 @@ import EsqueciSenha from './pages/usuario/esquecisenha';
 import Funcionarios from './pages/admin/funcionarios';
 import ServicosAdmin from './pages/admin/servicos';
 import EquipeAdmin from './pages/admin/equipe';
+import ChangePassword from './pages/usuario/changeMailPassword/changePassword';
+import ChangeEmail from './pages/usuario/changeMailPassword/changeEmail';
 
 import jwt_decode from 'jwt-decode';
 import Perfil from './pages/usuario/perfil';
@@ -102,6 +104,8 @@ const routing = (
       <Route path='/servicos' component={Servicos} />
       <Route path='/termos' component={Termos} />
       <Route path='/perfil' component={Perfil}/>
+      <Route path='/trocarsenha' component={ChangePassword}/>
+      <Route path='/trocaremail' component={ChangeEmail}/>
       <Route path='/politica' component={Politica} />
       <RotaPrivada path='/admin/candidatos' component={Candidatos} />
       <RotaPrivada path='/admin/categorias' component={Categorias} />
